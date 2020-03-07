@@ -25,7 +25,6 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Navigation siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
           margin: `0 auto`,
@@ -35,6 +34,7 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
+        <Navigation siteTitle={data.site.siteMetadata.title} />
         <footer>
           Kieran Osgood © {new Date().getFullYear()}
           <br />
