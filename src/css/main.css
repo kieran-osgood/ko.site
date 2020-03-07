@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'CPMono_v07 Plain';
+	font-style: normal;
+	font-weight: normal;
+	src: local('CPMono_v07 Plain'), url('../fonts/CPMono_v07_Plain.woff') format('woff');
+}
+
+
+@font-face {
+	font-family: 'CPMono_v07 Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: local('CPMono_v07 Bold'), url('../fonts/CPMono_v07_Bold.woff') format('woff');
+}
+
+.bg-gradient {
+	background: rgb(31,21,40);
+	background: linear-gradient(180deg, rgba(51,37,65,1) 15%, rgba(31,21,40,1) 100%);
+}
+
+a {
+	transition: opacity .2s ease-in-out;
+}
+
+* {
+	font-family: 'CPMono_V07';
+}

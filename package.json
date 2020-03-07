@@ -5,10 +5,12 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "autoprefixer": "^9.7.4",
     "gatsby": "^2.18.12",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.31",
     "gatsby-plugin-offline": "^3.0.27",
+    "gatsby-plugin-postcss": "^2.1.21",
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-sharp": "^2.3.5",
     "gatsby-source-filesystem": "^2.1.40",
@@ -19,20 +21,26 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "clean-css-cli": "^4.3.0",
+    "prettier": "^1.19.1",
+    "purgecss": "^2.1.0",
+    "tailwindcss": "^1.2.0"
   },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "tailwind build ./src/css/main.css -o ./assets/css/main.min.css gatsby build",
+    "build-prod": "npx tailwind build ./src/css/main.css -o ./assets/css/main.css && npm run purge && npm run minify",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "minify": "cleancss -o ./assets/css/main.min.css ./assets/css/main.css",
+    "purge": "purgecss --css ./assets/css/main.css --content ./index.html --out ./assets/css/"
   },
   "repository": {
     "type": "git",
