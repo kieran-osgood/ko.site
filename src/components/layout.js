@@ -30,7 +30,7 @@ const Layout = ({ children, path }) => {
 		<Context.Provider value={path}>
 			<div className='mx-auto max-w-5xl py-0 pl-4 pr-6'>
 				<main className='w-full relative block'>
-					<div className='mx-auto min-w-full md:max-w-lg lg:max-w-2xl xl:max-w-4xl break-words'>
+					<div className='mx-auto md:max-w-lg lg:max-w-2xl xl:max-w-4xl break-words'>
 						{children}
 					</div>
 				</main>

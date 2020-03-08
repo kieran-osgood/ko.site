@@ -3,33 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --main-bg-color: #ee6352;
-  --primary-font-color: #ffffff;
+	--main-bg-color: #ee6352;
+	--primary-color: #ffffff;
+	--secondary-color: #4ffac7;
 }
 
 @font-face {
-  font-family: "CPMono_v07 Plain";
-  font-style: normal;
-  font-weight: normal;
-  src: local("CPMono_v07 Plain"),
-    url("../fonts/CPMono_v07_Plain.woff") format("woff");
+	font-family: 'CPMono_v07 Plain';
+	font-style: normal;
+	font-weight: normal;
+	src: local('CPMono_v07 Plain'),
+		url('../fonts/CPMono_v07_Plain.woff') format('woff');
 }
 
 @font-face {
-  font-family: "CPMono_v07 Bold";
-  font-style: normal;
-  font-weight: normal;
-  src: local("CPMono_v07 Bold"),
-    url("../fonts/CPMono_v07_Bold.woff") format("woff");
+	font-family: 'CPMono_v07 Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: local('CPMono_v07 Bold'),
+		url('../fonts/CPMono_v07_Bold.woff') format('woff');
 }
 
 .bg-gradient {
-  background: rgb(31, 21, 40);
-  background: linear-gradient(
-    180deg,
-    rgba(51, 37, 65, 1) 15%,
-    rgba(31, 21, 40, 1) 100%
-  );
+	background: rgb(31, 21, 40);
+	background: linear-gradient(
+		180deg,
+		rgba(51, 37, 65, 1) 15%,
+		rgba(31, 21, 40, 1) 100%
+	);
 }
 
 body {
@@ -37,27 +38,62 @@ body {
 }
 
 a {
-  transition: opacity 0.2s ease-in-out;
+	transition: opacity 0.2s ease-in-out;
 }
 
 * {
-  font-family: "CPMono_V07";
+	font-family: 'CPMono_V07';
 }
 
 h1 {
-  font-size: 3rem;
-  line-height: 2.8;
-  color: var(--primary-font-color);
+	font-size: 3rem;
+	line-height: 2.8;
+	color: var(--primary-color);
 }
 
 h2 {
-  font-size: 2.5rem;
-  line-height: 2.3;
-  color: var(--primary-font-color);
+	font-size: 2.5rem;
+	line-height: 2.3;
+	color: var(--primary-color);
 }
 
 p {
-  font-size: 1.125rem;
-  line-height: 0.925;
-  color: var(--primary-font-color);
+	font-size: 1.125rem;
+	line-height: 0.925;
+	color: var(--primary-color);
+}
+span {
+	color: var(--primary-color);
+}
+.active {
+	background-color: var(--secondary-color);
+	transform: scale(1.1, 1.1);
+}
+
+.nav-link {
+	transition-duration: 350ms;
+	transition-property: transform;
+}
+
+.nav-link:hover {
+	transform: scale(1.1, 1.1);
+}
+
+.vert-nav {
+	@media (min-width: 768px) {
+		position: fixed;
+		top: 107px;
+		left: -639px;
+		width: 550px;
+	}
+	@media (min-width: 1024px) {
+		left: -600px;
+	}
+	@media (min-width: 1440px) {
+		left: -569px;
+	}
+}
+
+.horz-nav {
+	bottom: 10px;
 }

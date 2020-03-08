@@ -13,12 +13,7 @@ import { Context } from './layout'
 
 const Navigation = () => {
 	return (
-		<header
-			className='sticky z-10'
-			style={{
-				bottom: 10,
-			}}
-		>
+		<header className='horz-nav sticky z-10 transform md:rotate-90 vert-nav'>
 			<NavigationLinks />
 		</header>
 	)
@@ -41,12 +36,12 @@ const NavLink = ({ url, icon }) => {
 	const path = useContext(Context)
 	const isCurrentPage = route => (route === path ? 'active' : '')
 	return (
-		<div className='sticky top-0 z-10'>
+		<div className='sticky top-0 z-10 transform md:-rotate-90'>
 			<Link to={url}>
 				<div
-					className={`w-12 h-12 bg-white rounded-full flex align-center justify-center border-black border-4 z-5 ${isCurrentPage(
-						url
-					)}`}
+					className={`w-12 h-12 bg-white rounded-full flex align-center justify-center border-black border-4 z-5 
+					nav-link
+					${isCurrentPage(url)}`}
 				>
 					<img src={icon} />
 				</div>
