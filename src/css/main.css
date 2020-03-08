@@ -59,9 +59,10 @@ h2 {
 
 p {
 	font-size: 1.125rem;
-	line-height: 0.925;
+	line-height: 1.2;
 	color: var(--primary-color);
 }
+
 span {
 	color: var(--primary-color);
 }
