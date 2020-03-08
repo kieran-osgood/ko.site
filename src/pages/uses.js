@@ -54,7 +54,7 @@ export default Uses
 
 const UsesBlock = ({ data: { title, items } }) => {
 	return (
-		<div className='flex flex-col md:flex-col mb-4'>
+		<div className='flex flex-col mb-4 md:flex-col md:w-1/2 md:px-4'>
 			<h2>{title}</h2>
 			{items.map(text => (
 				<p key={text}>{text}</p>
