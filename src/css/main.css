@@ -80,21 +80,19 @@ span {
 	transform: scale(1.1, 1.1);
 }
 
-.vert-nav {
-	@media (min-width: 768px) {
-		position: fixed;
-		top: 107px;
-		left: -639px;
-		width: 550px;
-	}
+.horz-nav {
+  bottom: 10px;
+  max-width: 700px;
+}
+
+.md-vert-nav {
 	@media (min-width: 1024px) {
+    width: 550px;
+    top: 107px;
+    position: fixed;
 		left: -600px;
 	}
 	@media (min-width: 1440px) {
 		left: -569px;
 	}
-}
-
-.horz-nav {
-	bottom: 10px;
 }
