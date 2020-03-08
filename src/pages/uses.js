@@ -42,7 +42,7 @@ const Uses = ({ path }) => (
 	<Layout path={path}>
 		<SEO title='Uses' />
 		<h1>/Uses</h1>
-		<div className='flex flex-col md:flex-row'>
+		<div className='flex flex-col flex-wrap md:flex-row'>
 			{usesData.map(block => (
 				<UsesBlock key={block.title} data={block} />
 			))}
@@ -54,7 +54,7 @@ export default Uses
 
 const UsesBlock = ({ data: { title, items } }) => {
 	return (
-		<div className='flex flex-col md:flex-row mb-4'>
+		<div className='flex flex-col md:flex-col mb-4'>
 			<h2>{title}</h2>
 			{items.map(text => (
 				<p key={text}>{text}</p>
