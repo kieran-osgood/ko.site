@@ -29,8 +29,8 @@ const Layout = ({ children, path }) => {
 	return (
 		<Context.Provider value={path}>
 			<div className='mx-auto max-w-5xl py-0 pl-4 pr-6'>
-				<main className='w-full relative block'>
-					<div className='mx-auto md:max-w-2xl lg:max-w-3xl xl:max-w-5xl break-words'>
+				<main className='w-full relative block h-screen'>
+					<div className='mx-auto md:max-w-2xl lg:max-w-3xl xl:max-w-5xl break-words pb-4'>
 						{children}
 					</div>
 				</main>

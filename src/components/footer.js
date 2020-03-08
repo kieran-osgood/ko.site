@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
 	return (
-		<footer className='flex flex-col items-center'>
+		<footer className='flex flex-col items-center pt-4'>
 			<span>Kieran Osgood © {new Date().getFullYear()}</span>
 			<span>
 				Built with &nbsp;
