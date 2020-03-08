@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 
@@ -7,35 +7,45 @@ import AboutIcon from "../images/about.svg"
 import PortfolioIcon from "../images/portfolio.svg"
 import ContactIcon from "../images/contact.svg"
 import PoopIcon from "../images/poop.svg"
+import Routes from "../data/routes"
 
-const Navigation = ({ siteTitle }) => (
-  <header
-    className="sticky z-10"
-    style={{
-      bottom: 10,
-    }}
-  >
-    <NavigationLinks />
-  </header>
-)
+import { Context } from "./layout"
+
+const Navigation = () => {
+  return (
+    <header
+      className="sticky z-10"
+      style={{
+        bottom: 10,
+      }}
+    >
+      <NavigationLinks />
+    </header>
+  )
+}
 
 const NavigationLinks = () => {
-  return(
-    <div className='flex justify-between z-100'>
-      <NavLink icon={HomeIcon} />
-      <NavLink icon={AboutIcon} />
-      <NavLink icon={PortfolioIcon} />
-      <NavLink icon={ContactIcon} />
-      <NavLink icon={PoopIcon} />
-      <div className='w-full border-4 mt-5 z-5 border-black absolute' />
+  return (
+    <div className="flex justify-between z-100">
+      <NavLink url={Routes.HOME} icon={HomeIcon} />
+      <NavLink url={Routes.ABOUT} icon={AboutIcon} />
+      <NavLink url={Routes.CONTACT} icon={PortfolioIcon} />
+      <NavLink url={Routes.PORTFOLIO} icon={ContactIcon} />
+      <NavLink url={Routes.USES} icon={PoopIcon} />
+      <div className="w-full border-4 mt-5 z-5 border-black absolute" />
     </div>
   )
 }
-const NavLink = ({ icon }) => {
+
+const NavLink = ({ url, icon }) => {
+  const path = useContext(Context)
+  const isCurrentPage = route => (route === path ? "active" : "")
   return (
     <div className="sticky top-0 z-10">
-      <Link to="page-2">
-        <div className="w-12 h-12 bg-white rounded-full flex align-center justify-center border-black border-4 z-5">
+      <Link to={url}>
+        <div
+          className={`w-12 h-12 bg-white rounded-full flex align-center justify-center border-black border-4 z-5 ${isCurrentPage(url)}`}
+        >
           <img src={icon} />
         </div>
       </Link>
@@ -43,12 +53,8 @@ const NavLink = ({ icon }) => {
   )
 }
 
-Navigation.propTypes = {
-  siteTitle: PropTypes.string,
-}
+Navigation.propTypes = {}
 
-Navigation.defaultProps = {
-  siteTitle: ``,
-}
+Navigation.defaultProps = {}
 
 export default Navigation

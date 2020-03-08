@@ -5,14 +5,17 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { createContext } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+import Footer from "./footer"
 import Navigation from "./navigation"
 import "../css/main.css"
 
-const Layout = ({ children }) => {
+export const Context = createContext(null)
+
+const Layout = ({ children, path }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,26 +27,17 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
-        <main>{children}</main>
-        <Navigation siteTitle={data.site.siteMetadata.title} />
-        <footer>
-          Kieran Osgood © {new Date().getFullYear()}
-          <br />
-          Built with
-          &nbsp;
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+    <Context.Provider value={path}>
+      <div className="mx-auto max-w-5xl py-0 pl-4 pr-6">
+        <main className="w-full relative block">
+          <div className="mx-auto min-w-full md:max-w-lg lg:max-w-2xl xl:max-w-4xl break-words">
+            {children}
+          </div>
+        </main>
+        <Navigation path={path} siteTitle={data.site.siteMetadata.title} />
+        <Footer />
       </div>
-    </>
+    </Context.Provider>
   )
 }
 
