@@ -13,7 +13,7 @@ import { Context } from './layout'
 
 const Navigation = () => {
 	return (
-		<header className='horz-nav md-vert-nav mx-auto sticky z-10 transform lg:rotate-90 '>
+		<header className='horz-nav md-vert-nav mx-auto sticky z-10 transform lg:rotate-90 p-2'>
 			<NavigationLinks />
 		</header>
 	)
@@ -27,7 +27,7 @@ const NavigationLinks = () => {
 			<NavLink url={Routes.CONTACT} icon={PortfolioIcon} />
 			<NavLink url={Routes.PORTFOLIO} icon={ContactIcon} />
 			<NavLink url={Routes.USES} icon={PoopIcon} />
-			<div className='w-full border-4 mt-5 z-5 border-black absolute' />
+			<div className='border-4 mt-5 z-5 border-black absolute' style={{width: '95%'}}/>
 		</div>
 	)
 }
@@ -39,7 +39,7 @@ const NavLink = ({ url, icon }) => {
 		<div className='sticky top-0 z-10 transform lg:-rotate-90'>
 			<Link to={url}>
 				<div
-					className={`nav-link ${isCurrentPage(url)} w-12 h-12 bg-white rounded-full flex align-center justify-center border-black border-4 z-5 `}
+					className={`nav-link ${isCurrentPage(url)} w-12 h-12 bg-white rounded-full flex align-center justify-center border-black border-4 z-5`}
 				>
 					<img src={icon} />
 				</div>
