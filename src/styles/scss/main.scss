@@ -1,0 +1,34 @@
+// Page Setup
+@import 'variables';
+@import 'base';
+@import 'fonts';
+@import 'mixins';
+
+// Styles
+.active {
+	background-color: $secondary-color;
+	transform: scale(1.1, 1.1);
+}
+
+.nav-link {
+	transition-duration: 350ms;
+	transition-property: transform;
+	& {
+		transform: scale(1.1, 1.1);
+	}
+}
+
+.horz-nav {
+	bottom: 10px;
+	max-width: 700px;
+}
+
+.md-vert-nav {
+    @media (min-width: 1024px) {
+        width: 550px;
+		height: 30px;
+		top: 507px;
+		position: fixed;
+	}
+    @include calcWhiteSpaceCenter();
+}

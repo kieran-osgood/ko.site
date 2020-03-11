@@ -11,7 +11,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import Footer from './footer'
 import Navigation from './navigation'
-import '../css/main.css'
+import '../styles/css/main.css'
+import '../styles/scss/main.scss'
 
 export const Context = createContext(null)
 
