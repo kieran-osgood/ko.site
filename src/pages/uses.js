@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import PoopIcon from '../images/poop.svg'
+import PoopIcon from '../images/navigation/poop.svg'
 
 const Uses = ({ path }) => (
 	<Layout path={path}>
