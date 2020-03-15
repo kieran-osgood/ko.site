@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
 
 import HomeIcon from '../images/navigation/home.svg'
 import AboutIcon from '../images/navigation/about.svg'
@@ -41,7 +40,7 @@ const NavLink = ({ url, icon }) => {
 				<div
 					className={`nav-link ${isCurrentPage(url)} w-12 h-12 bg-white rounded-full flex align-center justify-center border-black border-4 z-5`}
 				>
-					<img src={icon} />
+					<img src={icon} alt={`${url} navigation icon`} />
 				</div>
 			</Link>
 		</div>

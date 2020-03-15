@@ -58,9 +58,8 @@ const SocialsList = () => {
 	return (
 		<div className='flex flex-row justify-around pt-6 h-32 justify-around w-4/5'>
 			{socials.map((social, idx) => (
-				<a href={social.url} target='_blank'>
+				<a key={idx} href={social.url} target='_blank' rel="noopener noreferrer">
 					<img
-						key={idx}
 						src={social.icon}
 						className='h-16 w-16 px-1'
 						alt={`${social.platform} logo`}

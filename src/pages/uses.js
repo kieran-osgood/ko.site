@@ -15,7 +15,7 @@ const Uses = ({ path }) => (
 			))}
 		</div>
 		<div className='flex flex-col justify-center text-center'>
-			<img src={PoopIcon} />
+			<img src={PoopIcon} alt='poop icon' />
 			<h4>Inspired by Wes Bos</h4>
 			<h4>
 				<a href='uses.tech/'>uses.tech/</a>
