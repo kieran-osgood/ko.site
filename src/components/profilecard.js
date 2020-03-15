@@ -40,7 +40,8 @@ export const ProfileCard = () => {
 const LanguagesList = () => {
 	const stripPathing = string => string.match(/(?:.\/)+(\w*)+(?:\.svg)/)[1]
 	return (
-		<div className='flex flex-row justify-around pt-6 h-16 justify-around'>
+		<div className='flex flex-row justify-around pt-6 h-16 justify-around flex-wrap'>
+			{/* // ! TODO re-order so that preferred languages are first */}
 			{svgs.map((svg, idx) => (
 				<img
 					key={idx}
