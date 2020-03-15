@@ -9,10 +9,12 @@ import React, { createContext } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
+import '../styles/css/tailwind.css'
+import '../styles/scss/main.scss'
+
 import Footer from './footer'
 import Navigation from './navigation'
-import '../styles/css/main.css'
-import '../styles/scss/main.scss'
+
 
 export const Context = createContext(null)
 
