@@ -23,8 +23,8 @@ const NavigationLinks = () => {
 		<div className='flex justify-between z-100'>
 			<NavLink url={Routes.HOME} icon={HomeIcon} />
 			<NavLink url={Routes.ABOUT} icon={AboutIcon} />
-			<NavLink url={Routes.CONTACT} icon={PortfolioIcon} />
-			<NavLink url={Routes.PORTFOLIO} icon={ContactIcon} />
+			<NavLink url={Routes.PORTFOLIO} icon={PortfolioIcon} />
+			<NavLink url={Routes.CONTACT} icon={ContactIcon} />
 			<NavLink url={Routes.USES} icon={PoopIcon} />
 			<div className='border-4 mt-5 z-5 border-black absolute' style={{width: '95%'}}/>
 		</div>
