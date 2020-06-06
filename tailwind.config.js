@@ -7,6 +7,8 @@ module.exports = {
 			},
 			white: '#ffffff',
 			grey: '#bbb8be',
+			'peach': '#ee6352',
+			'turq': '#4ffac7'
 		},
 		container: {
 			center: true,

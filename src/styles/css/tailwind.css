@@ -1,3 +1,28 @@
+@font-face {
+	font-family: 'CPMono_v07 Plain';
+	font-style: normal;
+	font-weight: normal;
+	src: local('CPMono_v07 Plain'),
+		url('../../fonts/CPMono_v07_Plain.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'CPMono_v07 Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: local('CPMono_v07 Bold'),
+		url('../../fonts/CPMono_v07_Bold.woff') format('woff');
+}
+
+a {
+	transition: opacity 0.2s ease-in-out;
+}
+
+* {
+	font-family: 'CPMono_V07';
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
