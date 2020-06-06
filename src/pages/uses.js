@@ -81,6 +81,7 @@ const usesData = [
 			'JustJavascript - Dan Abramov',
 			'You don\'t know JS - Kyle Simpson https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/foreword.md',
 			'2ality JavaScript and more - https://2ality.com/index.html',
+			'Kent C. Dodds Blog - https://kentcdodds.com/blog',
 		],
 	},
 ]
