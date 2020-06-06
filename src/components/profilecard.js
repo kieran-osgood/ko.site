@@ -37,6 +37,12 @@ export const ProfileCard = () => {
 		</div>
 	)
 }
+/**
+ * .profile-card {
+	max-width: 429px;
+	max-height: 525px;
+}
+ */
 const LanguagesList = () => {
 	const stripPathing = string => string.match(/(?:.\/)+(\w*)+(?:\.svg)/)[1]
 	return (

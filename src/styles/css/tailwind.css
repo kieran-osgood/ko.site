@@ -21,7 +21,9 @@ a {
 * {
 	font-family: 'CPMono_V07';
 }
-
+/* :root {
+	font-size: 62.5%;
+} */
 
 @tailwind base;
 @tailwind components;
