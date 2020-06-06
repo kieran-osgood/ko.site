@@ -14,9 +14,10 @@ import Img from 'gatsby-image'
  */
 
 const Image = () => {
+	// ? TODO pass in a prop for the image to be taken from the images folder, and the fluid attributes?
 	const data = useStaticQuery(graphql`
 		query {
-			placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+			placeholderImage: file(relativePath: { eq: "profile.png" }) { 
 				childImageSharp {
 					fluid(maxWidth: 300) {
 						...GatsbyImageSharpFluid
