@@ -9,7 +9,7 @@ import ContactIcon from '../images/navigation/contact.svg'
 import PoopIcon from '../images/navigation/poop.svg'
 import Routes from '../data/routes'
 
-import { Context } from './layout'
+import { Context } from './Layout'
 
 const Navigation = () => (
 	<Header>

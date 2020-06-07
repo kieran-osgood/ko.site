@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from './image'
+import Image from './Image'
 
 import Github from '../images/socials/Github.svg'
 import LinkedIn from '../images/socials/LinkedIn.svg'

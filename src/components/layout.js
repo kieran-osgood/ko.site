@@ -11,9 +11,9 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import '../styles/css/tailwind.css'
 
-import Footer from './footer'
-import Navigation from './navigation'
-import Theme from './theme'
+import Footer from './Footer'
+import Navigation from './Navigation'
+import Theme from './Theme'
 export const Context = createContext(null)
 
 const Layout = ({ children, path }) => {
