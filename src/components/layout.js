@@ -13,6 +13,7 @@ import '../styles/css/tailwind.css'
 
 import Footer from './footer'
 import Navigation from './navigation'
+import Theme from './theme'
 export const Context = createContext(null)
 
 const Layout = ({ children, path }) => {
@@ -37,6 +38,8 @@ const Layout = ({ children, path }) => {
 				<Navigation path={path} siteTitle={data.site.siteMetadata.title} />
 				<Footer />
 			</div>
+			<Theme>
+			</Theme>
 		</Context.Provider>
 	)
 }
