@@ -27,7 +27,7 @@ const Navigation = () => (
 export default Navigation
 
 const Header = styled.header(() => [
-	tw`mx-auto sticky z-10 transform lg:rotate-90 p-2`,
+	tw`mx-auto sticky z-10 transform lg:rotate-90 p-3`,
 	css`
 		bottom: 10px;
 		max-width: 700px;
@@ -49,7 +49,7 @@ const Header = styled.header(() => [
 const NavBar = styled.div(() => [tw`flex justify-between`])
 
 const Connector = styled.div(() => [
-	tw`border-4 border-solid mt-5 border-black absolute z-10`,
+	tw`border-4 border-solid mt-8 border-black absolute z-10`,
 	css`
 		width: 95%;
 	`,
@@ -68,7 +68,7 @@ const NavLink = ({ url, icon }) => {
 }
 
 const StyledLink = styled(Link)(({ active }) => [
-	tw`w-12 h-12 rounded-full flex justify-center border border-black border-4 z-50 bg-white`,
+	tw`w-20 h-20 rounded-full flex justify-center border border-black border-4 z-50 bg-white`,
 	active && tw`bg-turq`,
 	css`
 		&:hover {

@@ -7,6 +7,7 @@ import {
 	// ButtonNext,
 } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
+import 'twin.macro'
 
 import config from '../../tailwind.config'
 import useWindowSize from 'hooks/useWindowSize'

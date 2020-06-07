@@ -18,7 +18,7 @@ Footer.propTypes = {}
 export default Footer
 
 const FooterContainer = styled.footer`
-	${tw`flex flex-col items-center justify-center pt-4`}
+	${tw`flex flex-col items-center justify-center pt-6`}
 	/* width: 100%;
 	height: 70px; */
 	/* background-repeat: no-repeat; */

@@ -1,11 +1,11 @@
 import React from 'react'
 import Toggle from 'react-toggle'
-import tw from 'twin.macro'
+import 'twin.macro'
 
 const Header = () => {
 	const handleBaconChange = () => console.log('test')
 	return (
-		<div tw='h-10 w-10 bg-grey-100'>
+		<div tw='h-16 w-16 bg-grey-100'>
 			<Toggle
 				aria-label='No label tag'
 				defaultChecked={false}

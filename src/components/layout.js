@@ -8,6 +8,7 @@
 import React, { createContext } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
+import tw, { styled, css } from 'twin.macro'
 
 import '../styles/css/tailwind.css'
 
@@ -30,15 +31,15 @@ const Layout = ({ children, path }) => {
 	return (
 		<Context.Provider value={path}>
 			<Theme>
-				<div tw='mx-auto max-w-5xl py-0 pl-4 pr-4'>
-					<main tw='w-full relative block min-h-screen'>
-						<div tw='mx-auto md:max-w-2xl lg:max-w-3xl xl:max-w-5xl break-words pb-4'>
+				<Page themeMode={'light'}>
+					<main tw='w-full relative block min-h-screen mx-auto max-w-5xl py-0 px-6'>
+						<div tw='mx-auto md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl break-words pb-6'>
 							{children}
 						</div>
 					</main>
 					<Navigation path={path} siteTitle={data.site.siteMetadata.title} />
 					<Footer />
-				</div>
+				</Page>
 			</Theme>
 		</Context.Provider>
 	)
@@ -49,3 +50,14 @@ Layout.propTypes = {
 }
 
 export default Layout
+
+const Page = styled.div(({ theme, themeMode }) => [
+	themeMode === 'light' &&
+		css`
+			background-color: ${theme.colors.light.background};
+		`,
+	themeMode === 'dark' &&
+		css`
+			background-color: ${theme.colors.dark.background};
+		`,
+])

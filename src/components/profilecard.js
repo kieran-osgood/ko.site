@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from './Image'
+import {css} from 'twin.macro'
 
 import Github from '../images/socials/Github.svg'
 import LinkedIn from '../images/socials/LinkedIn.svg'
@@ -11,7 +12,14 @@ const svgs = reqSvgs.keys().map(path => ({ path, file: reqSvgs(path) }))
 
 export const ProfileCard = () => {
 	return (
-		<div tw='profile-card'>
+		<div
+			css={[
+				css`
+					max-width: 429px;
+					max-height: 525px;
+				`,
+			]}
+		>
 			<div tw='w-32 h-32 pt-16 mx-auto relative overflow-visible'>
 				<Image />
 			</div>
@@ -20,9 +28,15 @@ export const ProfileCard = () => {
 				style={{ backgroundColor: '#EDEDED', height: '280px' }}
 			>
 				<div tw='w-4/5 mx-auto text-center text-black relative pt-16'>
-					<h3 style={{ color: 'black'}} tw='text-2xl'>Kieran Osgood</h3>
-					<p style={{ color: 'black'}} tw='pt-2'>Web Developer</p>
-					<p style={{ color: 'black'}} tw='pt-2'>London</p>
+					<h3 tw='text-black text-2xl'>
+						Kieran Osgood
+					</h3>
+					<p tw='text-black pt-2'>
+						Web Developer
+					</p>
+					<p tw='text-black pt-2'>
+						London
+					</p>
 
 					<LanguagesList />
 				</div>
@@ -37,12 +51,7 @@ export const ProfileCard = () => {
 		</div>
 	)
 }
-/**
- * .profile-card {
-	max-width: 429px;
-	max-height: 525px;
-}
- */
+
 const LanguagesList = () => {
 	const stripPathing = string => string.match(/(?:.\/)+(\w*)+(?:\.svg)/)[1]
 	return (
@@ -64,7 +73,12 @@ const SocialsList = () => {
 	return (
 		<div tw='flex flex-row justify-around pt-6 h-32 justify-around w-4/5'>
 			{socials.map((social, idx) => (
-				<a key={idx} href={social.url} target='_blank' rel="noopener noreferrer">
+				<a
+					key={idx}
+					href={social.url}
+					target='_blank'
+					rel='noopener noreferrer'
+				>
 					<img
 						src={social.icon}
 						tw='h-16 w-16 px-1'
