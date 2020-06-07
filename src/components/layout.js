@@ -5,16 +5,19 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { createContext } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import tw, { styled, css } from 'twin.macro'
-
 import '../styles/css/tailwind.css'
+
+import { DEFAULT_THEME } from 'themes'
+import { applyTheme } from 'themes/utils'
 
 import Footer from './Footer'
 import Navigation from './Navigation'
 import Theme from './Theme'
+
 export const Context = createContext(null)
 
 const Layout = ({ children, path }) => {
@@ -27,6 +30,11 @@ const Layout = ({ children, path }) => {
 			}
 		}
 	`)
+	const [theme] = useState(DEFAULT_THEME)
+
+	useEffect(() => {
+		applyTheme(theme)
+	}, [theme])
 
 	return (
 		<Context.Provider value={path}>
@@ -45,19 +53,6 @@ const Layout = ({ children, path }) => {
 	)
 }
 
-Layout.propTypes = {
-	children: PropTypes.node.isRequired,
-}
-
 export default Layout
 
-const Page = styled.div(({ theme, themeMode }) => [
-	themeMode === 'light' &&
-		css`
-			background-color: ${theme.colors.light.background};
-		`,
-	themeMode === 'dark' &&
-		css`
-			background-color: ${theme.colors.dark.background};
-		`,
-])
+const Page = styled.div(() => [tw`bg-primary-background`])

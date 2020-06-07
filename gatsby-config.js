@@ -40,6 +40,7 @@ module.exports = {
 				styles: path.join(__dirname, 'src/styles'),
 				images: path.join(__dirname, 'src/images'),
 				data: path.join(__dirname, 'src/data'),
+				themes: path.join(__dirname, 'src/themes'),
 			},
 		},
 		// this (optional) plugin enables Progressive Web App + Offline functionality
