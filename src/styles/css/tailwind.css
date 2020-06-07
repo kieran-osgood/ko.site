@@ -14,6 +14,23 @@
 		url('../../fonts/CPMono_v07_Bold.woff') format('woff');
 }
 
+@font-face {
+	font-family: 'Amantic SC Regular';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Amantic Regular'),
+		url('../../fonts/AmaticSC-Regular.ttf') format('ttf');
+}
+
+@font-face {
+	font-family: 'Amantic SC Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Amantic SC Bold'),
+		url('../../fonts/AmaticSC-Bold.ttf') format('ttf');
+}
+
+
 a {
 	transition: opacity 0.2s ease-in-out;
 }
