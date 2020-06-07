@@ -10,12 +10,9 @@ import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import '../styles/css/tailwind.css'
-import '../styles/scss/main.scss'
 
 import Footer from './footer'
 import Navigation from './navigation'
-
-
 export const Context = createContext(null)
 
 const Layout = ({ children, path }) => {
