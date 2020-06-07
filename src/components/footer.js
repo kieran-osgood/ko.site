@@ -19,8 +19,8 @@ export default Footer
 
 const FooterContainer = styled.footer`
 	${tw`flex flex-col items-center justify-center pt-4`}
-	width: 100%;
-	height: 70px;
-	background-repeat: no-repeat;
-	background-image: url('${process.env.PUBLIC_URL}/page-data/footer/oval.svg');
+	/* width: 100%;
+	height: 70px; */
+	/* background-repeat: no-repeat; */
+	/* background-image: url('${process.env.PUBLIC_URL}/page-data/footer/oval.svg'); */
 `
