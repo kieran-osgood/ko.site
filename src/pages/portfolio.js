@@ -19,7 +19,7 @@ const Portfolio = ({ path }) => {
 	return (
 		<Layout path={path}>
 			<SEO title='Page two' />
-			<div className='h-64 max-w-full px-2 pt-2 pb-2 md:flex md:flex-row md:flex-wrap '>
+			<div tw='h-64 max-w-full px-2 pt-2 pb-2 md:flex md:flex-row md:flex-wrap '>
 				{isUnder768() ? (
 					<CarouselProvider
 						naturalSlideWidth={100}
@@ -53,21 +53,21 @@ export default Portfolio
 
 const ProjectCard = ({ project: { title, url, image } }) => {
 	return (
-		<div className='md:w-1/2 py-4 px-4 mx-auto bg-white w-full rounded-md md:m-1 md:w-5/12 '>
-			<h2 className='mx-auto md:leading-10' style={{ color: 'black' }}>
+		<div tw='md:w-1/2 py-4 px-4 mx-auto bg-white w-full rounded-md md:m-1 md:w-5/12 '>
+			<h2 tw='mx-auto md:leading-10' style={{ color: 'black' }}>
 				{title}
 			</h2>
-			<div className='bg-grey' style={{ height: '12rem', padding: '1rem' }}>
+			<div tw='bg-grey' style={{ height: '12rem', padding: '1rem' }}>
 				<div>
 					<img
-						className='p-4 w-full h-full'
+						tw='p-4 w-full h-full'
 						src={image}
 						alt={`${title} icon`}
 					/>
 				</div>
 			</div>
 			<a href={url}>
-				<p className='p-4 truncate'>{url}</p>
+				<p tw='p-4 truncate'>{url}</p>
 			</a>
 		</div>
 	)

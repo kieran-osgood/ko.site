@@ -29,16 +29,16 @@ const Layout = ({ children, path }) => {
 
 	return (
 		<Context.Provider value={path}>
-			<div className='mx-auto max-w-5xl py-0 pl-4 pr-4'>
-				<main className='w-full relative block min-h-screen'>
-					<div className='mx-auto md:max-w-2xl lg:max-w-3xl xl:max-w-5xl break-words pb-4'>
-						{children}
-					</div>
-				</main>
-				<Navigation path={path} siteTitle={data.site.siteMetadata.title} />
-				<Footer />
-			</div>
 			<Theme>
+				<div tw='mx-auto max-w-5xl py-0 pl-4 pr-4'>
+					<main tw='w-full relative block min-h-screen'>
+						<div tw='mx-auto md:max-w-2xl lg:max-w-3xl xl:max-w-5xl break-words pb-4'>
+							{children}
+						</div>
+					</main>
+					<Navigation path={path} siteTitle={data.site.siteMetadata.title} />
+					<Footer />
+				</div>
 			</Theme>
 		</Context.Provider>
 	)

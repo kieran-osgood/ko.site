@@ -9,12 +9,12 @@ const Uses = ({ path }) => (
 	<Layout path={path}>
 		<SEO title='Uses' />
 		<h1>/Uses</h1>
-		<div className='flex flex-col flex-wrap md:flex-row'>
+		<div tw='flex flex-col flex-wrap md:flex-row'>
 			{usesData.map(block => (
 				<UsesBlock key={block.title} data={block} />
 			))}
 		</div>
-		<div className='flex flex-col justify-center text-center'>
+		<div tw='flex flex-col justify-center text-center'>
 			<img src={PoopIcon} alt='poop icon' />
 			<h4>Inspired by Wes Bos</h4>
 			<h4>
@@ -33,7 +33,7 @@ export default Uses
 
 const UsesBlock = ({ data: { title, items } }) => {
 	return (
-		<div className='flex flex-col mb-4 md:flex-col md:w-1/2 md:px-4'>
+		<div tw='flex flex-col mb-4 md:flex-col md:w-1/2 md:px-4'>
 			<h2>{title}</h2>
 			{items.map(text => (
 				<p key={text}>{text}</p>
