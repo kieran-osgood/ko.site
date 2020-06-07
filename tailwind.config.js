@@ -5,10 +5,6 @@ module.exports = {
 	important: false,
 	separator: ':',
 	theme: {
-		fontFamily: {
-			heading: ['CPMono_v07 Bold', 'Lucida Console', 'Monaco'],
-			footer: ['CPMono_v07 Plain', 'Lucida Console', 'Monaco'],
-		},
 		screens: {
 			sm: '375px',
 			md: '768px',
@@ -262,6 +258,8 @@ module.exports = {
 			default: '1',
 		},
 		fontFamily: {
+			heading: ['CPMono_v07 Bold', 'Lucida Console', 'Monaco'],
+			footer: ['CPMono_v07 Plain', 'Lucida Console', 'Monaco'],
 			sans: [
 				'system-ui',
 				'-apple-system',
