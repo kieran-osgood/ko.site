@@ -41,18 +41,11 @@ a {
 	font-size: 62.5%;
 }
 
-.dark-mode-toggle.react-toggle .react-toggle-track {
-	/* background-color: var(--background-sec); */
-	background-color: #000;
-}
-
-.dark-mode-toggle.react-toggle--checked .react-toggle-track {
-	/* background-color: var(--background-sec); */
-	background-color: #000;
-}
-
+.dark-mode-toggle.react-toggle .react-toggle-track,
+.dark-mode-toggle.react-toggle--checked .react-toggle-track,
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track,
+.dark-mode-toggle.react-toggle .react-toggle-thumb,
 .dark-mode-toggle.react-toggle--checked .react-toggle-thumb {
-	/* background-color: var(--background-sec); */
 	background-color: #000;
 }
 

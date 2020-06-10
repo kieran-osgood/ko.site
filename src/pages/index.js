@@ -15,7 +15,7 @@ const IndexPage = ({ path }) => (
 			<h1>Software Developer</h1>
 		</div>
 
-		<div tw='grid grid-rows-1 grid-cols-2 gap-16 pt-16 text-primary-text'>
+		<div tw='grid grid-rows-1 grid-cols-2 gap-16 pt-16'>
 			<div tw='row-span-1'>
 				<p tw='text-2xl'>
 					This small website was built simply to play around with design/gatsby
@@ -25,7 +25,7 @@ const IndexPage = ({ path }) => (
 					Check out my profile ->
 				</Link>
 			</div>
-			<div tw='row-span-2 text-primary-text'>
+			<div tw='row-span-2'>
 				<ImageSlider />
 			</div>
 		</div>
