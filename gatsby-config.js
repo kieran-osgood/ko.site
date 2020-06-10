@@ -10,6 +10,14 @@ module.exports = {
 		`gatsby-plugin-styled-components`,
 		`gatsby-plugin-react-helmet`,
 		{
+			resolve: 'gatsby-plugin-react-svg',
+			options: {
+				rule: {
+					include: /assets/,
+				},
+			},
+		},
+		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
 				name: `images`,
@@ -41,6 +49,7 @@ module.exports = {
 				images: path.join(__dirname, 'src/images'),
 				data: path.join(__dirname, 'src/data'),
 				themes: path.join(__dirname, 'src/themes'),
+				assets: path.join(__dirname, 'assets/'),
 			},
 		},
 		// this (optional) plugin enables Progressive Web App + Offline functionality
