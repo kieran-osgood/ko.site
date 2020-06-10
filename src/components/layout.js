@@ -6,13 +6,12 @@
  */
 
 import React, { createContext, useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import tw, { styled, css } from 'twin.macro'
-import '../styles/css/tailwind.css'
+import tw, { css, styled } from 'twin.macro'
 import Toggle from 'react-toggle'
 import 'react-toggle/style.css' // for ES6 modules
 
+import '../styles/css/tailwind.css'
 import { DEFAULT_THEME } from 'themes'
 import { applyTheme } from 'themes/utils'
 
@@ -45,8 +44,11 @@ const Layout = ({ children, path }) => {
 		<Context.Provider value={path}>
 			<Theme>
 				<Page themeMode={'light'}>
-					<main tw='w-full relative block min-h-screen mx-auto max-w-5xl py-0 px-6'>
-						<div tw='mx-auto md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl break-words pb-6'>
+					<main tw='w-full relative block mx-auto max-w-5xl py-4 px-6'>
+					<div tw='w-32 mx-auto'>
+						<Sun />
+						rotate this upwards for a toggle?
+					</div>
 						<div tw='w-full flex justify-end'>
 							<Toggle
 								defaultChecked={!theme}
@@ -56,6 +58,7 @@ const Layout = ({ children, path }) => {
 								className='dark-mode-toggle'
 							/>
 						</div>
+						<div tw='mx-auto md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl break-words pb-6 pt-16'>
 							{children}
 						</div>
 					</main>
@@ -69,4 +72,4 @@ const Layout = ({ children, path }) => {
 
 export default Layout
 
-const Page = styled.div(() => [tw`bg-primary-background`])
+const Page = styled.div(() => [tw`bg-primary-background min-h-screen`, css`display: grid; grid-template-rows: 13fr 1fr;`])
