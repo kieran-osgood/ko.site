@@ -44,11 +44,11 @@ const Layout = ({ children, path }) => {
 		<Context.Provider value={path}>
 			<Theme>
 				<Page themeMode={'light'}>
-					<main tw='w-full relative block mx-auto max-w-5xl py-4 px-6'>
-					<div tw='w-32 mx-auto'>
-						<Sun />
-						rotate this upwards for a toggle?
-					</div>
+					<main tw='w-full relative block mx-auto max-w-5xl py-4 px-6 text-primary-text'>
+						{/* <div tw='w-32 mx-auto'>
+							<Sun />
+							rotate this upwards for a toggle?
+						</div> */}
 						<div tw='w-full flex justify-end'>
 							<Toggle
 								defaultChecked={!theme}
@@ -72,4 +72,20 @@ const Layout = ({ children, path }) => {
 
 export default Layout
 
-const Page = styled.div(() => [tw`bg-primary-background min-h-screen`, css`display: grid; grid-template-rows: 13fr 1fr;`])
+const Page = styled.div(() => [
+	tw`bg-primary-background min-h-screen`,
+	css`
+		display: grid;
+		grid-template-rows: 13fr 1fr;
+		${'' /* Setting some base styled for the general page layout */}
+		h1 {
+			font-size: 6.4rem;
+		}
+		p {
+			font-size: 1.6rem;
+		}
+		a {
+			${tw`hover:opacity-75`}
+		}
+	`,
+])
