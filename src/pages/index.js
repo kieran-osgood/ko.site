@@ -5,15 +5,14 @@ import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import SEO from 'components/SEO'
 import ImageSlider from 'components/ImageSlider'
-import PageTitle from 'components/PageTitle'
 
 const IndexPage = ({ path }) => (
 	<Layout path={path}>
 		<SEO title='Home' />
 
-		<div tw='sm:text-sm'>
-			<PageTitle content={'Kieran Osgood'} />
-			<PageTitle content={'Software Developer'} />
+		<div>
+			<h1>Kieran Osgood</h1>
+			<h1>Software Developer</h1>
 		</div>
 
 		<div tw='grid grid-rows-1 grid-cols-2 gap-16 pt-16 text-primary-text'>
