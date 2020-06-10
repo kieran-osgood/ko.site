@@ -15,13 +15,7 @@ module.exports = {
 			colors: {
 				peach: '#ee6352',
 				turq: '#4ffac7',
-				'light-blue': '#384753',
-				'dark-blue': '#222f39',
-				purple: {
-					dark: '#1f1528',
-					light: '#332541',
-				},
-				grey: '#bbb8be',
+
 				primary: 'var(--color-primary)',
 				secondary: 'var(--color-secondary)',
 				negative: 'var(--color-negative)',
