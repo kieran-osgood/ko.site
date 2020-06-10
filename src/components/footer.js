@@ -23,18 +23,32 @@ const FooterContainer = styled.footer(() => [
 	`,
 ])
 
-const Socials = () => {
-	return (
-		<div tw='flex w-1/5 justify-between z-10 pt-8'>
+const Socials = () => (
+	<div tw='flex w-1/5 justify-between z-10 pt-8'>
+		<SocialLink href='https://github.com/KieranO547'>
 			<Github />
-			<Twitter />
+		</SocialLink>
+		<SocialLink href='https://www.linkedin.com/in/kieranosgood/'>
 			<LinkedIn />
-		</div>
-	)
-}
+		</SocialLink>
+		<SocialLink href='https://twitter.com/kieranbosgood'>
+			<Twitter />
+		</SocialLink>
+	</div>
+)
+
+const SocialLink = styled.a.attrs(({ href }) => ({
+	href,
+	rel: 'noreferrer',
+	target: 'blank',
+}))`
+	svg {
+		${tw`fill-current text-primary-text`}
+	}
+`
 
 const Disclaimer = () => (
-	<div tw='z-10 text-lg pt-4'>
+	<div tw='z-10 text-lg text-primary-text pt-4'>
 		<span>Kieran Osgood &copy; {new Date().getFullYear()}</span>
 		<span>&nbsp;|&nbsp;</span>
 		<span>
