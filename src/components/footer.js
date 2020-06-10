@@ -1,26 +1,45 @@
 import React from 'react'
-import tw, { styled } from 'twin.macro'
+import tw, { css, styled } from 'twin.macro'
+import Github from 'assets/socials/Github.svg'
+import Twitter from 'assets/socials/Twitter.svg'
+import LinkedIn from 'assets/socials/LinkedIn.svg'
 
 const Footer = () => {
 	return (
 		<FooterContainer>
-			<span>Kieran Osgood &copy; {new Date().getFullYear()}</span>
-			<span>
-				Built with &nbsp;
-				<a href='https://www.gatsbyjs.org'>Gatsby</a>
-			</span>
+			<Socials />
+			<Disclaimer />
 		</FooterContainer>
 	)
 }
 
-Footer.propTypes = {}
-
 export default Footer
 
-const FooterContainer = styled.footer`
-	${tw`flex flex-col items-center justify-center pt-6`}
-	/* width: 100%;
-	height: 70px; */
-	/* background-repeat: no-repeat; */
-	/* background-image: url('${process.env.PUBLIC_URL}/page-data/footer/oval.svg'); */
-`
+const FooterContainer = styled.footer(() => [
+	tw`flex flex-col items-center justify-center pt-36 relative bottom-0 absolute w-full bg-sec-background`,
+	css`
+		clip-path: ellipse(50% 50% at 50% 100%);
+		height: 205px;
+	`,
+])
+
+const Socials = () => {
+	return (
+		<div tw='flex w-1/5 justify-between z-10 pt-8'>
+			<Github />
+			<Twitter />
+			<LinkedIn />
+		</div>
+	)
+}
+
+const Disclaimer = () => (
+	<div tw='z-10 text-lg pt-4'>
+		<span>Kieran Osgood &copy; {new Date().getFullYear()}</span>
+		<span>&nbsp;|&nbsp;</span>
+		<span>
+			Built with&nbsp;
+			<a href='https://www.gatsbyjs.org'>Gatsby</a>
+		</span>
+	</div>
+)
