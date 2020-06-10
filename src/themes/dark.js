@@ -2,7 +2,7 @@ import { extend } from './utils'
 import base from './base'
 
 export default extend(base, {
-	backgroundPrimary: '#444444',
-	backgroundSecondary: '#7b7b7b',
+	backgroundPrimary: '#414040',
+	backgroundSecondary: '#514F4F',
 	textPrimary: '#fff',
 })
