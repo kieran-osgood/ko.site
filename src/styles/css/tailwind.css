@@ -30,7 +30,6 @@
 		url('../../fonts/AmaticSC-Bold.ttf') format('ttf');
 }
 
-
 a {
 	transition: opacity 0.2s ease-in-out;
 }
@@ -40,6 +39,21 @@ a {
 }
 :root {
 	font-size: 62.5%;
+}
+
+.dark-mode-toggle.react-toggle .react-toggle-track {
+	/* background-color: var(--background-sec); */
+	background-color: #000;
+}
+
+.dark-mode-toggle.react-toggle--checked .react-toggle-track {
+	/* background-color: var(--background-sec); */
+	background-color: #000;
+}
+
+.dark-mode-toggle.react-toggle--checked .react-toggle-thumb {
+	/* background-color: var(--background-sec); */
+	background-color: #000;
 }
 
 @tailwind base;
