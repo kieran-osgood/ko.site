@@ -1,18 +1,11 @@
 import React from 'react'
-import tw, { css } from 'twin.macro'
+import { css } from 'twin.macro'
 import Image from 'components/Image'
 import Arrow from 'assets/arrow.svg'
 
 const ImageSlider = () => (
-	<div
-		css={[
-			css`
-				font-family: Amatica SC;
-			`,
-		]}
-	>
 		<Image />
-		<div tw='flex'>
+	<>
 			<Arrow
 				css={css`
 					g > path {
@@ -20,9 +13,18 @@ const ImageSlider = () => (
 					}
 				`}
 			/>
-			<p tw='pl-12 pt-6'>don’t be confused, i wasn’t on the inbetweeners!</p>
+			<p
+				tw='text-lg pl-4'
+				css={css`
+					font-family: 'Indie Flower';
+					line-height: 2.4rem;
+
+				`}
+			>
+				a nerd, but not the one from the inbetweeners!
+			</p>
 		</div>
-	</div>
+	</>
 )
 
 export default ImageSlider
