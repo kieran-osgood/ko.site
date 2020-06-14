@@ -1,5 +1,5 @@
 import React from 'react'
-import 'twin.macro'
+import tw, { styled } from 'twin.macro'
 import { Link } from 'gatsby'
 
 import Layout from 'components/Layout'
@@ -10,26 +10,62 @@ const IndexPage = ({ path }) => (
 	<Layout path={path}>
 		<SEO title='Home' />
 
-		<div>
-			<h1>Kieran Osgood</h1>
-			<h1>Software Developer</h1>
+		<div tw='sm:text-sm md:text-sm'>
+			<div tw='flex items-center '>
+				<h1 tw='relative z-30 text-2xl sm:text-3xl md:text-5xl lg:text-6xl md:whitespace-no-wrap'>
+					<HighlightedLine text='Kieran' color={'var(--color-primary)'} />
+					&nbsp;Osgood
+				</h1>
+				<ColorBlock primary />
+			</div>
+			<div tw='flex items-center'>
+				<ColorBlock secondary />
+				<h1 tw='relative z-30 text-2xl sm:text-3xl md:text-5xl lg:text-6xl md:whitespace-no-wrap'>
+					Software&nbsp;
+					<HighlightedLine text='Developer' color={'var(--color-secondary)'} />
+				</h1>
+			</div>
 		</div>
 
-		<div tw='grid grid-rows-1 grid-cols-2 gap-16 pt-16'>
+		<div tw='grid md:grid-rows-1 md:grid-cols-2 md:gap-16 pt-16'>
 			<div tw='row-span-1'>
-				<p tw='text-2xl'>
-					This small website was built simply to play around with design/gatsby
-					and hopefully implement a few cool ideas.
+				<p tw='text-lg sm:text-2xl'>
+					This is a little website built by myself to play around with some
+					design, touch on gatsby, and hopefully implement some cool ideas.
 				</p>
-				<Link tw='block text-2xl pt-8 underline' to='/portfolio'>
-					Check out my profile ->
-				</Link>
+				<p tw='text-lg sm:text-2xl pt-4'>Enjoy!</p>
 			</div>
-			<div tw='row-span-2'>
+			<div tw='h-full flex flex-col justify-center row-start-2 w-4/5 sm:w-4/5 md:w-1/2 lg:w-3/4 md:row-start-1 md:col-start-2'>
 				<ImageSlider />
 			</div>
+			{/* <div tw='md:row-start-2'>
+				<Link tw='text-2xl pt-8 underline' to='/portfolio'>
+					Here's about me
+				</Link>
+			</div> */}
 		</div>
 	</Layout>
 )
 
 export default IndexPage
+
+const HighlightedLine = styled.span.attrs(({ text }) => ({ children: text }))`
+	position: relative;
+	::before {
+		${tw`hidden md:block`}
+		content: '';
+		position: absolute;
+		height: 11px;
+		width: 97%;
+		background-color: ${props => props.color || 'red'};
+		bottom: 11%;
+		left: 1.5%;
+		z-index: -1;
+	}
+`
+
+const ColorBlock = styled.div(({ primary, secondary }) => [
+	tw`h-16 w-16 hidden md:block`,
+	primary && tw`bg-primary ml-16`,
+	secondary && tw`bg-secondary mr-16`,
+])
