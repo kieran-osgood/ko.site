@@ -20,6 +20,7 @@ import Navigation from './Navigation'
 
 import Sun from 'assets/sun.svg'
 import Moon from 'assets/moon.svg'
+import LogoSVG from 'assets/logo.svg'
 
 export const Context = createContext(null)
 
@@ -47,7 +48,8 @@ const Layout = ({ children, path }) => {
 							<Sun />
 							rotate this upwards for a toggle?
 						</div> */}
-					<div tw='w-full flex justify-end'>
+					<div tw='lg:w-3/4 flex justify-between items-center pl-8 pr-16 pt-8'>
+						<Logo />
 						<Toggle
 							defaultChecked={!theme}
 							onClick={() => setTheme(theme === 'base' ? 'dark' : 'base')}
