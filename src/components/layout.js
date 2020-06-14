@@ -43,7 +43,7 @@ const Layout = ({ children, path }) => {
 	return (
 		<Context.Provider value={path}>
 			<Page>
-				<main tw='w-full relative block mx-auto max-w-5xl py-4 px-6'>
+				<Main>
 					{/* <div tw='w-32 mx-auto'>
 							<Sun />
 							rotate this upwards for a toggle?
@@ -58,10 +58,10 @@ const Layout = ({ children, path }) => {
 							className='dark-mode-toggle'
 						/>
 					</div>
-					<div tw='mx-auto md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl break-words pb-6 pt-16'>
+					<div tw='mx-auto pb-6 pt-16 px-8 lg:max-w-screen-md xl:w-3/4 xl:max-w-screen-xl break-words'>
 						{children}
 					</div>
-				</main>
+				</Main>
 				<Navigation path={path} siteTitle={data.site.siteMetadata.title} />
 				<Footer />
 			</Page>
@@ -74,17 +74,29 @@ export default Layout
 const Page = styled.div(() => [
 	tw`bg-primary-background min-h-screen text-primary-text`,
 	css`
-		display: grid;
-		grid-template-rows: 13fr 1fr;
-		${'' /* Setting some base styled for the general page layout */}
-		h1 {
-			font-size: 6.4rem;
-		}
-		p {
-			font-size: 1.6rem;
-		}
 		a {
 			${tw`hover:opacity-75`}
 		}
 	`,
 ])
+
+const Main = styled.main(() => [
+	tw`w-full h-full relative block mx-auto`,
+	css`
+		max-width: 100vw;
+		min-height: calc(100vh - 184px);
+		@media (min-width: 1024px) {
+			height: calc(100vh - 119px);
+		}
+	`,
+])
+
+const Logo = styled(LogoSVG)`
+	fill: none;
+	rect {
+		stroke: var(--color-text-primary);
+	}
+	path {
+		fill: var(--color-text-primary);
+	}
+`
