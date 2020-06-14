@@ -58,7 +58,7 @@ const ProjectCard = ({ project: { title, url, image } }) => {
 			<h2 tw='mx-auto md:leading-10' style={{ color: 'black' }}>
 				{title}
 			</h2>
-			<div tw='bg-grey' style={{ height: '12rem', padding: '1rem' }}>
+			<div tw='bg-gray-200' style={{ height: '12rem', padding: '1rem' }}>
 				<div>
 					<img
 						tw='p-4 w-full h-full'

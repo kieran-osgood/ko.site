@@ -9,23 +9,17 @@ import PoopIcon from 'images/navigation/poop.svg'
 const Uses = ({ path }) => (
 	<Layout path={path}>
 		<SEO title='Uses' />
-		<h1>/Uses</h1>
-		<div tw='flex flex-col flex-wrap md:flex-row'>
-			{usesData.map(block => (
-				<UsesBlock key={block.title} data={block} />
-			))}
-		</div>
-		<div tw='flex flex-col justify-center text-center'>
-			<img src={PoopIcon} alt='poop icon' />
-			<h4>Inspired by Wes Bos</h4>
-			<h4>
-				<a href='uses.tech/'>uses.tech/</a>
-			</h4>
-			<h4>
-				<a href='github.com/wesbos/awesome-uses/'>
-					github.com/wesbos/awesome-uses/
-				</a>
-			</h4>
+		<div tw='grid grid-cols-1 grid-rows-6'>
+			<div tw='row-start-1 row-end-5'>
+				<h1>/Uses</h1>
+				<div tw='grid xl:grid-cols-2 row-gap-8 col-gap-8'>
+					{usesData.map(block => (
+						<UsesBlock key={block.title} data={block} />
+					))}
+				</div>
+			</div>
+
+			<WesBosCallout />
 		</div>
 	</Layout>
 )
@@ -34,7 +28,7 @@ export default Uses
 
 const UsesBlock = ({ data: { title, items } }) => {
 	return (
-		<div tw='flex flex-col mb-4 md:flex-col md:w-1/2 md:px-4'>
+		<div>
 			<h2>{title}</h2>
 			{items.map(text => (
 				<p key={text}>{text}</p>
@@ -42,6 +36,23 @@ const UsesBlock = ({ data: { title, items } }) => {
 		</div>
 	)
 }
+const WesBosCallout = () => (
+	<div tw='row-start-6'>
+
+	<div tw='flex flex-col justify-center text-center text-2xl'>
+		<img src={PoopIcon} alt='poop icon' />
+		<h4>Inspired by Wes Bos</h4>
+		<h4>
+			<a href='uses.tech/'>uses.tech/</a>
+		</h4>
+		<h4>
+			<a href='github.com/wesbos/awesome-uses/'>
+				github.com/wesbos/awesome-uses/
+			</a>
+		</h4>
+	</div>
+	</div>
+)
 
 const usesData = [
 	{
@@ -80,7 +91,7 @@ const usesData = [
 		title: 'Reading',
 		items: [
 			'JustJavascript - Dan Abramov',
-			'You don\'t know JS - Kyle Simpson https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/foreword.md',
+			"You don't know JS - Kyle Simpson https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/foreword.md",
 			'2ality JavaScript and more - https://2ality.com/index.html',
 			'Kent C. Dodds Blog - https://kentcdodds.com/blog',
 		],
