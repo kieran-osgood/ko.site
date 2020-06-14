@@ -16,15 +16,16 @@ const Footer = () => {
 export default Footer
 
 const FooterContainer = styled.footer(() => [
-	tw`flex flex-col items-center justify-center pt-36 relative bottom-0 absolute w-full bg-sec-background`,
+	tw`flex flex-col items-center justify-center relative w-full bg-sec-background`,
 	css`
-		clip-path: ellipse(50% 50% at 50% 100%);
-		height: 205px;
+		${'' /* clip-path: ellipse(50% 50% at 50% 100%); */}
+		clip-path: ellipse(50% 116% at 50% 128%);
+		height: 119px;
 	`,
 ])
 
 const Socials = () => (
-	<div tw='flex w-1/5 justify-between z-10 pt-8'>
+	<div tw='flex w-1/3 md:w-1/4 lg:w-1/6 justify-between z-10 pt-8'>
 		<SocialLink href='https://github.com/KieranO547'>
 			<Github />
 		</SocialLink>
@@ -43,12 +44,12 @@ const SocialLink = styled.a.attrs(({ href }) => ({
 	target: 'blank',
 }))`
 	svg {
-		${tw`fill-current text-primary-text`}
+		${tw`fill-current text-primary-text w-5/6`}
 	}
 `
 
 const Disclaimer = () => (
-	<div tw='z-10 text-lg pt-4'>
+	<div tw='z-10 text-xs md:text-lg pt-4'>
 		<span>Kieran Osgood &copy; {new Date().getFullYear()}</span>
 		<span>&nbsp;|&nbsp;</span>
 		<span>
