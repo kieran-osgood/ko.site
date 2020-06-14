@@ -2,10 +2,13 @@ import React from 'react'
 import { css } from 'twin.macro'
 import Image from 'components/Image'
 import Arrow from 'assets/arrow.svg'
+import Profile from '../images/profile.png'
 
 const ImageSlider = () => (
-		<Image />
 	<>
+		{/* <Image /> */}
+		<img src={Profile} tw='h-full w-full sm:max-w-md' alt='profile' />
+		<div tw='flex items-end'>
 			<Arrow
 				css={css`
 					g > path {
