@@ -18,7 +18,6 @@ export default Footer
 const FooterContainer = styled.footer(() => [
 	tw`flex flex-col items-center justify-center relative w-full bg-sec-background`,
 	css`
-		${'' /* clip-path: ellipse(50% 50% at 50% 100%); */}
 		clip-path: ellipse(50% 116% at 50% 128%);
 		height: 119px;
 	`,

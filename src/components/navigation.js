@@ -27,31 +27,34 @@ const Navigation = () => (
 export default Navigation
 
 const Header = styled.header(() => [
-	tw`mx-auto sticky z-10 transform lg:rotate-90 p-3`,
+	tw`w-full mx-auto sticky z-10  p-3`,
 	css`
-		bottom: 10px;
-		max-width: 700px;
+		bottom: 4px;
+		max-width: 450px;
+
 		@media (min-width: 1024px) {
-			width: 550px;
-			height: 30px;
-			top: 507px;
+			max-height: 450px;
+			height: 50vh;
+			width: 65px;
+			top: 25vh;
+			left: 5vw;
 			position: fixed;
-		}
-		@media (min-width: 1024px) {
-			left: calc((100vw / 4) - 27.5rem);
-		}
-		@media (min-width: 1440px) {
-			left: calc((100vw / 4) - 31rem);
 		}
 	`,
 ])
 
-const NavBar = styled.div(() => [tw`flex justify-between`])
+const NavBar = styled.div(() => [
+	tw`flex justify-between lg:flex-col md:items-center md:h-full`,
+])
 
 const Connector = styled.div(() => [
-	tw`border-4 border-solid mt-8 border-black absolute z-10`,
+	tw`border-4 border-solid mt-8 md:mt-0 border-black absolute z-10`,
 	css`
 		width: 95%;
+		@media (min-width: 1024px) {
+			width: 0;
+			height: 86%;
+		}
 	`,
 ])
 
@@ -59,7 +62,7 @@ const NavLink = ({ url, icon }) => {
 	const path = useContext(Context)
 	const isCurrentPage = route => (route === path ? 'active' : '')
 	return (
-		<div tw='z-20 transform lg:-rotate-90'>
+		<div tw='z-20'>
 			<StyledLink to={url} active={isCurrentPage(url)}>
 				<img src={icon} alt={`${url} navigation icon`} />
 			</StyledLink>
@@ -68,7 +71,7 @@ const NavLink = ({ url, icon }) => {
 }
 
 const StyledLink = styled(Link)(({ active }) => [
-	tw`w-20 h-20 rounded-full flex justify-center border border-black border-4 z-50 bg-white`,
+	tw`w-20 h-20 rounded-full flex justify-center border border-black border-4 z-50 bg-white opacity-100!`,
 	active && tw`bg-turq`,
 	css`
 		&:hover {
