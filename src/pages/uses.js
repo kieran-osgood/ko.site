@@ -3,6 +3,8 @@ import 'twin.macro'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
+import SEO from 'components/SEO'
+import HighlightedLine from 'components/HighlightedLine'
 
 import PoopIcon from 'images/navigation/poop.svg'
 
