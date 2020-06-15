@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 
 import Layout from 'components/Layout'
 import SEO from 'components/SEO'
-import { ProfileCard } from 'components/profilecard'
+import { ProfileCard } from 'components/ProfileCard'
 import HighlightedLine from 'components/HighlightedLine'
 
 import Spotify from 'assets/spotify.svg'
