@@ -5,26 +5,30 @@ import { Link } from 'gatsby'
 import Layout from 'components/Layout'
 import SEO from 'components/SEO'
 import ImageSlider from 'components/ImageSlider'
+import HighlightedLine from "components/HighlightedLine";
+
 
 const IndexPage = ({ path }) => (
 	<Layout path={path}>
 		<SEO title='Home' />
 
 		<div tw='sm:text-sm md:text-sm'>
-			<div tw='flex items-center '>
+			{/* <div tw='flex items-center '>
 				<h1 tw='relative z-30 text-2xl sm:text-3xl md:text-5xl lg:text-6xl md:whitespace-no-wrap'>
 					<HighlightedLine text='Kieran' color={'var(--color-primary)'} />
 					&nbsp;Osgood
 				</h1>
 				<ColorBlock primary />
-			</div>
-			<div tw='flex items-center'>
+			</div> */}
+			<HighlightedLine primary highlightSuffix={`Osgood`} highlightText={`Kieran`} />
+			<HighlightedLine secondary highlightPrefix={`Software`} highlightText={`Developer`} />
+			{/* <div tw='flex items-center'>
 				<ColorBlock secondary />
 				<h1 tw='relative z-30 text-2xl sm:text-3xl md:text-5xl lg:text-6xl md:whitespace-no-wrap'>
 					Software&nbsp;
 					<HighlightedLine text='Developer' color={'var(--color-secondary)'} />
 				</h1>
-			</div>
+			</div> */}
 		</div>
 
 		<div tw='grid md:grid-rows-1 md:grid-cols-2 md:gap-16 pt-16'>
@@ -49,23 +53,4 @@ const IndexPage = ({ path }) => (
 
 export default IndexPage
 
-const HighlightedLine = styled.span.attrs(({ text }) => ({ children: text }))`
-	position: relative;
-	::before {
-		${tw`hidden md:block`}
-		content: '';
-		position: absolute;
-		height: 11px;
-		width: 97%;
-		background-color: ${props => props.color || 'red'};
-		bottom: 11%;
-		left: 1.5%;
-		z-index: -1;
-	}
-`
 
-const ColorBlock = styled.div(({ primary, secondary }) => [
-	tw`h-16 w-16 hidden md:block`,
-	primary && tw`bg-primary ml-16`,
-	secondary && tw`bg-secondary mr-16`,
-])
