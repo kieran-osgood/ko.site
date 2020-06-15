@@ -48,7 +48,7 @@ const SocialLink = styled.a.attrs(({ href }) => ({
 `
 
 const Disclaimer = () => (
-	<div tw='z-10 text-xs md:text-lg pt-4'>
+	<div tw='z-10 text-xs md:text-sm pt-4'>
 		<span>Kieran Osgood &copy; {new Date().getFullYear()}</span>
 		<span>&nbsp;|&nbsp;</span>
 		<span>
