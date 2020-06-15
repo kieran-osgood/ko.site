@@ -48,8 +48,8 @@ const Layout = ({ children, path }) => {
 							<Sun />
 							rotate this upwards for a toggle?
 						</div> */}
-					<div tw='lg:w-3/4 flex justify-between items-center pl-8 pr-16 pt-8'>
-						<Logo />
+					<div tw='h-36 lg:w-3/4 flex justify-between items-center pl-8 pr-16 pt-8'>
+						<Logo tw='w-auto h-full' />
 						<Toggle
 							defaultChecked={!theme}
 							onClick={() => setTheme(theme === 'base' ? 'dark' : 'base')}
@@ -86,7 +86,7 @@ const Main = styled.main(() => [
 		max-width: 100vw;
 		min-height: calc(100vh - 184px);
 		@media (min-width: 1024px) {
-			height: calc(100vh - 119px);
+			min-height: calc(100vh - 119px);
 		}
 	`,
 ])
