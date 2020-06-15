@@ -21,6 +21,7 @@ import Navigation from './navigation'
 import Sun from 'assets/sun.svg'
 import Moon from 'assets/moon.svg'
 import LogoSVG from 'assets/logo.svg'
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export const Context = createContext(null)
 
@@ -34,8 +35,8 @@ const Layout = ({ children, path }) => {
 			}
 		}
 	`)
-	const [theme, setTheme] = useState(DEFAULT_THEME) // refactor into uselocalstorage
-
+	const [theme, setTheme] = useLocalStorage('theme', DEFAULT_THEME) // refactor into uselocalstorage
+	
 	useEffect(() => {
 		applyTheme(theme)
 	}, [theme])
