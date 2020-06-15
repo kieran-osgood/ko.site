@@ -2,7 +2,7 @@ import React from 'react'
 import tw, { css, styled } from 'twin.macro'
 import Github from 'assets/socials/github.svg'
 import Twitter from 'assets/socials/twitter.svg'
-import LinkedIn from 'assets/socials/linkedIn.svg'
+import LinkedIn from 'assets/socials/linkedin.svg'
 
 const Footer = () => {
 	return (
