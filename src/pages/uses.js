@@ -1,8 +1,7 @@
 import React from 'react'
 import 'twin.macro'
 
-import Layout from 'components/layout'
-import SEO from 'components/seo'
+import Layout from 'components/Layout'
 import SEO from 'components/SEO'
 import HighlightedLine from 'components/HighlightedLine'
 
@@ -11,10 +10,11 @@ import PoopIcon from 'images/navigation/poop.svg'
 const Uses = ({ path }) => (
 	<Layout path={path}>
 		<SEO title='Uses' />
-		<div tw='grid grid-cols-1 grid-rows-6'>
-			<div tw='row-start-1 row-end-5'>
-				<h1>/Uses</h1>
-				<div tw='grid xl:grid-cols-2 row-gap-8 col-gap-8'>
+		<div tw=''>
+			<div tw=''>
+				<HighlightedLine highlightText={`/Uses`} />
+
+				<div tw='grid md:grid-cols-2 row-gap-8 col-gap-8'>
 					{usesData.map(block => (
 						<UsesBlock key={block.title} data={block} />
 					))}
@@ -31,7 +31,7 @@ export default Uses
 const UsesBlock = ({ data: { title, items } }) => {
 	return (
 		<div>
-			<h2>{title}</h2>
+			<h2 tw='text-3xl'>{title}</h2>
 			{items.map(text => (
 				<p key={text}>{text}</p>
 			))}
@@ -39,20 +39,19 @@ const UsesBlock = ({ data: { title, items } }) => {
 	)
 }
 const WesBosCallout = () => (
-	<div tw='row-start-6'>
-
-	<div tw='flex flex-col justify-center text-center text-2xl'>
-		<img src={PoopIcon} alt='poop icon' />
-		<h4>Inspired by Wes Bos</h4>
-		<h4>
-			<a href='uses.tech/'>uses.tech/</a>
-		</h4>
-		<h4>
-			<a href='github.com/wesbos/awesome-uses/'>
-				github.com/wesbos/awesome-uses/
-			</a>
-		</h4>
-	</div>
+	<div tw='pt-16'>
+		<div tw='flex flex-col justify-center text-center text-2xl'>
+			<img src={PoopIcon} alt='poop icon' />
+			<h4>Inspired by Wes Bos</h4>
+			<h4>
+				<a href='uses.tech/' tw='underline'>uses.tech/</a>
+			</h4>
+			<h4>
+				<a href='github.com/wesbos/awesome-uses/' tw='underline'>
+					github.com/wesbos/awesome-uses/
+				</a>
+			</h4>
+		</div>
 	</div>
 )
 
