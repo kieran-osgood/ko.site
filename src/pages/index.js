@@ -1,11 +1,11 @@
 import React from 'react'
-import tw, { styled } from 'twin.macro'
-import { Link } from 'gatsby'
+import 'twin.macro'
+// import { Link } from 'gatsby'
 
-import Layout from 'components/Layout'
-import SEO from 'components/SEO'
-import ImageSlider from 'components/ImageSlider'
-import HighlightedLine from "components/HighlightedLine";
+import Layout from 'components/layout'
+import SEO from 'components/seo'
+import ImageSlider from 'components/imageslider'
+import HighlightedLine from "components/highlightedline";
 
 
 const IndexPage = ({ path }) => (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from 'twin.macro'
-import Image from 'components/Image'
+// import Image from 'components/image'
 import Arrow from 'assets/arrow.svg'
 import Profile from '../images/profile.png'
 

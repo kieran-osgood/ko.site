@@ -15,8 +15,8 @@ import '../styles/css/tailwind.css'
 import { DEFAULT_THEME } from 'themes'
 import { applyTheme } from 'themes/utils'
 
-import Footer from './Footer'
-import Navigation from './Navigation'
+import Footer from './footer'
+import Navigation from './navigation'
 
 import Sun from 'assets/sun.svg'
 import Moon from 'assets/moon.svg'

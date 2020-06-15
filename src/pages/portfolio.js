@@ -11,8 +11,8 @@ import 'twin.macro'
 
 import config from '../../tailwind.config'
 import useWindowSize from 'hooks/useWindowSize'
-import Layout from 'components/Layout'
-import SEO from 'components/SEO'
+import Layout from 'components/layout'
+import SEO from 'components/seo'
 
 const Portfolio = ({ path }) => {
 	const { width } = useWindowSize()

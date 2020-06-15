@@ -1,10 +1,10 @@
 import React from 'react'
-import Image from './Image'
+import Image from './image'
 import {css} from 'twin.macro'
 
-import Github from 'assets/socials/Github.svg'
-import LinkedIn from 'assets/socials/LinkedIn.svg'
-import Twitter from 'assets/socials/Twitter.svg'
+import Github from 'assets/socials/github.svg'
+import LinkedIn from 'assets/socials/linkedIn.svg'
+import Twitter from 'assets/socials/twitter.svg'
 
 // Pulls * required SVGs + maps to array of objects: {path: ..., file: ...}
 const reqSvgs = require.context('../images/languages', true, /\.svg$/)

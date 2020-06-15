@@ -5,11 +5,11 @@ import tw, { css, styled } from 'twin.macro'
 import HomeIcon from '../images/navigation/home.svg'
 import AboutIcon from '../images/navigation/about.svg'
 import PortfolioIcon from '../images/navigation/portfolio.svg'
-import ContactIcon from '../images/navigation/contact.svg'
+// import ContactIcon from '../images/navigation/contact.svg'
 import PoopIcon from '../images/navigation/poop.svg'
 import Routes from '../data/routes'
 
-import { Context } from './Layout'
+import { Context } from './layout'
 
 const Navigation = () => (
 	<Header>

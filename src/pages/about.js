@@ -2,10 +2,10 @@ import React from 'react'
 import 'twin.macro'
 import { useQuery } from 'react-query'
 
-import Layout from 'components/Layout'
-import SEO from 'components/SEO'
-import { ProfileCard } from 'components/ProfileCard'
-import HighlightedLine from 'components/HighlightedLine'
+import Layout from 'components/layout'
+import SEO from 'components/seo'
+// import { ProfileCard } from 'components/profilecard'
+import HighlightedLine from 'components/highlightedline'
 
 import Spotify from 'assets/spotify.svg'
 
