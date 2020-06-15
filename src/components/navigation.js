@@ -17,7 +17,7 @@ const Navigation = () => (
 			<NavLink url={Routes.HOME} icon={HomeIcon} />
 			<NavLink url={Routes.ABOUT} icon={AboutIcon} />
 			<NavLink url={Routes.PORTFOLIO} icon={PortfolioIcon} />
-			<NavLink url={Routes.CONTACT} icon={ContactIcon} />
+			{/* <NavLink url={Routes.CONTACT} icon={ContactIcon} /> */}
 			<NavLink url={Routes.USES} icon={PoopIcon} />
 			<Connector />
 		</NavBar>
@@ -27,7 +27,7 @@ const Navigation = () => (
 export default Navigation
 
 const Header = styled.header(() => [
-	tw`w-full mx-auto sticky z-10  p-3`,
+	tw`w-full mx-auto sticky z-10`,
 	css`
 		bottom: 4px;
 		max-width: 450px;
@@ -50,10 +50,10 @@ const NavBar = styled.div(() => [
 const Connector = styled.div(() => [
 	tw`border-4 border-solid mt-8 md:mt-0 border-black absolute z-10`,
 	css`
-		width: 95%;
+		width: 100%;
 		@media (min-width: 1024px) {
-			width: 0;
-			height: 86%;
+			width: 0%;
+			height: 100%;
 		}
 	`,
 ])
