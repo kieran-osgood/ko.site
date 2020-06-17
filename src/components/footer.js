@@ -7,7 +7,9 @@ import LinkedIn from 'assets/socials/linkedin.svg'
 const Footer = () => {
 	return (
 		<FooterContainer>
-			<Socials />
+			<div tw='flex w-1/3 md:w-1/4 lg:w-1/6 justify-between z-10 pt-8'>
+				<Socials />
+			</div>
 			<Disclaimer />
 		</FooterContainer>
 	)
@@ -23,8 +25,8 @@ const FooterContainer = styled.footer(() => [
 	`,
 ])
 
-const Socials = () => (
-	<div tw='flex w-1/3 md:w-1/4 lg:w-1/6 justify-between z-10 pt-8'>
+export const Socials = () => (
+	<>
 		<SocialLink href='https://github.com/KieranO547'>
 			<Github />
 		</SocialLink>
@@ -34,7 +36,7 @@ const Socials = () => (
 		<SocialLink href='https://twitter.com/kieranbosgood'>
 			<Twitter />
 		</SocialLink>
-	</div>
+	</>
 )
 
 const SocialLink = styled.a.attrs(({ href }) => ({
@@ -53,7 +55,9 @@ const Disclaimer = () => (
 		<span>&nbsp;|&nbsp;</span>
 		<span>
 			Built with&nbsp;
-			<a href='https://www.gatsbyjs.org' tw='underline'>Gatsby</a>
+			<a href='https://www.gatsbyjs.org' tw='underline'>
+				Gatsby
+			</a>
 		</span>
 	</div>
 )
