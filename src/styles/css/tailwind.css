@@ -34,7 +34,8 @@ a {
 .dark-mode-toggle.react-toggle .react-toggle-thumb,
 .dark-mode-toggle.react-toggle--checked .react-toggle-thumb {
 	/* background-color: #000; */
-	background-color: var(--background-sec);
+	box-shadow:0 10px 25px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+	background-color: var(--background-secondary);
 }
 
 .react-toggle .react-toggle-thumb {
