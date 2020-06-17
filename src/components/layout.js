@@ -50,7 +50,7 @@ const Layout = ({ children, path }) => {
 							rotate this upwards for a toggle?
 						</div> */}
 					<div tw='flex justify-between items-center mx-auto h-36  pt-8 pl-8 pr-16 lg:max-w-screen-md xl:w-3/4 xl:max-w-screen-xl break-words'>
-						<Link href='/' tw='h-full'>
+						<Link to='/' tw='h-full'>
 							<Logo tw='w-auto h-full'/>
 						</Link>
 						<Toggle
