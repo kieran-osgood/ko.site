@@ -44,7 +44,9 @@ const WesBosCallout = () => (
 			<img src={PoopIcon} alt='poop icon' />
 			<h4>Inspired by Wes Bos</h4>
 			<h4>
-				<a href='uses.tech/' tw='underline'>uses.tech/</a>
+				<a href='uses.tech/' tw='underline'>
+					uses.tech/
+				</a>
 			</h4>
 			<h4>
 				<a href='github.com/wesbos/awesome-uses/' tw='underline'>

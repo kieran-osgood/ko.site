@@ -19,7 +19,7 @@ const FooterContainer = styled.footer(() => [
 	tw`flex flex-col items-center justify-center relative w-full bg-sec-background`,
 	css`
 		clip-path: ellipse(50% 116% at 50% 128%);
-		height: 119px;
+		height: 133px;
 	`,
 ])
 
@@ -53,7 +53,7 @@ const Disclaimer = () => (
 		<span>&nbsp;|&nbsp;</span>
 		<span>
 			Built with&nbsp;
-			<a href='https://www.gatsbyjs.org'>Gatsby</a>
+			<a href='https://www.gatsbyjs.org' tw='underline'>Gatsby</a>
 		</span>
 	</div>
 )
