@@ -26,14 +26,15 @@ a {
 :root {
 	font-size: 62.5%;
 }
-
+html {
+	overflow-x: hidden;
+}
 .dark-mode-toggle.react-toggle .react-toggle-track,
 .dark-mode-toggle.react-toggle--checked .react-toggle-track,
 .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track,
 .react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track,
 .dark-mode-toggle.react-toggle .react-toggle-thumb,
 .dark-mode-toggle.react-toggle--checked .react-toggle-thumb {
-	/* background-color: #000; */
 	box-shadow:0 10px 25px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
 	background-color: var(--background-secondary);
 }
