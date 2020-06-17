@@ -31,7 +31,7 @@ const IndexPage = ({ path }) => (
 			</div> */}
 		</div>
 
-		<div tw='grid md:grid-rows-1 md:grid-cols-2 md:gap-16 pt-16'>
+		<div tw='grid md:grid-rows-1 md:grid-cols-2 gap-8 md:gap-16 pt-16'>
 			<div tw='row-span-1'>
 				<p tw='text-lg sm:text-2xl'>
 					This is a little website built by myself to play around with some
@@ -39,7 +39,8 @@ const IndexPage = ({ path }) => (
 				</p>
 				<p tw='text-lg sm:text-2xl pt-4'>Enjoy!</p>
 			</div>
-			<div tw='h-full flex flex-col justify-center row-start-2 w-4/5 sm:w-4/5 md:w-1/2 lg:w-3/4 md:row-start-1 md:col-start-2'>
+
+			<div tw='w-full sm:w-4/5 md:w-1/2 lg:w-3/4 h-full flex flex-col row-start-2 md:row-start-1 md:col-start-2'>
 				<ImageSlider />
 			</div>
 			{/* <div tw='md:row-start-2'>
