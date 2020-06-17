@@ -7,7 +7,7 @@ import Profile from '../images/profile.png'
 const ImageSlider = () => (
 	<>
 		{/* <Image /> */}
-		<img src={Profile} tw='h-auto w-full sm:max-w-md' alt='profile' />
+		<img src={Profile} tw='h-auto w-full sm:max-w-md shadow-lg rounded-full' alt='profile' />
 		<div tw='flex items-end'>
 			<Arrow
 				css={css`
