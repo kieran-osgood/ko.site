@@ -5,7 +5,7 @@ import tw, { css, styled } from 'twin.macro'
 import HomeIcon from '../images/navigation/home.svg'
 import AboutIcon from '../images/navigation/about.svg'
 import PortfolioIcon from '../images/navigation/portfolio.svg'
-// import ContactIcon from '../images/navigation/contact.svg'
+import ContactIcon from '../images/navigation/contact.svg'
 import PoopIcon from '../images/navigation/poop.svg'
 import Routes from '../data/routes'
 
@@ -17,7 +17,7 @@ const Navigation = () => (
 			<NavLink url={Routes.HOME} icon={HomeIcon} />
 			<NavLink url={Routes.ABOUT} icon={AboutIcon} />
 			<NavLink url={Routes.PORTFOLIO} icon={PortfolioIcon} />
-			{/* <NavLink url={Routes.CONTACT} icon={ContactIcon} /> */}
+			<NavLink url={Routes.CONTACT} icon={ContactIcon} />
 			<NavLink url={Routes.USES} icon={PoopIcon} />
 			<Connector />
 		</NavBar>
