@@ -50,10 +50,13 @@ const NavBar = styled.div(() => [
 const Connector = styled.div(() => [
 	tw`border-4 border-solid mt-8 md:mt-0 border-black absolute z-10`,
 	css`
-		width: 100%;
+		width: 98%;
+		left: 1%;
 		@media (min-width: 1024px) {
 			width: 0%;
-			height: 100%;
+			top: 1%;
+			left: unset;
+			height: 98%;
 		}
 	`,
 ])
