@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
 	CarouselProvider,
 	Slider,
 	Slide,
-	// ButtonBack,
-	// ButtonNext,
+	ButtonBack,
+	ButtonNext,
 } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
-import 'twin.macro'
+import {css} from 'twin.macro'
 
 import config from '../../tailwind.config'
 import useWindowSize from 'hooks/useWindowSize'
@@ -16,18 +16,20 @@ import SEO from 'components/seo'
 
 const Portfolio = ({ path }) => {
 	const { width } = useWindowSize()
-	const isUnder768 = () => width < Number(config.theme.screens.md.replace('px', '')) 
+	const isMobile = () =>
+		width < Number(config.theme.screens.sm.replace('px', ''))
 	return (
 		<Layout path={path}>
 			<SEO title='Page two' />
-			<div tw='h-64 max-w-full px-2 pt-2 pb-2 md:flex md:flex-row md:flex-wrap '>
-				{isUnder768() ? (
+			<div tw='h-64 max-w-full px-2 pt-2 pb-2 md:flex md:flex-row md:flex-wrap relative'>
+				{isMobile() ? (
 					<CarouselProvider
 						naturalSlideWidth={100}
 						naturalSlideHeight={125}
 						totalSlides={3}
 						infinite
 					>
+						<ButtonBack tw='bg-secondary-background rounded-full py-3 px-6 text-lg absolute z-50 text-primary-text' css={css`top: 50%; left: -2.5%;`} > &lt; </ButtonBack>
 						<Slider>
 							{portfolioData.map((project, idx) => (
 								<Slide key={idx} index={idx}>
@@ -35,15 +37,14 @@ const Portfolio = ({ path }) => {
 								</Slide>
 							))}
 						</Slider>
-						{/* <ButtonBack> &lt; </ButtonBack>
-						<ButtonNext> &gt; </ButtonNext> */}
+						<ButtonNext tw='bg-secondary-background rounded-full py-3 px-6 text-lg absolute z-50 text-primary-text' css={css`top: 40%; right: -2.5%;`}> &gt; </ButtonNext>
 					</CarouselProvider>
 				) : (
-					portfolioData.map((project, idx) => (
-						<Fragment key={idx}>
+					<div tw='w-full grid grid-cols-2 gap-4'>
+						{portfolioData.map(project => (
 							<ProjectCard project={project} />
-						</Fragment>
-					))
+						))}
+					</div>
 				)}
 			</div>
 		</Layout>
@@ -54,21 +55,17 @@ export default Portfolio
 
 const ProjectCard = ({ project: { title, url, image } }) => {
 	return (
-		<div tw='md:w-1/2 py-4 px-4 mx-auto bg-white w-full rounded-md md:m-1 md:w-5/12 '>
-			<h2 tw='mx-auto md:leading-10' style={{ color: 'black' }}>
+		<div tw='flex flex-col items-center py-8 px-8 bg-secondary-background w-full rounded-md shadow-lg text-primary-text'>
+			<h2 tw='md:leading-10 uppercase'>
 				{title}
 			</h2>
-			<div tw='bg-gray-200' style={{ height: '12rem', padding: '1rem' }}>
+			<div tw='bg-tertiary-background h-full h-48 w-11/12 rounded-lg'>
 				<div>
-					<img
-						tw='p-4 w-full h-full'
-						src={image}
-						alt={`${title} icon`}
-					/>
+					<img tw='p-4 w-full h-full' src={image} alt={`${title} icon`} />
 				</div>
 			</div>
-			<a href={url}>
-				<p tw='p-4 truncate'>{url}</p>
+			<a href={url} tw='truncate w-64 pt-6 underline'>
+				{url}
 			</a>
 		</div>
 	)
