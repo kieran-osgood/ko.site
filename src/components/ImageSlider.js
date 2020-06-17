@@ -7,7 +7,7 @@ import Profile from '../images/profile.png'
 const ImageSlider = () => (
 	<>
 		{/* <Image /> */}
-		<img src={Profile} tw='h-full w-full sm:max-w-md' alt='profile' />
+		<img src={Profile} tw='h-auto w-full sm:max-w-md' alt='profile' />
 		<div tw='flex items-end'>
 			<Arrow
 				css={css`
@@ -21,7 +21,6 @@ const ImageSlider = () => (
 				css={css`
 					font-family: 'Indie Flower';
 					line-height: 2.4rem;
-
 				`}
 			>
 				a nerd, but not the one from the inbetweeners!
