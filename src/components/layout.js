@@ -6,7 +6,7 @@
  */
 
 import React, { createContext, useState, useEffect } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import tw, { css, styled } from 'twin.macro'
 import Toggle from 'react-toggle'
 import 'react-toggle/style.css' // for ES6 modules
@@ -21,7 +21,7 @@ import Navigation from './navigation'
 import Sun from 'assets/sun.svg'
 import Moon from 'assets/moon.svg'
 import LogoSVG from 'assets/logo.svg'
-import useLocalStorage from '../hooks/useLocalStorage';
+import useLocalStorage from '../hooks/useLocalStorage'
 
 export const Context = createContext(null)
 
@@ -36,7 +36,7 @@ const Layout = ({ children, path }) => {
 		}
 	`)
 	const [theme, setTheme] = useLocalStorage('theme', DEFAULT_THEME) // refactor into uselocalstorage
-	
+
 	useEffect(() => {
 		applyTheme(theme)
 	}, [theme])
@@ -49,8 +49,10 @@ const Layout = ({ children, path }) => {
 							<Sun />
 							rotate this upwards for a toggle?
 						</div> */}
-					<div tw='h-36 lg:w-3/4 flex justify-between items-center pl-8 pr-16 pt-8'>
-						<Logo tw='w-auto h-full' />
+					<div tw='flex justify-between items-center mx-auto h-36  pt-8 pl-8 pr-16 lg:max-w-screen-md xl:w-3/4 xl:max-w-screen-xl break-words'>
+						<Link href='/' tw='h-full'>
+							<Logo tw='w-auto h-full'/>
+						</Link>
 						<Toggle
 							defaultChecked={!theme}
 							onClick={() => setTheme(theme === 'base' ? 'dark' : 'base')}
