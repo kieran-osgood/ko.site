@@ -6,8 +6,11 @@ export const mapTheme = variables => ({
 	'--color-positive': variables.positive || '',
 	'--color-negative': variables.negative || '',
 	'--color-text-primary': variables.textPrimary || '',
+	'--color-text-secondary': variables.textSecondary || '',
+
 	'--background-primary': variables.backgroundPrimary || '',
-	'--background-sec': variables.backgroundSecondary || '',
+	'--background-secondary': variables.backgroundSecondary || '',
+	'--background-tertiary': variables.backgroundTertiary || '',
 })
 
 export const applyTheme = theme => {

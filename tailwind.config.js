@@ -6,7 +6,7 @@ module.exports = {
 	separator: ':',
 	theme: {
 		screens: {
-			sm: '375px',
+			sm: '500px',
 			md: '768px',
 			lg: '1024px',
 			xl: '1440px',
@@ -14,15 +14,21 @@ module.exports = {
 		extend: {
 			colors: {
 				peach: '#ee6352',
+
 				turq: '#4ffac7',
 
 				primary: 'var(--color-primary)',
 				secondary: 'var(--color-secondary)',
 				negative: 'var(--color-negative)',
 				positive: 'var(--color-positive)',
+				
 				'primary-background': 'var(--background-primary)',
-				'sec-background': 'var(--background-sec)',
+				'secondary-background': 'var(--background-secondary)',
+				'tertiary-background': 'var(--background-tertiary)',
+				
 				'primary-text': 'var(--color-text-primary)',
+				'secondary-text': 'var(--color-text-secondary)',
+				
 			},
 		},
 		colors: {
