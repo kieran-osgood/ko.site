@@ -1,10 +1,13 @@
-import React from 'react'
-import tw, { styled } from 'twin.macro'
+import React, { useState, useEffect } from 'react'
+import tw, { css, styled } from 'twin.macro'
 import { useForm } from 'react-hook-form'
+import ReactTooltip from 'react-tooltip'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
 import HighlightedLine from 'components/highlightedline'
+
+import WarningIcon from 'assets/warning.svg'
 
 const Contact = ({ path }) => (
 	<Layout path={path}>
@@ -32,10 +35,15 @@ const Form = () => {
 		<form
 			// netlify
 			onSubmit={handleSubmit()}
-			tw='grid sm:grid-cols-2 sm:w-2/3 gap-10 row-gap-8'
+			tw='grid sm:grid-cols-2 md:w-2/3 gap-10 row-gap-8'
 		>
+			<ReactTooltip />
+
 			<Label htmlFor='firstName'>
-				First Name
+				<ErrorLabelWrapper>
+					First Name
+					<Warning error={errors.firstName} />
+				</ErrorLabelWrapper>
 				<Input
 					type='text'
 					name='firstName'
@@ -44,13 +52,13 @@ const Form = () => {
 						required: 'Please enter first name.',
 					})}
 				/>
-				{errors.firstName && (
-					<span tw='text-red-400'>{errors.firstName.message}</span>
-				)}
 			</Label>
 
 			<Label htmlFor='lastName'>
-				Last Name
+				<ErrorLabelWrapper>
+					Last Name
+					<Warning error={errors.lastName} />
+				</ErrorLabelWrapper>
 				<Input
 					type='text'
 					name='lastName'
@@ -62,7 +70,10 @@ const Form = () => {
 			</Label>
 
 			<Label htmlFor='email'>
-				Email Address:
+				<ErrorLabelWrapper>
+					Email Address:
+					<Warning error={errors.email} />
+				</ErrorLabelWrapper>
 				<Input
 					type='text'
 					name='email'
@@ -75,13 +86,15 @@ const Form = () => {
 						},
 					})}
 				/>
-				{errors.email && <span tw='text-red-400'>{errors.email.message}</span>}
 			</Label>
 
 			<Label htmlFor='phoneNumber'>
-				Phone Number:
+				<ErrorLabelWrapper>
+					Phone Number:
+					<Warning error={errors.phoneNumber} />
+				</ErrorLabelWrapper>
 				<Input
-					type='text'
+					type='number'
 					name='phoneNumber'
 					placeholder='XXX XXX XXXX'
 					ref={register({})}
@@ -89,12 +102,15 @@ const Form = () => {
 			</Label>
 
 			<Label htmlFor='message'>
-				Description of what you need:
+				<ErrorLabelWrapper>
+					Message:
+					<Warning error={errors.message} />
+				</ErrorLabelWrapper>
 				<textarea
 					tw='px-4 py-2 rounded-lg shadow-lg text-secondary-text'
 					rows={3}
 					name='message'
-					placeholder='Message...'
+					placeholder='Give a short description of what you need.'
 					ref={register({
 						required: 'Please leave a short message',
 					})}
@@ -111,8 +127,48 @@ const Form = () => {
 }
 
 const Label = styled.label`
-	${tw`flex flex-col justify-between text-base text-primary-text `}
+	${tw`flex flex-col justify-between text-base text-primary-text relative w-full`}
 `
 const Input = styled.input`
-	${tw`px-4 py-2 rounded-lg shadow-lg text-secondary-text`}
+	${tw`px-4 py-2 rounded-lg shadow-lg text-secondary-text w-full`}
+
+	/* Chrome, Safari, Edge, Opera */
+	::-webkit-outer-spin-button,
+	::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	/* Firefox */
+	[type='number'] {
+		-moz-appearance: textfield;
+	}
+`
+const Warning = ({ error }) => {
+	const [warning, setWarning] = useState('123')
+
+	useEffect(() => {
+		if (typeof error !== 'undefined') setWarning(error.message)
+	}, [error])
+
+	return (
+		<>
+			<WarningWrapper data-tip={warning} data-type='error' error={error}>
+				<WarningIcon tw='h-8 w-8' />
+			</WarningWrapper>
+		</>
+	)
+}
+
+const WarningWrapper = styled.span(({ error }) => [
+	css`
+		${'' /* right: -2.2rem; */}
+		${'' /* bottom: 1rem; */}
+		${'' /* bottom: 50%; */}
+	`,
+	error ? tw`inline-block` : tw`hidden`,
+	tw`h-8 w-8 pl-4`,
+])
+
+const ErrorLabelWrapper = styled.span`
+	${tw`flex items-center h-12`}
 `
