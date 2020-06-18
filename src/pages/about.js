@@ -62,7 +62,7 @@ const AboutPage = ({ path }) => {
 		<Layout path={path}>
 			<SEO title='About' />
 
-			<HighlightedLine highlightText={`About`} />
+			<HighlightedLine highlightText={`About`} primary />
 
 			<div tw='w-full text-lg grid gap-6 sm:grid-cols-2'>
 				<p tw='pt-16'>

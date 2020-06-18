@@ -12,7 +12,7 @@ const Uses = ({ path }) => (
 		<SEO title='Uses' />
 		<div tw=''>
 			<div tw='pb-4'>
-				<HighlightedLine highlightText={`/Uses`} />
+				<HighlightedLine highlightText={`/Uses`} secondary />
 
 				<div tw='grid md:grid-cols-2 row-gap-8 col-gap-8 pt-4'>
 					{usesData.map(block => (
