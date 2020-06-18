@@ -7,7 +7,7 @@ import {
 	ButtonNext,
 } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
-import {css} from 'twin.macro'
+import { css } from 'twin.macro'
 
 import config from '../../tailwind.config'
 import useWindowSize from 'hooks/useWindowSize'
@@ -31,7 +31,15 @@ const Portfolio = ({ path }) => {
 						totalSlides={3}
 						infinite
 					>
-						<ButtonBack tw='bg-secondary-background rounded-full py-3 px-6 text-lg absolute z-50 text-primary-text' css={css`top: 50%; left: -2.5%;`} > &lt; </ButtonBack>
+						<ButtonBack
+							tw='bg-secondary-background rounded-full py-3 px-6 text-lg absolute z-50 text-primary-text'
+							css={css`
+								top: 50%;
+								left: -2.5%;
+							`}
+						>
+							&lt;
+						</ButtonBack>
 						<Slider>
 							{portfolioData.map((project, idx) => (
 								<Slide key={idx} index={idx}>
@@ -39,12 +47,20 @@ const Portfolio = ({ path }) => {
 								</Slide>
 							))}
 						</Slider>
-						<ButtonNext tw='bg-secondary-background rounded-full py-3 px-6 text-lg absolute z-50 text-primary-text' css={css`top: 40%; right: -2.5%;`}> &gt; </ButtonNext>
+						<ButtonNext
+							tw='bg-secondary-background rounded-full py-3 px-6 text-lg absolute z-50 text-primary-text'
+							css={css`
+								top: 50%;
+								right: -2.5%;
+							`}
+						>
+							&gt;
+						</ButtonNext>
 					</CarouselProvider>
 				) : (
 					<div tw='w-full grid grid-cols-2 gap-4'>
-						{portfolioData.map(project => (
-							<ProjectCard project={project} />
+						{portfolioData.map((project, idx) => (
+							<ProjectCard key={idx} project={project} />
 						))}
 					</div>
 				)}
@@ -58,9 +74,7 @@ export default Portfolio
 const ProjectCard = ({ project: { title, url, image } }) => {
 	return (
 		<div tw='flex flex-col items-center py-8 px-8 bg-secondary-background w-full rounded-md shadow-lg text-primary-text'>
-			<h2 tw='md:leading-10 uppercase'>
-				{title}
-			</h2>
+			<h2 tw='md:leading-10 uppercase'>{title}</h2>
 			<div tw='bg-tertiary-background h-full h-48 w-11/12 rounded-lg'>
 				<div>
 					<img tw='p-4 w-full h-full' src={image} alt={`${title} icon`} />
