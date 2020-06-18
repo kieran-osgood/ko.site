@@ -2,11 +2,12 @@ import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 import tw, { css, styled } from 'twin.macro'
 
-import HomeIcon from '../images/navigation/home.svg'
-import AboutIcon from '../images/navigation/about.svg'
-import PortfolioIcon from '../images/navigation/portfolio.svg'
-import ContactIcon from '../images/navigation/contact.svg'
-import PoopIcon from '../images/navigation/poop.svg'
+import HomeIcon from 'assets/navigation/home.svg'
+import AboutIcon from 'assets/navigation/about.svg'
+import PortfolioIcon from 'assets/navigation/portfolio.svg'
+import ContactIcon from 'assets/navigation/contact.svg'
+import PoopIcon from 'assets/navigation/poop.svg'
+
 import Routes from '../data/routes'
 
 import { Context } from './layout'
@@ -14,11 +15,21 @@ import { Context } from './layout'
 const Navigation = () => (
 	<Header>
 		<NavBar>
-			<NavLink url={Routes.HOME} icon={HomeIcon} />
-			<NavLink url={Routes.ABOUT} icon={AboutIcon} />
-			<NavLink url={Routes.PORTFOLIO} icon={PortfolioIcon} />
-			<NavLink url={Routes.CONTACT} icon={ContactIcon} />
-			<NavLink url={Routes.USES} icon={PoopIcon} />
+			<NavLink url={Routes.HOME}>
+				<HomeIcon />
+			</NavLink>
+			<NavLink url={Routes.ABOUT}>
+				<AboutIcon />
+			</NavLink>
+			<NavLink url={Routes.PORTFOLIO}>
+				<PortfolioIcon />
+			</NavLink>
+			<NavLink url={Routes.CONTACT}>
+				<ContactIcon />
+			</NavLink>
+			<NavLink url={Routes.USES}>
+				<PoopIcon />
+			</NavLink>
 			<Connector />
 		</NavBar>
 	</Header>
@@ -61,20 +72,20 @@ const Connector = styled.div(() => [
 	`,
 ])
 
-const NavLink = ({ url, icon }) => {
+const NavLink = ({ url, children }) => {
 	const path = useContext(Context)
 	const isCurrentPage = route => (route === path ? 'active' : '')
 	return (
 		<div tw='z-20'>
 			<StyledLink to={url} active={isCurrentPage(url)}>
-				<img src={icon} alt={`${url} navigation icon`} />
+				{children}
 			</StyledLink>
 		</div>
 	)
 }
 
 const StyledLink = styled(Link)(({ active }) => [
-	tw`w-20 h-20 rounded-full flex justify-center border border-black border-4 z-50 bg-white opacity-100!`,
+	tw`w-20 h-20 rounded-full flex justify-center items-center border border-black border-4 z-50 bg-white opacity-100!`,
 	active && tw`bg-turq`,
 	css`
 		&:hover {
