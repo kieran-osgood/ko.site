@@ -23,7 +23,7 @@ const Portfolio = ({ path }) => {
 		<Layout path={path}>
 			<SEO title='Page two' />
 			<HighlightedLine highlightText={`Portfolio`} secondary />
-			<div tw='h-64 max-w-full px-2 pt-2 pb-2 md:flex md:flex-row md:flex-wrap relative'>
+			<div tw=' max-w-full px-2 pt-2 pb-2 md:flex md:flex-row md:flex-wrap relative'>
 				{isMobile() ? (
 					<CarouselProvider
 						naturalSlideWidth={100}
