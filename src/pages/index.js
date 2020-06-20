@@ -1,12 +1,11 @@
 import React from 'react'
-import 'twin.macro'
+import { css } from 'twin.macro'
 // import { Link } from 'gatsby'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
 import ImageSlider from 'components/imageslider'
-import HighlightedLine from "components/highlightedline";
-
+import HighlightedLine from 'components/highlightedline'
 
 const IndexPage = ({ path }) => (
 	<Layout path={path}>
@@ -20,8 +19,16 @@ const IndexPage = ({ path }) => (
 				</h1>
 				<ColorBlock primary />
 			</div> */}
-			<HighlightedLine primary highlightSuffix={`Osgood`} highlightText={`Kieran`} />
-			<HighlightedLine secondary highlightPrefix={`Software`} highlightText={`Developer`} />
+			<HighlightedLine
+				primary
+				highlightSuffix={`Osgood`}
+				highlightText={`Kieran`}
+			/>
+			<HighlightedLine
+				secondary
+				highlightPrefix={`Software`}
+				highlightText={`Developer`}
+			/>
 			{/* <div tw='flex items-center'>
 				<ColorBlock secondary />
 				<h1 tw='relative z-30 text-2xl sm:text-3xl md:text-5xl lg:text-6xl md:whitespace-no-wrap'>
@@ -31,7 +38,12 @@ const IndexPage = ({ path }) => (
 			</div> */}
 		</div>
 
-		<div tw='grid md:grid-rows-1 md:grid-cols-2 gap-8 md:gap-16 pt-16'>
+		<div
+			tw='grid md:grid-rows-1 md:grid-cols-2 gap-8 md:gap-16 pt-16'
+			css={css`
+				place-items: center;
+			`}
+		>
 			<div tw='row-span-1'>
 				<p tw='text-lg sm:text-2xl'>
 					This is a little website built by myself to play around with some
@@ -53,5 +65,3 @@ const IndexPage = ({ path }) => (
 )
 
 export default IndexPage
-
-
