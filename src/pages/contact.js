@@ -15,7 +15,7 @@ const Contact = ({ path }) => (
 		<div tw='grid gap-8'>
 			<HighlightedLine highlightText={`Contact`} primary />
 
-			<p tw='text-base'>
+			<p tw='text-lg'>
 				I currently have some availability for work alongside my current job, so
 				use the form below if you want to discuss!
 			</p>
@@ -35,7 +35,7 @@ const Form = () => {
 		<form
 			netlify
 			onSubmit={handleSubmit()}
-			tw='grid sm:grid-cols-2 md:w-2/3 gap-10 row-gap-8'
+			tw='sm:grid sm:grid-cols-2 lg:w-full gap-10 row-gap-8'
 		>
 			<ReactTooltip />
 
@@ -101,7 +101,7 @@ const Form = () => {
 				/>
 			</Label>
 
-			<Label htmlFor='message'>
+			<Label htmlFor='message' tw='col-span-2'>
 				<ErrorLabelWrapper>
 					Message:
 					<Warning error={errors.message} />
@@ -110,7 +110,7 @@ const Form = () => {
 					tw='px-4 py-2 rounded-lg shadow-lg text-secondary-text'
 					rows={3}
 					name='message'
-					placeholder='Give a short description of what you need.'
+					placeholder='A short description of what you need'
 					ref={register({
 						required: 'Please leave a short message',
 					})}
@@ -120,7 +120,7 @@ const Form = () => {
 			<Input
 				type='submit'
 				value='Send'
-				tw='py-6 text-base hover:cursor-pointer text-secondary-text'
+				tw='mt-10 sm:mt-0 py-6 text-base hover:cursor-pointer text-secondary-text col-start-1 col-end-3'
 			/>
 		</form>
 	)

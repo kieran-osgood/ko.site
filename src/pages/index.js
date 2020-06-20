@@ -41,15 +41,15 @@ const IndexPage = ({ path }) => (
 		<div
 			tw='grid md:grid-rows-1 md:grid-cols-2 gap-8 md:gap-16 pt-16'
 			css={css`
-				place-items: center;
+				justify-items: center;
 			`}
 		>
 			<div tw='row-span-1'>
-				<p tw='text-lg sm:text-2xl'>
+				<p tw='text-lg'>
 					This is a little website built by myself to play around with some
 					design, touch on gatsby, and hopefully implement some cool ideas.
 				</p>
-				<p tw='text-lg sm:text-2xl pt-4'>Enjoy!</p>
+				<p tw='text-lg pt-4'>Enjoy!</p>
 			</div>
 
 			<div tw='w-full sm:w-4/5 md:w-1/2 lg:w-3/4 h-full flex flex-col row-start-2 md:row-start-1 md:col-start-2'>
