@@ -21,7 +21,10 @@ const FooterContainer = styled.footer(() => [
 	tw`flex flex-col items-center justify-center relative w-screen bg-tertiary-background`,
 	css`
 		clip-path: ellipse(50% 116% at 50% 128%);
-		height: 133px;
+			height: 133px;
+		@media (min-width: 1024px) {
+		height: 119px;
+		}
 	`,
 ])
 
@@ -45,7 +48,7 @@ const SocialLink = styled.a.attrs(({ href }) => ({
 	target: 'blank',
 }))`
 	svg {
-		${tw`fill-current text-primary-text w-5/6`}
+		${tw`fill-current text-primary-text w-5/6 md:w-full`}
 	}
 `
 
