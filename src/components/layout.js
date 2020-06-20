@@ -49,7 +49,7 @@ const Layout = ({ children, path }) => {
 							<Sun />
 							rotate this upwards for a toggle?
 						</div> */}
-					<div tw='flex justify-between items-center mx-auto h-36  pt-8 pl-8 pr-16 lg:max-w-screen-md xl:w-3/4 xl:max-w-screen-xl break-words'>
+					<div tw='flex justify-between items-center mx-auto h-36  pt-8 pl-8 pr-16 lg:max-w-screen-md xl:w-3/4 xl:max-w-screen-lg break-words'>
 						<Link to='/' tw='h-full'>
 							<Logo tw='w-auto h-full'/>
 						</Link>
@@ -61,7 +61,7 @@ const Layout = ({ children, path }) => {
 							className='dark-mode-toggle'
 						/>
 					</div>
-					<div tw='mx-auto pb-6 pt-16 px-8 lg:max-w-screen-md xl:w-3/4 xl:max-w-screen-xl break-words'>
+					<div tw='mx-auto pb-6 pt-16 px-8 lg:max-w-screen-md xl:w-3/4 xl:max-w-screen-lg break-words'>
 						{children}
 					</div>
 				</Main>
