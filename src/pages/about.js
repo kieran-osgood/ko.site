@@ -16,9 +16,9 @@ import * as Api from '../api'
 
 const AboutPage = ({ path }) => {
 	const anime = useQuery('anime', Api.getMyAnimeList)
-	console.log('anime: ', anime)
-	// const spotify = useQuery('spotify', Api.getSpotify)
-	// const stackoverflow = useQuery('items', Api.getStackoverflow)
+
+	const spotify = useQuery('spotify', Api.getSpotify)
+	const stackoverflow = useQuery('items', Api.getStackoverflow)
 
 	return (
 		<Layout path={path}>
@@ -45,7 +45,6 @@ const AboutPage = ({ path }) => {
 					</ul>
 				</p> */}
 
-				{/* <Card status={spotify.status}>
 				<Card status='success' row={true}>
 					<div tw='flex items-center justify-center w-full h-full text-primary-text'>
 						<GitHubCalendar
@@ -59,14 +58,12 @@ const AboutPage = ({ path }) => {
 						/>
 					</div>
 				</Card>
+				<Card status={spotify.status}>
 					<Spotify spotify={spotify} />
-				</Card> */}
-				{/* <Card status={stackoverflow.status}>
+				</Card>
+				<Card status={stackoverflow.status}>
 					<StackOverflow stackoverflow={stackoverflow} />
-				</Card> */}
-				{/* <Card status={github.status}>
-					<Github github={github} />
-				</Card> */}
+				</Card>
 				<Card status={anime.status}>
 					<Anime anime={anime} />
 				</Card>
