@@ -33,7 +33,7 @@ const Form = () => {
 	})
 	return (
 		<form
-			// netlify
+			netlify
 			onSubmit={handleSubmit()}
 			tw='grid sm:grid-cols-2 md:w-2/3 gap-10 row-gap-8'
 		>
