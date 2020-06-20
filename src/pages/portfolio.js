@@ -91,7 +91,7 @@ const portfolioData = [
 	{
 		title: 'gatsby-site',
 		url: 'github.com/KieranO547/gatsby-website',
-		image: '../images/profile.png',
+		image: 'images/profile.png',
 	},
 	{
 		title: 'react-hooks-snippets-and-imports',
