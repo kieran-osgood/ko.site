@@ -5,7 +5,7 @@ import { Socials } from 'components/footer'
 
 // Pulls * required SVGs + maps to array of objects: {path: ..., file: ...}
 const reqSvgs = require.context('../images/languages', true, /\.svg$/)
-const svgs = reqSvgs.keys().map(path => ({ path, file: reqSvgs(path) }))
+const svgs = reqSvgs.keys().map(path => ({ path, file: reqSvgs(path) })).reverse()
 
 export const ProfileCard = () => {
 	return (
