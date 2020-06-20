@@ -57,7 +57,7 @@ const AboutPage = ({ path }) => {
 	// 		],
 	// 	},
 	// }
-	console.log('stackoverflow: ', stackoverflow)
+	// const stackoverflow = useQuery('items', Api.getStackoverflow)
 	return (
 		<Layout path={path}>
 			<SEO title='About' />

@@ -3,7 +3,6 @@ import Toggle from 'react-toggle'
 import 'twin.macro'
 
 const Header = () => {
-	const handleBaconChange = () => console.log('test')
 	return (
 		<div tw='h-16 w-16 bg-grey-100'>
 			<Toggle
