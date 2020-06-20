@@ -32,26 +32,30 @@ const UsesBlock = ({ data: { title, items } }) => {
 	return (
 		<div>
 			<h2 tw='text-3xl lg:text-4xl pb-4'>{title}</h2>
+
 			{title !== 'Reading' &&
 				items.map(text => (
 					<p key={text} tw='text-base lg:text-lg xl:text-xl'>
+						{'> '}
 						{text}
 					</p>
 				))}
+
 			{title === 'Reading' &&
 				items.map(item => (
 					<React.Fragment key={item.title + item.author}>
 						<p tw='text-base lg:text-lg xl:text-xl'>
-							{item.title} - {item.author}
+							{'> '}
+							<a
+								tw='text-base lg:text-lg xl:text-xl underline'
+								href={`https://${item.url}`}
+								target='_blank'
+								rel='noreferrer'
+							>
+								{`${item.title}`}
+							</a>
+							{` - ${item.author}`}
 						</p>
-						<a
-							tw='text-base lg:text-lg xl:text-xl underline'
-							href={`https://${item.url}`}
-							target='_blank'
-							rel='noreferrer'
-						>
-							{item.url}
-						</a>
 					</React.Fragment>
 				))}
 		</div>
@@ -80,7 +84,7 @@ const usesData = [
 	{
 		title: `Hardware`,
 		items: [
-			`15” 2018 MacBook Pro - 6 Core i7 - 16GB RAM 2.6GHz`,
+			`15” 2018 MacBook Pro i7 16GB RAM`,
 			`31.5” BenQ 4k monitor`,
 			`Flexispot 3 motor standing desk`,
 			`Herman Miller Aeron Chair`,
@@ -100,8 +104,8 @@ const usesData = [
 	{
 		title: `Software`,
 		items: [
-			`GitHub for repositories.`,
-			`SourceTree for working with Git.`,
+			`GitHub`,
+			`SourceTree`,
 			`Postman / Postwoman (websockets!)`,
 			`iTerm`,
 			`Slack`,
