@@ -15,21 +15,11 @@ import { Context } from './layout'
 const Navigation = () => (
 	<Header>
 		<NavBar>
-			<NavLink url={Routes.HOME}>
-				<HomeIcon />
-			</NavLink>
-			<NavLink url={Routes.ABOUT}>
-				<AboutIcon />
-			</NavLink>
-			<NavLink url={Routes.PORTFOLIO}>
-				<PortfolioIcon />
-			</NavLink>
-			<NavLink url={Routes.CONTACT}>
-				<ContactIcon />
-			</NavLink>
-			<NavLink url={Routes.USES}>
-				<PoopIcon />
-			</NavLink>
+			{pages.map(({ url, Icon }) => (
+				<NavLink key={url} url={url}>
+					<Icon />
+				</NavLink>
+			))}
 			<Connector />
 		</NavBar>
 	</Header>
@@ -74,7 +64,9 @@ const Connector = styled.div(() => [
 
 const NavLink = ({ url, children }) => {
 	const path = useContext(Context)
-	const isCurrentPage = route => (route === path ? 'active' : '')
+	const isCurrentPage = route => {
+		return String(route).trim() === String(path).trim() ? 'active' : ''
+	}
 	return (
 		<div tw='z-20'>
 			<StyledLink to={url} active={isCurrentPage(url)}>
@@ -95,3 +87,26 @@ const StyledLink = styled(Link)(({ active }) => [
 		}
 	`,
 ])
+
+const pages = [
+	{
+		url: Routes.HOME,
+		Icon: HomeIcon,
+	},
+	{
+		url: Routes.ABOUT,
+		Icon: AboutIcon,
+	},
+	{
+		url: Routes.PORTFOLIO,
+		Icon: PortfolioIcon,
+	},
+	{
+		url: Routes.CONTACT,
+		Icon: ContactIcon,
+	},
+	{
+		url: Routes.USES,
+		Icon: PoopIcon,
+	},
+]
