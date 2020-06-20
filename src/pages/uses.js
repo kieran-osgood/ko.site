@@ -91,31 +91,6 @@ const usesData = [
 		],
 	},
 	{
-		title: `Editor`,
-		items: [
-			`VSCode 99% of the time. Visual Studio 2019 for .Net C# development.`,
-			`Vim Keybindings`,
-			`Fira code - Font Ligatures`,
-			`Dracula`,
-			`iTerm 2 with zsh`,
-			`Link my extensions?`,
-		],
-	},
-	{
-		title: `Software`,
-		items: [
-			`GitHub`,
-			`SourceTree`,
-			`Postman / Postwoman (websockets!)`,
-			`iTerm`,
-			`Slack`,
-			`Figma`,
-			`Notion`,
-			`Transmit`,
-			`TablePlus`,
-		],
-	},
-	{
 		title: 'Reading',
 		items: [
 			{
@@ -138,6 +113,31 @@ const usesData = [
 				title: `Blog`,
 				url: `kentcdodds.com/blog`,
 			},
+		],
+	},
+	{
+		title: `Editor`,
+		items: [
+			`VSCode 99% of the time. Visual Studio 2019 for .Net C# development.`,
+			`Vim Keybindings`,
+			`Fira code - Font Ligatures`,
+			`Dracula`,
+			`iTerm 2 with zsh`,
+			`Link my extensions?`,
+		],
+	},
+	{
+		title: `Software`,
+		items: [
+			`GitHub`,
+			`SourceTree`,
+			`Postman / Postwoman (websockets!)`,
+			`iTerm`,
+			`Slack`,
+			`Figma`,
+			`Notion`,
+			`Transmit`,
+			`TablePlus`,
 		],
 	},
 ]
