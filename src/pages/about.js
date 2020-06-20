@@ -1,6 +1,7 @@
 import React from 'react'
-import { css } from 'twin.macro'
+import tw, { css } from 'twin.macro'
 import { useQuery } from 'react-query'
+import GitHubCalendar from 'react-github-calendar'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
@@ -45,6 +46,19 @@ const AboutPage = ({ path }) => {
 				</p> */}
 
 				{/* <Card status={spotify.status}>
+				<Card status='success' row={true}>
+					<div tw='flex items-center justify-center w-full h-full text-primary-text'>
+						<GitHubCalendar
+							username='kierano547'
+							fullYear={false}
+							fontSize={16}
+							blockSize={14}
+							loadingIcon={<LoadingIcon />}
+							onErrorChildren={<ApiErrorBlock />}
+							hideText={true}
+						/>
+					</div>
+				</Card>
 					<Spotify spotify={spotify} />
 				</Card> */}
 				{/* <Card status={stackoverflow.status}>
@@ -63,15 +77,18 @@ const AboutPage = ({ path }) => {
 
 export default AboutPage
 
-const Card = ({ status, children }) => (
-	<div tw='px-8 py-4 md:px-12 md:py-8 bg-secondary-background rounded-lg shadow-lg flex flex-col justify-center w-full h-64 '>
+const Card = ({ status, children, row = false }) => (
+	<div
+		tw='px-8 py-4 md:px-12 md:py-8 bg-secondary-background rounded-lg shadow-lg flex flex-col justify-center w-full h-64'
+		css={[row && tw`col-span-2`]}
+	>
 		{status === 'success' && <>{children}</>}
 		{status === 'loading' && (
 			<div tw='h-full w-full flex items-center justify-center'>
 				<LoadingIcon />
 			</div>
 		)}
-		{status === 'error' && <>Oops, we've had an error! </>}
+		{status === 'error' && <ApiErrorBlock />}
 	</div>
 )
 
@@ -180,3 +197,5 @@ const Badge = ({ color, count }) => (
 		<span tw='pl-1'>{count}</span>
 	</span>
 )
+
+const ApiErrorBlock = () => <>Oops, we've had an error! </>

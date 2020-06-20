@@ -39,6 +39,7 @@
     "qs": "^6.9.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-github-calendar": "https://github.com/KieranO547/react-github-calendar.git",
     "react-helmet": "^5.2.1",
     "react-hook-form": "^5.7.2",
     "react-query": "^1.5.8",
