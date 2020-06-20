@@ -5,7 +5,7 @@ import Layout from 'components/layout'
 import SEO from 'components/seo'
 import HighlightedLine from 'components/highlightedline'
 
-import PoopIcon from 'images/navigation/poop.svg'
+import PoopIcon from 'assets/navigation/poop.svg'
 
 const Uses = ({ path }) => (
 	<Layout path={path}>
@@ -60,7 +60,7 @@ const UsesBlock = ({ data: { title, items } }) => {
 const WesBosCallout = () => (
 	<div tw='pt-16'>
 		<div tw='flex flex-col justify-center text-center text-lg lg:text-2xl'>
-			<img src={PoopIcon} alt='poop icon' />
+			<PoopIcon tw='w-full' />
 			<h4>Inspired by Wes Bos</h4>
 			<h4>
 				<a href='uses.tech/' tw='underline'>
