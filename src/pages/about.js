@@ -7,59 +7,18 @@ import SEO from 'components/seo'
 import { ProfileCard } from 'components/profilecard'
 import HighlightedLine from 'components/highlightedline'
 import LoadingIcon from 'components/loading'
-import { getSpotify } from 'src/api'
 
 import TwinMacro from 'images/twinmacro.png'
-import AnimeImage from 'images/devil.png'
 import SpotifyIcon from 'assets/spotify.svg'
 
 import * as Api from '../api'
 
 const AboutPage = ({ path }) => {
-	// const anime = useQuery('todos', 'myanimelist.com')
-	const spotify = useQuery('spotify', getSpotify)
-
-	//https://github.com/tannerlinsley/react-query#usequery
-
+	const anime = useQuery('anime', Api.getMyAnimeList)
+	console.log('anime: ', anime)
+	// const spotify = useQuery('spotify', Api.getSpotify)
 	// const stackoverflow = useQuery('items', Api.getStackoverflow)
-	let stackoverflow = {
-		data: {
-			items: [
-				{
-					has_more: false,
-					account_id: 7095009,
-					badge_counts: { bronze: 8, silver: 1, gold: 1 },
-					creation_date: 1444416602,
-					display_name: 'Kieran Osgood',
-					is_employee: false,
-					last_access_date: 1592403948,
-					last_modified_date: 1567374600,
-					link: 'https://stackoverflow.com/users/5428936/kieran-osgood',
-					location: 'Littlehampton, UK',
-					profile_image: 'https://i.stack.imgur.com/FjChe.png?s=128&g=1',
-					reputation: 73,
-					reputation_change_day: 0,
-					reputation_change_month: 2,
-					reputation_change_quarter: 2,
-					reputation_change_week: 0,
-					reputation_change_year: 62,
-					user_id: 5428936,
-					user_type: 'registered',
-					website_url: '',
-					length: 1,
-					quota_max: 300,
-					quota_remaining: 298,
-					error: null,
-					failureCount: 0,
-					isFetching: false,
-					isStale: true,
-					markedForGarbageCollection: false,
-					status: 'success',
-					updatedAt: 1592407772227,
-				},
-			],
-		},
-	}
+
 	return (
 		<Layout path={path}>
 			<SEO title='About' />
@@ -85,27 +44,18 @@ const AboutPage = ({ path }) => {
 					</ul>
 				</p> */}
 
-				<Card status={spotify.status}>
+				{/* <Card status={spotify.status}>
 					<Spotify spotify={spotify} />
-				</Card>
-				<Card
-					status={stackoverflow.data.items[0].status}
-					// status={'loading'}
-				>
-					<StackOverflow
-						stackoverflow={stackoverflow.data.items[0]}
-						sectionTitle={`Stack Overflow`}
-						name={`Reputation`}
-						author={stackoverflow.data.items[0].reputation}
-						url={stackoverflow.data.items[0].link}
-					/>
-				</Card>
-				{/* <Card status='success'>
-					<Github
-						sectionTitle={`Github`}
-						url={}
-					/>
 				</Card> */}
+				{/* <Card status={stackoverflow.status}>
+					<StackOverflow stackoverflow={stackoverflow} />
+				</Card> */}
+				{/* <Card status={github.status}>
+					<Github github={github} />
+				</Card> */}
+				<Card status={anime.status}>
+					<Anime anime={anime} />
+				</Card>
 			</div>
 		</Layout>
 	)
@@ -125,44 +75,55 @@ const Card = ({ status, children }) => (
 	</div>
 )
 
-const Anime = ({ url, author, name, title }) => (
+const Anime = ({
+	anime: {
+		data: { title, rating, url, image_url },
+	},
+}) => (
 	<>
-		<div tw='flex justify-between '>
-			<div tw='text-primary-text pt-8'>
-				<h2 tw='text-xs text-secondary-text'>{title}123</h2>
+		<div tw='flex justify-between relative h-full'>
+			<div tw='flex justify-between flex-col py-4 text-primary-text'>
+				<h2 tw='text-xs text-secondary-text'>Latest Anime</h2>
 
-				<p tw='font-bold text-sm pt-8'>{name}</p>
-				<p tw='text-sm'>-&nbsp;{author}</p>
+				<div>
+					<p tw='font-bold text-sm'>{title}</p>
+					<p tw='text-sm'>Rated&nbsp;-&nbsp;{rating}</p>
+				</div>
+
+				<a
+					href={url}
+					tw='text-xs text-secondary-text underline relative block truncate'
+					target='_blank'
+					rel='noreferrer'
+				>
+					Here's the MAL page!
+				</a>
 			</div>
-			<img src={AnimeImage} tw='mt-8' alt='anime cover' />
-		</div>
-		<div tw='max-w-xl pt-8'>
-			<a
-				href={url}
-				tw='text-xs text-secondary-text underline relative block truncate'
-				target='_blank'
-				rel='noreferrer'
-			>
-				{url}
-			</a>
+			<img src={image_url} tw='w-auto h-full relative' alt='anime cover' />
 		</div>
 	</>
 )
 
-const Spotify = ({ spotify }) => (
+const Spotify = ({
+	spotify: {
+		data: {
+			track: { name, artists, external_urls },
+		},
+	},
+}) => (
 	<>
 		<div tw='flex justify-between '>
 			<div tw='text-primary-text pt-8'>
 				<h2 tw='text-xs text-secondary-text'>I'm listening to...</h2>
 
-				<p tw='font-bold text-sm pt-8'>{spotify.data.track.name}</p>
-				<p tw='text-sm'>-&nbsp;{spotify.data.track.artists[0].name}</p>
+				<p tw='font-bold text-sm pt-8'>{name}</p>
+				<p tw='text-sm'>-&nbsp;{artists[0].name}</p>
 			</div>
 			<SpotifyIcon tw='mt-8' />
 		</div>
 		<div tw='max-w-xl pt-8'>
 			<a
-				href={spotify.data.track.external_urls.spotify}
+				href={external_urls.spotify}
 				tw='text-xs text-secondary-text underline relative block truncate'
 				target='_blank'
 				rel='noreferrer'
@@ -173,25 +134,31 @@ const Spotify = ({ spotify }) => (
 	</>
 )
 
-const StackOverflow = ({ url, author, name, title, stackoverflow }) => (
+const StackOverflow = ({
+	stackoverflow: {
+		data: {
+			items: [{ reputation, badge_counts, link }],
+		},
+	},
+}) => (
 	<>
 		<div tw='flex justify-between '>
 			<div tw='text-primary-text pt-8'>
-				<h2 tw='text-xs text-secondary-text'>{title}</h2>
+				<h2 tw='text-xs text-secondary-text'>Stack Overflow</h2>
 
-				<p tw='font-bold text-sm pt-8'>{name}</p>
-				<p tw='text-sm'>-&nbsp;{author}</p>
+				<p tw='font-bold text-sm pt-8'>Reputation</p>
+				<p tw='text-sm'>-&nbsp;{reputation}</p>
 			</div>
-			<Badges badgeCounts={stackoverflow.badge_counts} />
+			<Badges badgeCounts={badge_counts} />
 		</div>
 		<div tw='max-w-xl pt-8'>
 			<a
-				href={url}
+				href={link}
 				tw='text-xs text-secondary-text underline relative block truncate'
 				target='_blank'
 				rel='noreferrer'
 			>
-				{url}
+				{link}
 			</a>
 		</div>
 	</>
