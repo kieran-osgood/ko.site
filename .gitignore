@@ -57,6 +57,7 @@ typings/
 # gatsby files
 .cache/
 public
+public-lambda
 
 # Mac files
 .DS_Store
@@ -69,4 +70,6 @@ yarn-error.log
 .yarn-integrity
 
 # Local Netlify folder
-.netlify
+.netlify/*
+!.netlify/functions
+!.netlify/functions/*

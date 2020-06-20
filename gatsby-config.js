@@ -1,6 +1,23 @@
 const path = require('path')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 
 module.exports = {
+	developMiddleware: app => {
+		app.use(
+			'/.netlify/functions/',
+			createProxyMiddleware({
+				target: 'http://localhost:8888',
+				pathRewrite: { // Look into why this doesnt work
+					'^/api/': '^/.netlify/functions/',
+					'/api/': '/.netlify/functions/',
+					'^/.netlify/functions/': '^/api/',
+					'/.netlify/functions/': '/api/',
+					'/.netlify/functions/': '/',
+
+				},
+			})
+		)
+	},
 	siteMetadata: {
 		title: `Kieran Osgood Personal Site`,
 		description: `This is a personal website for Kieran Osgood, built by Kieran Osgood, utilising Gatsby.js, GraphQL and TailwindCSS and PurgeCSS to maximise performance and SEO.`,
