@@ -180,10 +180,11 @@ const StackOverflow = ({
 			</div>
 			<Badges badgeCounts={badge_counts} />
 		</div>
-		<div tw='max-w-xl pt-8 pb-4'>
+		<div tw=' pt-8 pb-4'>
 			<a
 				href={link}
-				tw='text-xs text-secondary-text underline relative block truncate'
+				tw='text-xs text-secondary-text underline block truncate'
+				css={css`max-width: 70vw;`}
 				target='_blank'
 				rel='noreferrer'
 			>
@@ -194,20 +195,18 @@ const StackOverflow = ({
 )
 
 const Badges = ({ badgeCounts }) => (
-	<div>
-		<span aria-hidden='true'>
+		<div tw='flex flex-wrap' aria-hidden='true'>
 			<Badge color='#ab825f' count={badgeCounts.bronze} />
 			<Badge color='#b4b8bc' count={badgeCounts.silver} />
 			<Badge color='#ffcc01' count={badgeCounts.gold} />
-		</span>
-	</div>
+		</div>
 )
 
 const Badge = ({ color, count }) => (
-	<span tw='px-1' style={{ color: color }}>
+	<div tw='px-1 ml-auto' style={{ color: color }}>
 		<span>●</span>
 		<span tw='pl-1'>{count}</span>
-	</span>
+	</div>
 )
 
 const ApiErrorBlock = () => <>Oops, we've had an error! </>
