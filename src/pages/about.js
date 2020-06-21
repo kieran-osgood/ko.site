@@ -54,7 +54,8 @@ const AboutPage = ({ path }) => {
 				</p> */}
 
 				<Card status='success' row={true}>
-					<div tw='flex items-center justify-center w-full h-full text-primary-text'>
+					<div tw='flex flex-col items-center justify-center w-full h-full text-primary-text'>
+						<h3>Commit Activity</h3>
 						<GitHubCalendar
 							username='kierano547'
 							fullYear={false}
@@ -85,7 +86,7 @@ export default AboutPage
 const Card = ({ status, children, row = false }) => (
 	<div
 		tw='px-8 py-4 md:px-12 md:py-8 bg-secondary-background rounded-lg shadow-lg flex flex-col justify-center w-full h-64'
-		css={[row && tw`col-span-2`]}
+		css={[row && tw`md:col-span-2`]}
 	>
 		{status === 'success' && <>{children}</>}
 		{status === 'loading' && (
@@ -121,7 +122,11 @@ const Anime = ({
 					Here's the MAL page!
 				</a>
 			</div>
-			<img src={image_url} tw='w-auto h-full relative' alt='anime cover' />
+			<img
+				src={image_url}
+				tw='w-auto h-full relative overflow-hidden pl-2 py-4 md:py-0'
+				alt='anime cover'
+			/>
 		</div>
 	</>
 )
@@ -164,16 +169,18 @@ const StackOverflow = ({
 	},
 }) => (
 	<>
-		<div tw='flex justify-between '>
-			<div tw='text-primary-text pt-8'>
+		<div tw='flex justify-between pt-8'>
+			<div tw='text-primary-text '>
 				<h2 tw='text-xs text-secondary-text'>Stack Overflow</h2>
 
-				<p tw='font-bold text-sm pt-8'>Reputation</p>
-				<p tw='text-sm'>-&nbsp;{reputation}</p>
+				<p tw='font-bold text-sm pt-8'>
+					Reputation
+					<span tw='text-sm font-normal'>&nbsp;-&nbsp;{reputation}</span>
+				</p>
 			</div>
 			<Badges badgeCounts={badge_counts} />
 		</div>
-		<div tw='max-w-xl pt-8'>
+		<div tw='max-w-xl pt-8 pb-4'>
 			<a
 				href={link}
 				tw='text-xs text-secondary-text underline relative block truncate'
