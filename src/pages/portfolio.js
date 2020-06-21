@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-	CarouselProvider,
-	Slider,
-	Slide,
-	ButtonBack,
-	ButtonNext,
-} from 'pure-react-carousel'
+import { CarouselProvider, Slider, Slide, DotGroup } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import { css } from 'twin.macro'
 
@@ -24,22 +18,14 @@ const Portfolio = ({ path }) => {
 			<SEO title='Page two' />
 			<HighlightedLine highlightText={`Portfolio`} secondary />
 			<div tw=' max-w-full px-2 pt-2 pb-2 md:flex md:flex-row md:flex-wrap relative'>
+				{' '}
 				{isMobile() ? (
 					<CarouselProvider
-						naturalSlideWidth={100}
-						naturalSlideHeight={125}
+						naturalSlideWidth={362}
+						naturalSlideHeight={205}
 						totalSlides={3}
 						infinite
 					>
-						<ButtonBack
-							tw='bg-secondary-background rounded-full py-3 px-6 text-lg absolute z-50 text-primary-text'
-							css={css`
-								top: 50%;
-								left: -2.5%;
-							`}
-						>
-							&lt;
-						</ButtonBack>
 						<Slider>
 							{portfolioData.map((project, idx) => (
 								<Slide key={idx} index={idx}>
@@ -47,15 +33,10 @@ const Portfolio = ({ path }) => {
 								</Slide>
 							))}
 						</Slider>
-						<ButtonNext
-							tw='bg-secondary-background rounded-full py-3 px-6 text-lg absolute z-50 text-primary-text'
-							css={css`
-								top: 50%;
-								right: -2.5%;
-							`}
-						>
-							&gt;
-						</ButtonNext>
+
+						<div tw='w-full'>
+							<DotGroup dotNumbers={false} />
+						</div>
 					</CarouselProvider>
 				) : (
 					<div tw='w-full grid grid-cols-2 gap-4'>
