@@ -1,7 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:ital,wght@0,100;1,100&display=swap');
+@font-face {
+	font-family: 'CPMono_V07';
+	src: url('/CPMono_v07_Plain.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 
 * {
 	font-family: CPMono_V07;
