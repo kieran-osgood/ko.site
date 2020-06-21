@@ -89,7 +89,7 @@ const ProjectCard = ({
 					<a
 						key={edge.node.id}
 						href={edge.node.url}
-						tw='inline-block text-2xs font-bold px-4 whitespace-no-wrap'
+						tw='text-secondary-text inline-block text-2xs font-bold px-4 whitespace-no-wrap'
 						css={css`
 							border: 1px solid transparent;
 							border-radius: 2em;
