@@ -27,19 +27,18 @@ const AboutPage = ({ path }) => {
 			<HighlightedLine highlightText={`About`} primary />
 
 			<div tw='w-full text-lg grid gap-6 sm:grid-cols-2'>
-			<div>
-
-				<p tw='pt-16'>
-					I currently work for Analog Republic Ltd. as a Web Developer.
-					My favourite language/framework at the moment is React and Node,
-					specifically in Typescript.
-				</p>
-				<p tw='pt-4'>
-					Aside from coding I like reading manga, listening to a lot of music (my Spotify
-					round-up averages 150,000 minutes a year!) and drinking
-					good coffee!
-				</p>
-			</div>
+				<div>
+					<p tw='pt-16'>
+						I currently work for Analog Republic Ltd. as a Web Developer. My
+						favourite language/framework at the moment is React and Node,
+						specifically in Typescript.
+					</p>
+					<p tw='pt-4'>
+						Aside from coding I like reading manga, listening to a lot of music
+						(my Spotify round-up averages 150,000 minutes a year!) and drinking
+						good coffee!
+					</p>
+				</div>
 				<ProfileCard />
 				{/* <p>
 					My current personal favourite combination of tech to use is:

@@ -47,7 +47,7 @@ const IndexPage = ({ path }) => (
 			<div tw='row-span-1'>
 				<p tw='text-lg'>
 					This is a little website built by myself to play around with some
-					design, touch on gatsby, and hopefully implement some cool ideas.
+					design, touch on gatsby + GraphQL, and hopefully implement some cool ideas.
 				</p>
 				<p tw='text-lg pt-4'>Enjoy!</p>
 			</div>
