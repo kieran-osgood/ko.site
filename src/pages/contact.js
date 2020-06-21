@@ -33,7 +33,9 @@ const Form = () => {
 	const { handleSubmit, register, errors } = useForm({
 		reValidateMode: 'onChange',
 	})
-	const onSubmit = () => setStatus('success')
+
+	  
+	const onSubmit = () => {setStatus('success')}
 	return (
 		<>
 			{status === 'form' && (
@@ -41,12 +43,14 @@ const Form = () => {
 					name='contact'
 					method='post'
 					data-netlify='true'
+					netlify='true'
 					data-netlify-honeypot='bot-field'
 					onSubmit={handleSubmit(onSubmit)}
 					tw='sm:grid sm:grid-cols-2 lg:w-full gap-10 row-gap-8'
 				>
 					<ReactTooltip />
 					<input type="hidden" name="form-name" value="contact" />
+					<input type="hidden" name="bot-field" />
 
 					<Label htmlFor='firstName'>
 						<ErrorLabelWrapper>
@@ -84,7 +88,7 @@ const Form = () => {
 							<Warning error={errors.email} />
 						</ErrorLabelWrapper>
 						<Input
-							type='text'
+							type='email'
 							name='email'
 							placeholder='johnsmith@gmail.com'
 							ref={register({
