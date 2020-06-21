@@ -85,8 +85,8 @@ export default AboutPage
 
 const Card = ({ status, children, row = false }) => (
 	<div
-		tw='px-8 py-4 md:px-12 md:py-8 bg-secondary-background rounded-lg shadow-lg flex flex-col justify-center w-full h-64'
-		css={[row && tw`md:col-span-2`]}
+		tw='px-8 py-4 md:px-12 md:py-8 bg-secondary-background rounded-lg shadow-lg flex flex-col justify-center w-full'
+		css={[row && tw`sm:col-span-2`]}
 	>
 		{status === 'success' && <>{children}</>}
 		{status === 'loading' && (
@@ -104,7 +104,7 @@ const Anime = ({
 	},
 }) => (
 	<>
-		<div tw='flex justify-between relative h-full'>
+		<div tw='flex justify-between relative h-64'>
 			<div tw='flex justify-between flex-col py-4 text-primary-text'>
 				<h2 tw='text-xs text-secondary-text'>Latest Anime</h2>
 
