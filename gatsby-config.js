@@ -25,11 +25,7 @@ module.exports = {
 	},
 	plugins: [
 		{
-			resolve: 'gatsby-plugin-web-font-loader',
 			options: {
-				custom: {
-					families: ['CPMono_v07'],
-					urls: ['fonts.css'],
 				},
 			},
 		},
