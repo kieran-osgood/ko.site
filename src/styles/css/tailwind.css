@@ -1,34 +1,24 @@
-@font-face {
-	font-family: 'CPMono_v07 Plain';
-	font-style: normal;
-	font-weight: normal;
-	src: local('CPMono_v07 Plain'),
-		url('../../fonts/CPMono_v07_Plain.woff') format('woff');
-}
-
-@font-face {
-	font-family: 'CPMono_v07 Bold';
-	font-style: normal;
-	font-weight: normal;
-	src: local('CPMono_v07 Bold'),
-		url('../../fonts/CPMono_v07_Bold.woff') format('woff');
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:ital,wght@0,100;1,100&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	font-family: CPMono_V07;
+}
+
+:root {
+	font-size: 62.5%;
+}
+
+html {
+	overflow-x: hidden;
+}
 
 a {
 	transition: opacity 0.2s ease-in-out;
 }
 
-* {
-	font-family: 'CPMono_V07';
-}
-:root {
-	font-size: 62.5%;
-}
-html {
-	overflow-x: hidden;
-}
 .dark-mode-toggle.react-toggle .react-toggle-track,
 .dark-mode-toggle.react-toggle--checked .react-toggle-track,
 .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track,
@@ -47,6 +37,3 @@ html {
 	border-color: var(--color-primary);
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

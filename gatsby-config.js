@@ -7,13 +7,13 @@ module.exports = {
 			'/.netlify/functions/',
 			createProxyMiddleware({
 				target: 'http://localhost:8888',
-				pathRewrite: { // Look into why this doesnt work
+				pathRewrite: {
+					// Look into why this doesnt work
 					'^/api/': '^/.netlify/functions/',
 					'/api/': '/.netlify/functions/',
 					'^/.netlify/functions/': '^/api/',
 					'/.netlify/functions/': '/api/',
 					'/.netlify/functions/': '/',
-
 				},
 			})
 		)
@@ -24,6 +24,15 @@ module.exports = {
 		author: `Kieran Osgood`,
 	},
 	plugins: [
+		{
+			resolve: 'gatsby-plugin-web-font-loader',
+			options: {
+				custom: {
+					families: ['CPMono_v07'],
+					urls: ['fonts.css'],
+				},
+			},
+		},
 		`gatsby-plugin-styled-components`,
 		`gatsby-plugin-react-helmet`,
 		{
