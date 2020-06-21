@@ -67,12 +67,12 @@ const WesBosCallout = () => (
 			<PoopIcon tw='w-full' />
 			<h4>Inspired by Wes Bos</h4>
 			<h4>
-				<a href='uses.tech/' tw='underline'>
+				<a href='https://uses.tech/' tw='underline' target="_blank" rel='noreferrer'>
 					uses.tech/
 				</a>
 			</h4>
 			<h4>
-				<a href='github.com/wesbos/awesome-uses/' tw='underline'>
+				<a href='https://github.com/wesbos/awesome-uses/' tw='underline' target='_blank' rel='noreferrer'>
 					github.com/wesbos/awesome-uses/
 				</a>
 			</h4>
