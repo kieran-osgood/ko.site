@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import tw, { css, styled } from 'twin.macro'
 import { useForm } from 'react-hook-form'
 import ReactTooltip from 'react-tooltip'
+import axios from 'axios'
+import qs from 'qs'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
@@ -30,27 +32,41 @@ export default Contact
 
 const Form = () => {
 	const [status, setStatus] = useState('form')
-	const { handleSubmit, register, errors } = useForm({
-		reValidateMode: 'onChange',
+	const { handleSubmit, register, errors, getValues } = useForm({
+		reValidateMode: 'onSubmit',
+		mode: 'onChange',
 	})
 
-	  
-	const onSubmit = () => {setStatus('success')}
+	const onSubmit = () => {
+		setStatus('loading')
+		axios('/contact', {
+			method: 'POST',
+			headers: { 'content-type': 'application/x-www-form-urlencoded' },
+			data: qs.stringify({ 'form-name': 'contact', ...getValues() }),
+		})
+			.then(() => {
+				setStatus('success')
+			})
+			.catch(error => {
+				alert(error)
+				setStatus('form')
+			})
+	}
 	return (
 		<>
+			<ReactTooltip />
 			{status === 'form' && (
 				<form
 					name='contact'
 					method='post'
-					data-netlify='true'
 					netlify='true'
+					data-netlify='true'
+					action='/contact'
 					data-netlify-honeypot='bot-field'
 					onSubmit={handleSubmit(onSubmit)}
 					tw='sm:grid sm:grid-cols-2 lg:w-full gap-10 row-gap-8'
 				>
-					<ReactTooltip />
-					<input type="hidden" name="form-name" value="contact" />
-					<input type="hidden" name="bot-field" />
+					<input type='hidden' name='bot-field' />
 
 					<Label htmlFor='firstName'>
 						<ErrorLabelWrapper>
@@ -129,16 +145,25 @@ const Form = () => {
 							})}
 						/>
 					</Label>
-
+					<div data-netlify-recaptcha></div>
 					<Input
 						type='submit'
+						name='submit'
 						value='Send'
 						tw='mt-10 sm:mt-0 py-6 text-base hover:cursor-pointer text-secondary-text col-start-1 col-end-3'
 					/>
 				</form>
 			)}
-			{status === 'loading' && <Loading />}
-			{status === 'success' && <h2 tw='text-2xl'>Got it, I'll be in contact!</h2>}
+			{status === 'loading' && (
+				<div tw='w-full h-80 flex justify-center items-center '>
+					<Loading />
+				</div>
+			)}
+			{status === 'success' && (
+				<h2 tw='w-full h-80 flex justify-center items-center text-2xl'>
+					Received, I'll be in touch!
+				</h2>
+			)}
 		</>
 	)
 }
@@ -161,27 +186,20 @@ const Input = styled.input`
 	}
 `
 const Warning = ({ error }) => {
-	const [warning, setWarning] = useState('123')
+	const [warning, setWarning] = useState('Required')
 
 	useEffect(() => {
 		if (typeof error !== 'undefined') setWarning(error.message)
 	}, [error])
 
 	return (
-		<>
-			<WarningWrapper data-tip={warning} data-type='error' error={error}>
-				<WarningIcon tw='h-8 w-8' />
-			</WarningWrapper>
-		</>
+		<WarningWrapper data-tip={warning} data-type='error' error={error}>
+			<WarningIcon tw='h-8 w-8' />
+		</WarningWrapper>
 	)
 }
 
 const WarningWrapper = styled.span(({ error }) => [
-	css`
-		${'' /* right: -2.2rem; */}
-		${'' /* bottom: 1rem; */}
-		${'' /* bottom: 50%; */}
-	`,
 	error ? tw`inline-block` : tw`hidden`,
 	tw`h-8 w-8 pl-4`,
 ])
