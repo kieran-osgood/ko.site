@@ -1,13 +1,20 @@
 import React from 'react'
 import { css } from 'twin.macro'
-// import Image from 'components/image'
+import ReactCompareImage from 'react-compare-image'
+
 import Arrow from 'assets/arrow.svg'
-import Profile from 'images/profile.png'
+import Me from 'images/me.png'
+import Will from 'images/will.png'
 
 const ImageSlider = () => (
 	<>
 		{/* <Image /> */}
-		<img src={Profile} tw='h-auto w-full sm:max-w-md shadow-lg rounded-full' alt='profile' />
+		<div tw='h-auto w-full sm:max-w-md shadow-lg rounded-full overflow-hidden'>
+			<div tw=''>
+				<ReactCompareImage leftImage={Me} rightImage={Will} hover={true} />
+			</div>
+		</div>
+
 		<div tw='flex items-end'>
 			<Arrow
 				css={css`

@@ -57,6 +57,9 @@ const Portfolio = ({ path, data }) => {
 					</a>
 				</div>
 			</div>
+
+			{/* TODO: Add Gists here:
+			 */}
 		</Layout>
 	)
 }
