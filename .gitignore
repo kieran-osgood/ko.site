@@ -69,8 +69,6 @@ yarn-error.log
 .yarn-integrity
 
 # Local Netlify folder
-.netlify/*
-!.netlify/functions
-!.netlify/functions/*
-# Local Netlify folder
 .netlify
+
+public-lambda
