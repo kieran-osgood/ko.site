@@ -72,3 +72,5 @@ yarn-error.log
 .netlify/*
 !.netlify/functions
 !.netlify/functions/*
+# Local Netlify folder
+.netlify
