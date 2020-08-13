@@ -8,9 +8,9 @@ import useWindowSize from 'hooks/useWindowSize'
 import HighlightedLine from 'components/highlightedline'
 import Layout from 'components/layout'
 import SEO from 'components/seo'
+import { getNested } from "src/utils";
 
 const Portfolio = ({ path, data }) => {
-	console.log('data: ', data)
 	const { width } = useWindowSize()
 	const isMobile = () =>
 		width < Number(config.theme.screens.sm.replace('px', ''))
@@ -46,7 +46,18 @@ const Portfolio = ({ path, data }) => {
 						{data.github.user.repositories.edges.map((repository, idx) => (
 							<ProjectCard
 								key={repository.node.id + idx}
-								repository={repository}
+								name={repository.node.name}
+								url={repository.node.url}
+								primaryLanguageName={getNested(
+									repository.node,
+									'primaryLanguage',
+									'name'
+								)}
+								description={repository.node.description}
+								repositoryTopics={getNested(
+									repository.node,
+									'repositoryTopics',
+								)}
 							/>
 						))}
 					</div>
@@ -67,20 +78,21 @@ const Portfolio = ({ path, data }) => {
 export default Portfolio
 
 const ProjectCard = ({
-	repository: {
-		node: {
-			name = '',
-			url = '',
-			primaryLanguage: { name: primaryLanguageName = '' },
-			description = '',
-			repositoryTopics = [],
-		},
-	},
+	name,
+	url,
+	primaryLanguageName,
+	description,
+	repositoryTopics,
 }) => {
 	return (
 		<div tw='flex flex-col items-center justify-between py-8 px-8 bg-secondary-background w-full rounded-md shadow-lg text-primary-text h-68 sm:h-92 relative w-full'>
 			<h2 tw='md:leading-10 uppercase text-lg font-bold'>
-				{name} - <span tw='text-sm capitalize'> {primaryLanguageName}</span>
+				{name}
+				{primaryLanguageName !== null ? (
+					<>
+						- <span tw='text-sm capitalize'>{primaryLanguageName}</span>
+					</>
+				) : null}
 			</h2>
 
 			<div tw='bg-secondary-background sm:pt-4 w-11/12 rounded-lg flex items-center flex-col'>
