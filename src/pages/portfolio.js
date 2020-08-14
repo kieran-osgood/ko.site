@@ -8,13 +8,12 @@ import useWindowSize from 'hooks/useWindowSize'
 import HighlightedLine from 'components/highlightedline'
 import Layout from 'components/layout'
 import SEO from 'components/seo'
-import { getNested } from "src/utils";
+import { getNested } from 'src/utils'
 
 const Portfolio = ({ path, data }) => {
 	const { width } = useWindowSize()
 	const isMobile = () =>
 		width < Number(config.theme.screens.sm.replace('px', ''))
-
 	return (
 		<Layout path={path}>
 			<SEO title='Page two' />
@@ -29,11 +28,29 @@ const Portfolio = ({ path, data }) => {
 							infinite
 						>
 							<Slider>
-								{data.github.user.repositories.edges.map((repository, idx) => (
-									<Slide key={idx + repository.node.id} index={idx}>
-										<ProjectCard repository={repository} />
-									</Slide>
-								))}
+								{getNested(data, 'github', 'user', 'repositories', 'edges')
+									? data.github.user.repositories.edges.map(
+											(repository, idx) => (
+												<Slide key={idx + repository.node.id} index={idx}>
+													<ProjectCard
+														key={repository.node.id + idx}
+														name={repository.node.name}
+														url={repository.node.url}
+														primaryLanguageName={getNested(
+															repository.node,
+															'primaryLanguage',
+															'name'
+														)}
+														description={repository.node.description}
+														repositoryTopics={getNested(
+															repository.node,
+															'repositoryTopics'
+														)}
+													/>
+												</Slide>
+											)
+									  )
+									: null}
 							</Slider>
 
 							<div tw='w-full absolute bottom-0'>
@@ -43,27 +60,37 @@ const Portfolio = ({ path, data }) => {
 					</div>
 				) : (
 					<div tw='w-full grid grid-cols-2 gap-4'>
-						{data.github.user.repositories.edges.map((repository, idx) => (
-							<ProjectCard
-								key={repository.node.id + idx}
-								name={repository.node.name}
-								url={repository.node.url}
-								primaryLanguageName={getNested(
-									repository.node,
-									'primaryLanguage',
-									'name'
-								)}
-								description={repository.node.description}
-								repositoryTopics={getNested(
-									repository.node,
-									'repositoryTopics',
-								)}
-							/>
-						))}
+						{getNested(data, 'github', 'user', 'repositories', 'edges')
+							? data.github.user.repositories.edges.map((repository, idx) => (
+									<ProjectCard
+										key={repository.node.id + idx}
+										name={repository.node.name}
+										url={repository.node.url}
+										primaryLanguageName={getNested(
+											repository.node,
+											'primaryLanguage',
+											'name'
+										)}
+										description={repository.node.description}
+										repositoryTopics={getNested(
+											repository.node,
+											'repositoryTopics'
+										)}
+									/>
+							  ))
+							: null}
 					</div>
 				)}
 				<div tw='w-full flex justify-center pt-12 text-xl underline'>
-					<a href={data.github.user.url} target='blank' rel='noreferrer'>
+					<a
+						href={
+							getNested(data, 'github', 'user', 'url')
+								? data.github.user.url
+								: null
+						}
+						target='blank'
+						rel='noreferrer'
+					>
 						More...
 					</a>
 				</div>
@@ -100,22 +127,24 @@ const ProjectCard = ({
 			</div>
 
 			<div tw='pt-4 hidden md:block '>
-				{repositoryTopics.edges.map(edge => (
-					<a
-						key={edge.node.id}
-						href={edge.node.url}
-						tw='text-secondary-text inline-block text-2xs font-bold px-4 whitespace-no-wrap'
-						css={css`
-							border: 1px solid transparent;
-							border-radius: 2em;
-							color: #0366d6;
-							background-color: #f1f8ff;
-							margin: 0.333rem 0.125rem;
-						`}
-					>
-						{edge.node.topic.name}
-					</a>
-				))}
+				{repositoryTopics !== undefined
+					? repositoryTopics.edges.map(edge => (
+							<a
+								key={edge.node.id}
+								href={edge.node.url}
+								tw='text-secondary-text inline-block text-2xs font-bold px-4 whitespace-no-wrap'
+								css={css`
+									border: 1px solid transparent;
+									border-radius: 2em;
+									color: #0366d6;
+									background-color: #f1f8ff;
+									margin: 0.333rem 0.125rem;
+								`}
+							>
+								{edge.node.topic.name}
+							</a>
+					  ))
+					: null}
 			</div>
 			<div tw='block w-full pt-2'>
 				<a
@@ -135,7 +164,7 @@ const ProjectCard = ({
 export const query = graphql`
 	query GithubQuery {
 		github {
-			user(login: "kierano547") {
+			user(login: "KieranO547") {
 				repositories(last: 4, orderBy: { field: PUSHED_AT, direction: ASC }) {
 					edges {
 						node {
