@@ -19,8 +19,7 @@ const Contact = ({ path }) => (
 			<HighlightedLine highlightText={`Contact`} primary />
 
 			<p tw='text-lg'>
-				I currently have some availability for work alongside my current job, so
-				use the form below if you want to discuss!
+				If you want to discuss a potential project or contract work, please fill out your details below.
 			</p>
 
 			<Form />
