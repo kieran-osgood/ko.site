@@ -6,27 +6,16 @@ import LinkedIn from 'assets/socials/linkedin.svg'
 
 const Footer = () => {
 	return (
-		<FooterContainer>
-			<div tw='flex w-1/3 md:w-1/4 lg:w-1/6 justify-between z-10 pt-8'>
+		<div className='flex flex-col items-center justify-center relative w-screen bg-tertiary-background'>
+			<div className='flex w-1/3 md:w-1/4 lg:w-1/6 justify-between z-10 pt-8'>
 				<Socials />
 			</div>
 			<Disclaimer />
-		</FooterContainer>
+		</div>
 	)
 }
 
 export default Footer
-
-const FooterContainer = styled.footer(() => [
-	tw`flex flex-col items-center justify-center relative w-screen bg-tertiary-background`,
-	css`
-		clip-path: ellipse(50% 116% at 50% 128%);
-		height: 133px;
-		@media (min-width: 1024px) {
-			height: 119px;
-		}
-	`,
-])
 
 export const Socials = () => (
 	<>
@@ -53,7 +42,7 @@ const SocialLink = styled.a.attrs(({ href }: {href: string}) => ({
 `
 
 const Disclaimer = () => (
-	<div tw='z-10 text-xs md:text-sm pt-4'>
+	<div className='z-10 text-xs md:text-sm pt-4'>
 		<span>&copy; {new Date().getFullYear()}, Kieran Osgood</span>
 	</div>
 )

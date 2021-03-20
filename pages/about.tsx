@@ -25,14 +25,14 @@ const AboutPage = ({ path }) => {
 
 			<HighlightedLine highlightText={`About`} primary />
 
-			<div tw='w-full text-lg grid gap-6 sm:grid-cols-2'>
+			<div className='w-full text-lg grid gap-6 sm:grid-cols-2'>
 				<div>
-					<p tw='pt-16'>
+					<p className='pt-16'>
 						I currently work for Analog Republic Ltd. as a Web Developer. My
 						favourite language/framework at the moment is React and Node,
 						specifically in Typescript.
 					</p>
-					<p tw='pt-4'>
+					<p className='pt-4'>
 						Aside from coding I like reading manga, listening to a lot of music
 						(my Spotify round-up averages 150,000 minutes a year!) and drinking
 						good coffee!
@@ -47,13 +47,13 @@ const AboutPage = ({ path }) => {
 						<li>Styled-Components</li>
 						<li>Tailwind</li>
 						<li>Twin.Macro - This is a cool one, allows combining the declarative nature of tailwind with the all the flexibility of styled-components, leading to nice conditional styling where you don't have to destructure from props each line, such as: 
-						<img src={TwinMacro} tw='h-auto w-auto' alt="twin macro code sample"/>
+						<img src={TwinMacro} className='h-auto w-auto' alt="twin macro code sample"/>
 						</li>
 					</ul>
 				</p> */}
 
 				<Card status='success' row={true}>
-					<div tw='flex flex-col items-center justify-center w-full h-full text-primary-text'>
+					<div className='flex flex-col items-center justify-center w-full h-full text-primary-text'>
 						<h3>Commit Activity</h3>
 						<GitHubCalendar
 							username='kierano547'
@@ -84,12 +84,12 @@ export default AboutPage
 
 const Card = ({ status, children, row = false }) => (
 	<div
-		tw='px-8 py-4 md:px-12 md:py-8 bg-secondary-background rounded-lg shadow-lg flex flex-col justify-center w-full'
+		className='px-8 py-4 md:px-12 md:py-8 bg-secondary-background rounded-lg shadow-lg flex flex-col justify-center w-full'
 		css={[row && tw`sm:col-span-2`]}
 	>
 		{status === 'success' && <>{children}</>}
 		{status === 'loading' && (
-			<div tw='h-full w-full flex items-center justify-center'>
+			<div className='h-full w-full flex items-center justify-center'>
 				<LoadingIcon />
 			</div>
 		)}
@@ -103,18 +103,18 @@ const Anime = ({
 	},
 }) => (
 	<>
-		<div tw='flex justify-between relative h-64'>
-			<div tw='flex justify-between flex-col py-4 text-primary-text'>
-				<h2 tw='text-xs text-secondary-text'>Latest Anime</h2>
+		<div className='flex justify-between relative h-64'>
+			<div className='flex justify-between flex-col py-4 text-primary-text'>
+				<h2 className='text-xs text-secondary-text'>Latest Anime</h2>
 
 				<div>
-					<p tw='font-bold text-sm'>{title}</p>
-					<p tw='text-sm'>Rated&nbsp;-&nbsp;{rating}</p>
+					<p className='font-bold text-sm'>{title}</p>
+					<p className='text-sm'>Rated&nbsp;-&nbsp;{rating}</p>
 				</div>
 
 				<a
 					href={url}
-					tw='text-xs text-secondary-text underline relative block truncate'
+					className='text-xs text-secondary-text underline relative block truncate'
 					target='_blank'
 					rel='noreferrer'
 				>
@@ -123,7 +123,7 @@ const Anime = ({
 			</div>
 			<img
 				src={image_url}
-				tw='w-auto h-full relative overflow-hidden pl-2 py-4 md:py-0'
+				className='w-auto h-full relative overflow-hidden pl-2 py-4 md:py-0'
 				alt='anime cover'
 			/>
 		</div>
@@ -138,19 +138,19 @@ const Spotify = ({
 	},
 }) => (
 	<>
-		<div tw='flex justify-between '>
-			<div tw='text-primary-text pt-8'>
-				<h2 tw='text-xs text-secondary-text'>I'm listening to...</h2>
+		<div className='flex justify-between '>
+			<div className='text-primary-text pt-8'>
+				<h2 className='text-xs text-secondary-text'>I'm listening to...</h2>
 
-				<p tw='font-bold text-sm pt-8'>{name}</p>
-				<p tw='text-sm'>-&nbsp;{artists[0].name}</p>
+				<p className='font-bold text-sm pt-8'>{name}</p>
+				<p className='text-sm'>-&nbsp;{artists[0].name}</p>
 			</div>
-			<SpotifyIcon tw='mt-8' />
+			<SpotifyIcon className='mt-8' />
 		</div>
-		<div tw='max-w-xl pt-8'>
+		<div className='max-w-xl pt-8'>
 			<a
 				href={external_urls.spotify}
-				tw='text-xs text-secondary-text underline relative block truncate'
+				className='text-xs text-secondary-text underline relative block truncate'
 				target='_blank'
 				rel='noreferrer'
 			>
@@ -168,21 +168,21 @@ const StackOverflow = ({
 	},
 }) => (
 	<>
-		<div tw='flex justify-between pt-8'>
-			<div tw='text-primary-text '>
-				<h2 tw='text-xs text-secondary-text'>Stack Overflow</h2>
+		<div className='flex justify-between pt-8'>
+			<div className='text-primary-text '>
+				<h2 className='text-xs text-secondary-text'>Stack Overflow</h2>
 
-				<p tw='font-bold text-sm pt-8'>
+				<p className='font-bold text-sm pt-8'>
 					Reputation
-					<span tw='text-sm font-normal'>&nbsp;-&nbsp;{reputation}</span>
+					<span className='text-sm font-normal'>&nbsp;-&nbsp;{reputation}</span>
 				</p>
 			</div>
 			<Badges badgeCounts={badge_counts} />
 		</div>
-		<div tw=' pt-8 pb-4'>
+		<div className=' pt-8 pb-4'>
 			<a
 				href={link}
-				tw='text-xs text-secondary-text underline block truncate'
+				className='text-xs text-secondary-text underline block truncate'
 				css={css`
 					max-width: 70vw;
 				`}
@@ -196,7 +196,7 @@ const StackOverflow = ({
 )
 
 const Badges = ({ badgeCounts }) => (
-	<div tw='flex flex-wrap' aria-hidden='true'>
+	<div className='flex flex-wrap' aria-hidden='true'>
 		<Badge color='#ab825f' count={badgeCounts.bronze} />
 		<Badge color='#b4b8bc' count={badgeCounts.silver} />
 		<Badge color='#ffcc01' count={badgeCounts.gold} />
@@ -204,9 +204,9 @@ const Badges = ({ badgeCounts }) => (
 )
 
 const Badge = ({ color, count }) => (
-	<div tw='px-1 ml-auto' style={{ color: color }}>
+	<div className='px-1 ml-auto' style={{ color: color }}>
 		<span>●</span>
-		<span tw='pl-1'>{count}</span>
+		<span className='pl-1'>{count}</span>
 	</div>
 )
 

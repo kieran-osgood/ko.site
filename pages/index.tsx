@@ -1,5 +1,4 @@
 import React from 'react'
-import { css } from 'twin.macro'
 
 import Layout from 'src/components/layout'
 import ImageSlider from 'src/components/imageslider'

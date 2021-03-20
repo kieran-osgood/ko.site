@@ -9,13 +9,13 @@ import Arrow from '../../assets/arrow.svg'
 const ImageSlider = () => (
 	<>
 		{/* <Image /> */}
-		<div tw='h-auto w-full sm:max-w-md shadow-lg rounded-full overflow-hidden'>
-			<div tw=''>
+		<div className='h-auto w-full sm:max-w-md shadow-lg rounded-full overflow-hidden'>
+			<div className=''>
 				{/* <ReactCompareImage leftImage={Me} rightImage={Will} hover={true} /> */}
 			</div>
 		</div>
 
-		<div tw='flex items-end'>
+		<div className='flex items-end'>
 			<Arrow
 				css={css`
 					g > path {
@@ -24,7 +24,7 @@ const ImageSlider = () => (
 				`}
 			/>
 			<p
-				tw='text-lg pl-4'
+				className='text-lg pl-4'
 				css={css`
 					font-family: 'Indie Flower';
 					line-height: 2.4rem;

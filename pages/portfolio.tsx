@@ -17,9 +17,9 @@ const Portfolio = ({ path, data }) => {
 		<Layout path={path}>
 			{/* <SEO title='Page two' /> */}
 			<HighlightedLine highlightText={`Portfolio`} secondary />
-			<div tw=' max-w-full px-2 pt-2 pb-2 md:flex md:flex-row md:flex-wrap relative'>
+			<div className=' max-w-full px-2 pt-2 pb-2 md:flex md:flex-row md:flex-wrap relative'>
 				{isMobile() ? (
-					<div tw='h-80 sm:h-102 relative'>
+					<div className='h-80 sm:h-102 relative'>
 						<CarouselProvider
 							naturalSlideWidth={380}
 							naturalSlideHeight={230}
@@ -52,13 +52,13 @@ const Portfolio = ({ path, data }) => {
 									: null}
 							</Slider>
 
-							<div tw='w-full absolute bottom-0'>
+							<div className='w-full absolute bottom-0'>
 								<DotGroup dotNumbers={false} />
 							</div>
 						</CarouselProvider>
 					</div>
 				) : (
-					<div tw='w-full grid grid-cols-2 gap-4'>
+					<div className='w-full grid grid-cols-2 gap-4'>
 						{getNested(data, 'github', 'user', 'repositories', 'edges')
 							? data.github.user.repositories.edges.map((repository, idx) => (
 									<ProjectCard
@@ -80,7 +80,7 @@ const Portfolio = ({ path, data }) => {
 							: null}
 					</div>
 				)}
-				<div tw='w-full flex justify-center pt-12 text-xl underline'>
+				<div className='w-full flex justify-center pt-12 text-xl underline'>
 					<a
 						href={
 							getNested(data, 'github', 'user', 'url')
@@ -111,27 +111,27 @@ const ProjectCard = ({
 	repositoryTopics,
 }) => {
 	return (
-		<div tw='flex flex-col items-center justify-between py-8 px-8 bg-secondary-background w-full rounded-md shadow-lg text-primary-text h-68 sm:h-92 relative w-full'>
-			<h2 tw='md:leading-10 uppercase text-lg font-bold'>
+		<div className='flex flex-col items-center justify-between py-8 px-8 bg-secondary-background w-full rounded-md shadow-lg text-primary-text h-68 sm:h-92 relative w-full'>
+			<h2 className='md:leading-10 uppercase text-lg font-bold'>
 				{name}
 				{primaryLanguageName !== null ? (
 					<>
-						- <span tw='text-sm capitalize'>{primaryLanguageName}</span>
+						- <span className='text-sm capitalize'>{primaryLanguageName}</span>
 					</>
 				) : null}
 			</h2>
 
-			<div tw='bg-secondary-background sm:pt-4 w-11/12 rounded-lg flex items-center flex-col'>
+			<div className='bg-secondary-background sm:pt-4 w-11/12 rounded-lg flex items-center flex-col'>
 				<p>{description}</p>
 			</div>
 
-			<div tw='pt-4 hidden md:block '>
+			<div className='pt-4 hidden md:block '>
 				{repositoryTopics !== undefined
 					? repositoryTopics.edges.map(edge => (
 							<a
 								key={edge.node.id}
 								href={edge.node.url}
-								tw='text-secondary-text inline-block text-2xs font-bold px-4 whitespace-nowrap'
+								className='text-secondary-text inline-block text-2xs font-bold px-4 whitespace-nowrap'
 								css={css`
 									border: 1px solid transparent;
 									border-radius: 2em;
@@ -145,10 +145,10 @@ const ProjectCard = ({
 					  ))
 					: null}
 			</div>
-			<div tw='block w-full pt-2'>
+			<div className='block w-full pt-2'>
 				<a
 					href={url}
-					tw='block truncate underline mx-auto'
+					className='block truncate underline mx-auto'
 					css={css`
 						max-width: fit-content;
 					`}

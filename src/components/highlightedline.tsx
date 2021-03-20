@@ -43,9 +43,9 @@ const HighlightedLine = ({
 	primary,
 	secondary,
 }: HighlightedLineProps) => (
-	<div tw='flex items-center '>
+	<div className='flex items-center '>
 		{secondary && <ColorBlock secondary />}
-		<h1 tw='relative z-30 text-2xl sm:text-3xl md:text-5xl lg:text-6xl md:whitespace-nowrap'>
+		<h1 className='relative z-30 text-2xl sm:text-3xl md:text-5xl lg:text-6xl md:whitespace-nowrap'>
 			{highlightPrefix && <>{highlightPrefix}&nbsp;</>}
 			<HighlightLine
 				text={highlightText}

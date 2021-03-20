@@ -9,11 +9,11 @@ import PoopIcon from 'assets/navigation/poop.svg'
 const Uses = ({ path }) => (
 	<Layout path={path}>
 		{/* <SEO title='Uses' /> */}
-		<div tw=''>
-			<div tw='pb-4'>
+		<div className=''>
+			<div className='pb-4'>
 				<HighlightedLine highlightText={`/Uses`} secondary />
 
-				<div tw='grid md:grid-cols-2 row-gap-8 col-gap-8 pt-4'>
+				<div className='grid md:grid-cols-2 row-gap-8 col-gap-8 pt-4'>
 					{usesData.map(block => (
 						<UsesBlock key={block.title} data={block} />
 					))}
@@ -30,11 +30,11 @@ export default Uses
 const UsesBlock = ({ data: { title, items } }) => {
 	return (
 		<div>
-			<h2 tw='text-3xl lg:text-4xl pb-4'>{title}</h2>
+			<h2 className='text-3xl lg:text-4xl pb-4'>{title}</h2>
 
 			{title !== 'Reading' &&
 				items.map(text => (
-					<p key={text} tw='text-base lg:text-lg xl:text-xl'>
+					<p key={text} className='text-base lg:text-lg xl:text-xl'>
 						{'> '}
 						{text}
 					</p>
@@ -43,10 +43,10 @@ const UsesBlock = ({ data: { title, items } }) => {
 			{title === 'Reading' &&
 				items.map(item => (
 					<React.Fragment key={item.title + item.author}>
-						<p tw='text-base lg:text-lg xl:text-xl'>
+						<p className='text-base lg:text-lg xl:text-xl'>
 							{'> '}
 							<a
-								tw='text-base lg:text-lg xl:text-xl underline'
+								className='text-base lg:text-lg xl:text-xl underline'
 								href={`https://${item.url}`}
 								target='_blank'
 								rel='noreferrer'
@@ -61,14 +61,14 @@ const UsesBlock = ({ data: { title, items } }) => {
 	)
 }
 const WesBosCallout = () => (
-	<div tw='pt-16'>
-		<div tw='flex flex-col justify-center text-center text-lg lg:text-2xl'>
-			<PoopIcon tw='w-full' />
+	<div className='pt-16'>
+		<div className='flex flex-col justify-center text-center text-lg lg:text-2xl'>
+			<PoopIcon className='w-full' />
 			<h4>Inspired by Wes Bos</h4>
 			<h4>
 				<a
 					href='https://uses.tech/'
-					tw='underline'
+					className='underline'
 					target='_blank'
 					rel='noreferrer'
 				>
@@ -78,7 +78,7 @@ const WesBosCallout = () => (
 			<h4>
 				<a
 					href='https://github.com/wesbos/awesome-uses/'
-					tw='underline'
+					className='underline'
 					target='_blank'
 					rel='noreferrer'
 				>

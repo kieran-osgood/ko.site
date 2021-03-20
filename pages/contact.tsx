@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import tw, { css, styled } from 'twin.macro'
 import { useForm } from 'react-hook-form'
 import ReactTooltip from 'react-tooltip'
 import axios from 'axios'
@@ -14,10 +13,10 @@ import WarningIcon from 'assets/warning.svg'
 const Contact = ({ path }) => (
 	<Layout path={path}>
 		{/* <SEO title='Contact' /> */}
-		<div tw='grid gap-8'>
+		<div className='grid gap-8'>
 			<HighlightedLine highlightText={`Contact`} primary />
 
-			<p tw='text-lg'>
+			<p className='text-lg'>
 				If you want to discuss a potential project or contract work, please fill
 				out your details below.
 			</p>
@@ -63,16 +62,17 @@ const Form = () => {
 					action='/contact'
 					data-netlify-honeypot='bot-field'
 					onSubmit={handleSubmit(onSubmit)}
-					tw='sm:grid sm:grid-cols-2 lg:w-full gap-10 row-gap-8'
+					className='sm:grid sm:grid-cols-2 lg:w-full gap-10 row-gap-8'
 				>
 					<input type='hidden' name='bot-field' />
 
-					<Label htmlFor='firstName'>
-						<ErrorLabelWrapper>
+					<label htmlFor='firstName' className='flex flex-col justify-between text-base text-primary-text relative w-full'>
+						<span className='flex items-center h-12'>
 							First Name
 							<Warning error={errors.firstName} />
-						</ErrorLabelWrapper>
-						<Input
+						</span>
+						<input
+						className='px-4 py-2 rounded-lg shadow-lg text-secondary-text w-full'
 							type='text'
 							name='firstName'
 							placeholder='John'
@@ -80,14 +80,15 @@ const Form = () => {
 								required: 'Please enter first name.',
 							})}
 						/>
-					</Label>
+					</label>
 
-					<Label htmlFor='lastName'>
-						<ErrorLabelWrapper>
+					<label htmlFor='lastName'className='flex flex-col justify-between text-base text-primary-text relative w-full'>
+						<span className='flex items-center h-12'>
 							Last Name
 							<Warning error={errors.lastName} />
-						</ErrorLabelWrapper>
-						<Input
+						</span>
+						<input
+						className='px-4 py-2 rounded-lg shadow-lg text-secondary-text w-full'
 							type='text'
 							name='lastName'
 							placeholder='Smith'
@@ -95,14 +96,15 @@ const Form = () => {
 								required: 'Please enter last name.',
 							})}
 						/>
-					</Label>
+					</label>
 
-					<Label htmlFor='email'>
-						<ErrorLabelWrapper>
+					<label htmlFor='email'className='flex flex-col justify-between text-base text-primary-text relative w-full'>
+						<span className='flex items-center h-12'>
 							Email Address:
 							<Warning error={errors.email} />
-						</ErrorLabelWrapper>
-						<Input
+						</span>
+						<input
+						className='px-4 py-2 rounded-lg shadow-lg text-secondary-text w-full'
 							type='email'
 							name='email'
 							placeholder='johnsmith@gmail.com'
@@ -114,28 +116,28 @@ const Form = () => {
 								},
 							})}
 						/>
-					</Label>
+					</label>
 
-					<Label htmlFor='phoneNumber'>
-						<ErrorLabelWrapper>
+					<label htmlFor='phoneNumber'className='flex flex-col justify-between text-base text-primary-text relative w-full'>
+						<span className='flex items-center h-12'>
 							Phone Number:
 							<Warning error={errors.phoneNumber} />
-						</ErrorLabelWrapper>
-						<Input
+						</span>
+						<input
 							type='number'
 							name='phoneNumber'
 							placeholder='XXX XXX XXXX'
 							ref={register({})}
 						/>
-					</Label>
+					</label>
 
-					<Label htmlFor='message' tw='col-span-2'>
-						<ErrorLabelWrapper>
+					<label htmlFor='message' className='col-span-2 flex flex-col justify-between text-base text-primary-text relative w-full'>
+						<span className='flex items-center h-12'>
 							Message:
 							<Warning error={errors.message} />
-						</ErrorLabelWrapper>
+						</span>
 						<textarea
-							tw='px-4 py-2 rounded-lg shadow-lg text-secondary-text'
+							className='px-4 py-2 rounded-lg shadow-lg text-secondary-text'
 							rows={3}
 							name='message'
 							placeholder='A short description of what you need'
@@ -143,23 +145,23 @@ const Form = () => {
 								required: 'Please leave a short message',
 							})}
 						/>
-					</Label>
+					</label>
 					<div data-netlify-recaptcha></div>
-					<Input
+					<input
 						type='submit'
 						name='submit'
 						value='Send'
-						tw='mt-10 sm:mt-0 py-6 text-base hover:cursor-pointer text-secondary-text col-start-1 col-end-3'
+						className='mt-10 sm:mt-0 py-6 text-base hover:cursor-pointer text-secondary-text col-start-1 col-end-3'
 					/>
 				</form>
 			)}
 			{status === 'loading' && (
-				<div tw='w-full h-80 flex justify-center items-center '>
+				<div className='w-full h-80 flex justify-center items-center '>
 					<Loading />
 				</div>
 			)}
 			{status === 'success' && (
-				<h2 tw='w-full h-80 flex justify-center items-center text-2xl'>
+				<h2 className='w-full h-80 flex justify-center items-center text-2xl'>
 					Received, I'll be in touch!
 				</h2>
 			)}
@@ -167,23 +169,7 @@ const Form = () => {
 	)
 }
 
-const Label = styled.label`
-	${tw`flex flex-col justify-between text-base text-primary-text relative w-full`}
-`
-const Input = styled.input`
-	${tw`px-4 py-2 rounded-lg shadow-lg text-secondary-text w-full`}
 
-	/* Chrome, Safari, Edge, Opera */
-	::-webkit-outer-spin-button,
-	::-webkit-inner-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	}
-	/* Firefox */
-	[type='number'] {
-		-moz-appearance: textfield;
-	}
-`
 const Warning = ({ error }) => {
 	const [warning, setWarning] = useState('Required')
 
@@ -192,17 +178,8 @@ const Warning = ({ error }) => {
 	}, [error])
 
 	return (
-		<WarningWrapper data-tip={warning} data-type='error' error={error}>
-			<WarningIcon tw='h-8 w-8' />
-		</WarningWrapper>
+		<span data-tip={warning} data-type='error' className={`h-8 w-8 pl-4 ${error ? 'inline-block': 'hidden'}`}>
+			<WarningIcon className='h-8 w-8' />
+		</span>
 	)
 }
-
-const WarningWrapper = styled.span(({ error }) => [
-	error ? tw`inline-block` : tw`hidden`,
-	tw`h-8 w-8 pl-4`,
-])
-
-const ErrorLabelWrapper = styled.span`
-	${tw`flex items-center h-12`}
-`

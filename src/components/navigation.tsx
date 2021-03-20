@@ -68,7 +68,7 @@ const NavLink = ({ url, children }) => {
 		return String(route).trim() === String(path).trim() ? 'active' : ''
 	}
 	return (
-		<div tw='z-20'>
+		<div className='z-20'>
 			<StyledLink href={url} active={isCurrentPage(url)}>
 				<a>
 				{children}
