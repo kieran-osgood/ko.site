@@ -5,10 +5,10 @@ import ReactTooltip from 'react-tooltip'
 import axios from 'axios'
 import qs from 'qs'
 
-import Layout from 'components/layout'
-import SEO from 'components/seo'
-import HighlightedLine from 'components/highlightedline'
-import Loading from 'components/loading'
+import Layout from 'src/components/layout'
+import SEO from 'src/components/seo'
+import HighlightedLine from 'src/components/highlightedline'
+import Loading from 'src/components/loading'
 
 import WarningIcon from 'assets/warning.svg'
 

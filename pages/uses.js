@@ -1,9 +1,9 @@
 import React from 'react'
 import 'twin.macro'
 
-import Layout from 'components/layout'
-import SEO from 'components/seo'
-import HighlightedLine from 'components/highlightedline'
+import Layout from 'src/components/layout'
+import SEO from 'src/components/seo'
+import HighlightedLine from 'src/components/highlightedline'
 
 import PoopIcon from 'assets/navigation/poop.svg'
 

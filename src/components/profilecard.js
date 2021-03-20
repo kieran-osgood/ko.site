@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from './image'
 import { css } from 'twin.macro'
-import { Socials } from 'components/footer'
+import { Socials } from 'src/components/footer'
 
 // Pulls * required SVGs + maps to array of objects: {path: ..., file: ...}
 const reqSvgs = require.context('../images/languages', true, /\.svg$/)

@@ -1,6 +1,6 @@
 import 'tailwindcss/dist/base.min.css'
 import 'react-toggle/style.css' // for ES6 modules
-import '../styles/css/tailwind.css'
+import 'src/styles/css/tailwind.css'
 
 import * as React from 'react'
 import App from 'next/app'

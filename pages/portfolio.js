@@ -3,11 +3,11 @@ import { CarouselProvider, Slider, Slide, DotGroup } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import { css } from 'twin.macro'
 
-import config from '../../tailwind.config'
+import config from '../tailwind.config'
 import useWindowSize from 'hooks/useWindowSize'
-import HighlightedLine from 'components/highlightedline'
-import Layout from 'components/layout'
-import SEO from 'components/seo'
+import HighlightedLine from 'src/components/highlightedline'
+import Layout from 'src/components/layout'
+import SEO from 'src/components/seo'
 import { getNested } from 'src/utils'
 
 const Portfolio = ({ path, data }) => {

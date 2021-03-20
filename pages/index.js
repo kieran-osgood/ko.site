@@ -1,10 +1,10 @@
 import React from 'react'
 import { css } from 'twin.macro'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import ImageSlider from '../components/imageslider'
-import HighlightedLine from '../components/highlightedline'
+import Layout from 'src/components/layout'
+import SEO from 'src/components/seo'
+import ImageSlider from 'src/components/imageslider'
+import HighlightedLine from 'src/components/highlightedline'
 
 const IndexPage = ({ path }) => (
 	<Layout path={path}>
