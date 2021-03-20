@@ -54,13 +54,6 @@ const SocialLink = styled.a.attrs(({ href }: {href: string}) => ({
 
 const Disclaimer = () => (
 	<div tw='z-10 text-xs md:text-sm pt-4'>
-		<span>Kieran Osgood &copy; {new Date().getFullYear()}</span>
-		<span>&nbsp;|&nbsp;</span>
-		<span>
-			Built with&nbsp;
-			<a href='https://www.gatsbyjs.org' tw='underline'>
-				Gatsby
-			</a>
-		</span>
+		<span>&copy; {new Date().getFullYear()}, Kieran Osgood</span>
 	</div>
 )
