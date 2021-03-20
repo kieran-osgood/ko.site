@@ -42,10 +42,12 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.12.13",
+    "@types/react": "^17.0.3",
     "gatsby-plugin-root-import": "^2.0.5",
     "prettier": "^1.19.1",
     "purgecss": "^2.1.0",
-    "tailwindcss": "^1.2.0"
+    "tailwindcss": "^1.2.0",
+    "typescript": "^4.2.3"
   },
   "keywords": [
     "gatsby"
