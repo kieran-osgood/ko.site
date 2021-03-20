@@ -7,16 +7,16 @@ type HeadingProps = {
 };
 const Heading = ({ h = 'h1', children }: HeadingProps) => {
 	switch (h) {
-		case 'h1':
-			return (
-				<h1 className='text-8xl font-semibold leading-tight'>{children}</h1>
-			);
-		case 'h2':
-			return <h2>{children}</h2>;
-		case 'h3':
-			return <h3>{children}</h3>;
-		case 'h4':
-			return <h4>{children}</h4>;
+	case 'h1':
+		return (
+			<h1 className='text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold leading-tight'>{children}</h1>
+		);
+	case 'h2':
+		return <h2>{children}</h2>;
+	case 'h3':
+		return <h3>{children}</h3>;
+	case 'h4':
+		return <h4>{children}</h4>;
 	}
 };
 
