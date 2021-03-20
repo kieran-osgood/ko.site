@@ -7,7 +7,7 @@
     "twin": {
       "preset": "styled-components",
       "autoCssProp": true,
-      "debugProp": true
+      "dataTwProp": true
     }
   },
   "author": "Kieran Osgood",
@@ -39,13 +39,14 @@
     "react-toggle": "^4.1.1",
     "react-tooltip": "^4.2.7",
     "styled-components": "^5.1.1",
-    "twin.macro": "^1.3.0"
+    "twin.macro": "^2.3.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.13.0",
     "@types/react": "^17.0.3",
     "@types/react-toggle": "^4.0.2",
+    "@types/styled-components": "^5.1.9",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",

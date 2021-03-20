@@ -1,8 +1,8 @@
 import React from 'react'
 import tw, { css, styled } from 'twin.macro'
-import Github from '../../assets/socials/github.svg'
-import Twitter from '../../assets/socials/twitter.svg'
-import LinkedIn from '../../assets/socials/linkedin.svg'
+import Github from 'assets/socials/github.svg'
+import Twitter from 'assets/socials/twitter.svg'
+import LinkedIn from 'assets/socials/linkedin.svg'
 
 const Footer = () => {
 	return (
@@ -42,7 +42,7 @@ export const Socials = () => (
 	</>
 )
 
-const SocialLink = styled.a.attrs(({ href }) => ({
+const SocialLink = styled.a.attrs(({ href }: {href: string}) => ({
 	href,
 	rel: 'noreferrer',
 	target: 'blank',
