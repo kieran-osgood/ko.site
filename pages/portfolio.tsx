@@ -4,7 +4,7 @@ import 'pure-react-carousel/dist/react-carousel.es.css'
 import { css } from 'twin.macro'
 
 import config from '../tailwind.config'
-import useWindowSize from 'hooks/useWindowSize'
+import useWindowSize from 'src/hooks/useWindowSize'
 import HighlightedLine from 'src/components/highlightedline'
 import Layout from 'src/components/layout'
 import { getNested } from 'src/utils'
@@ -131,7 +131,7 @@ const ProjectCard = ({
 							<a
 								key={edge.node.id}
 								href={edge.node.url}
-								tw='text-secondary-text inline-block text-2xs font-bold px-4 whitespace-no-wrap'
+								tw='text-secondary-text inline-block text-2xs font-bold px-4 whitespace-nowrap'
 								css={css`
 									border: 1px solid transparent;
 									border-radius: 2em;

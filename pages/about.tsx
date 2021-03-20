@@ -11,7 +11,7 @@ import LoadingIcon from 'src/components/loading'
 import TwinMacro from 'images/twinmacro.png'
 import SpotifyIcon from 'assets/spotify.svg'
 
-import * as Api from '../api'
+import * as Api from 'src/api'
 
 const AboutPage = ({ path }) => {
 	const anime = useQuery('anime', Api.getMyAnimeList)
