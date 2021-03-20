@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:ital,wght@0,100;1,100&display=swap');
 @font-face {
-	font-family: 'CPMono_V07';
-	src: url('/CPMono_v07_Plain.woff') format('woff');
+	font-family: 'Poppins';
+	src: url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 	font-style: normal;
 	font-weight: normal;
 }
@@ -10,10 +9,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-html, button, a, input {
-	font-family: CPMono_V07;
+html,
+button,
+a,
+input {
+	font-family: Poppins;
 }
 
 :root {

@@ -266,8 +266,8 @@ module.exports = {
 			default: '1',
 		},
 		fontFamily: {
-			heading: ['CPMono_v07 Bold', 'Lucida Console', 'Monaco'],
-			footer: ['CPMono_v07 Plain', 'Lucida Console', 'Monaco'],
+			heading: ['Poppins', 'Lucida Console', 'Monaco'],
+			footer: ['Poppins', 'Lucida Console', 'Monaco'],
 			sans: [
 				'system-ui',
 				'-apple-system',
