@@ -6,35 +6,34 @@
  */
 
 import React, { createContext, useState, useEffect } from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import Link from 'next/link'
+
 import tw, { css, styled } from 'twin.macro'
 import Toggle from 'react-toggle'
-import 'react-toggle/style.css' // for ES6 modules
 
-import '../styles/css/tailwind.css'
-import { DEFAULT_THEME } from 'themes'
-import { applyTheme } from 'themes/utils'
+import { DEFAULT_THEME } from '../themes'
+import { applyTheme } from '../themes/utils'
 
 import Footer from './footer'
 import Navigation from './navigation'
 
-import Sun from 'assets/sun.svg'
-import Moon from 'assets/moon.svg'
-import LogoSVG from 'assets/logo.svg'
+import Sun from '../../assets/sun.svg'
+import Moon from '../../assets/moon.svg'
+import LogoSVG from '../../assets/logo.svg'
 import useLocalStorage from '../hooks/useLocalStorage'
 
 export const Context = createContext(null)
 
 const Layout = ({ children, path }) => {
-	const data = useStaticQuery(graphql`
-		query SiteTitleQuery {
-			site {
-				siteMetadata {
-					title
-				}
-			}
-		}
-	`)
+	// const data = useStaticQuery(graphql`
+	// 	query SiteTitleQuery {
+	// 		site {
+	// 			siteMetadata {
+	// 				title
+	// 			}
+	// 		}
+	// 	}
+	// `)
 	const [theme, setTheme] = useLocalStorage('theme', DEFAULT_THEME) // refactor into uselocalstorage
 
 	useEffect(() => {
@@ -50,8 +49,10 @@ const Layout = ({ children, path }) => {
 							rotate this upwards for a toggle?
 						</div> */}
 					<div tw='flex justify-between items-center mx-auto h-36  pt-8 pl-8 pr-16 lg:max-w-screen-md xl:w-3/4 xl:max-w-screen-lg break-words'>
-						<Link to='/' tw='h-full'>
-							<Logo tw='w-auto h-full'/>
+						<Link href='/' tw='h-full'>
+							<a>
+								<Logo tw='w-auto h-full' />
+							</a>
 						</Link>
 						<Toggle
 							defaultChecked={!theme}
@@ -65,7 +66,8 @@ const Layout = ({ children, path }) => {
 						{children}
 					</div>
 				</Main>
-				<Navigation path={path} siteTitle={data.site.siteMetadata.title} />
+				{/* TODO */}
+				<Navigation path={path} siteTitle={"TODO"} /> 
 				<Footer />
 			</Page>
 		</Context.Provider>

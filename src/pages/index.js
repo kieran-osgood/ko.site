@@ -1,11 +1,10 @@
 import React from 'react'
 import { css } from 'twin.macro'
-// import { Link } from 'gatsby'
 
-import Layout from 'components/layout'
-import SEO from 'components/seo'
-import ImageSlider from 'components/imageslider'
-import HighlightedLine from 'components/highlightedline'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import ImageSlider from '../components/imageslider'
+import HighlightedLine from '../components/highlightedline'
 
 const IndexPage = ({ path }) => (
 	<Layout path={path}>
@@ -47,7 +46,8 @@ const IndexPage = ({ path }) => (
 			<div tw='row-span-1'>
 				<p tw='text-lg'>
 					This is a little website built by myself to play around with some
-					design, touch on gatsby + GraphQL, and hopefully implement some cool ideas.
+					design, touch on gatsby + GraphQL, and hopefully implement some cool
+					ideas.
 				</p>
 				<p tw='text-lg pt-4'>Enjoy!</p>
 			</div>

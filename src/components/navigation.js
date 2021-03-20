@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 import tw, { css, styled } from 'twin.macro'
 
-import HomeIcon from 'assets/navigation/home.svg'
-import AboutIcon from 'assets/navigation/about.svg'
-import PortfolioIcon from 'assets/navigation/portfolio.svg'
-import ContactIcon from 'assets/navigation/contact.svg'
-import PoopIcon from 'assets/navigation/poop.svg'
+import HomeIcon from '../../assets/navigation/home.svg'
+import AboutIcon from '../../assets/navigation/about.svg'
+import PortfolioIcon from '../../assets/navigation/portfolio.svg'
+import ContactIcon from '../../assets/navigation/contact.svg'
+import PoopIcon from '../../assets/navigation/poop.svg'
 
 import Routes from '../data/routes'
 
@@ -69,8 +69,10 @@ const NavLink = ({ url, children }) => {
 	}
 	return (
 		<div tw='z-20'>
-			<StyledLink to={url} active={isCurrentPage(url)}>
+			<StyledLink href={url} active={isCurrentPage(url)}>
+				<a>
 				{children}
+				</a>
 			</StyledLink>
 		</div>
 	)

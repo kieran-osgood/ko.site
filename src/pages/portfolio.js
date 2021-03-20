@@ -161,36 +161,36 @@ const ProjectCard = ({
 	)
 }
 
-export const query = graphql`
-	query GithubQuery {
-		github {
-			user(login: "KieranO547") {
-				repositories(last: 4, orderBy: { field: PUSHED_AT, direction: ASC }) {
-					edges {
-						node {
-							id
-							name
-							url
-							description
-							primaryLanguage {
-								name
-							}
-							repositoryTopics(first: 10) {
-								edges {
-									node {
-										id
-										url
-										topic {
-											name
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				url
-			}
-		}
-	}
-`
+// export const query = graphql`
+// 	query GithubQuery {
+// 		github {
+// 			user(login: "KieranO547") {
+// 				repositories(last: 4, orderBy: { field: PUSHED_AT, direction: ASC }) {
+// 					edges {
+// 						node {
+// 							id
+// 							name
+// 							url
+// 							description
+// 							primaryLanguage {
+// 								name
+// 							}
+// 							repositoryTopics(first: 10) {
+// 								edges {
+// 									node {
+// 										id
+// 										url
+// 										topic {
+// 											name
+// 										}
+// 									}
+// 								}
+// 							}
+// 						}
+// 					}
+// 				}
+// 				url
+// 			}
+// 		}
+// 	}
+// `

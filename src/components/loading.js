@@ -3,11 +3,7 @@ import { PulseLoader } from 'react-spinners'
 
 const Loading = ({ loading }) => {
 	return (
-		<PulseLoader
-			size={30}
-			color={'var(--color-primary)'}
-			loading={loading}
-		/>
+		<PulseLoader size={30} color={'var(--color-primary)'} loading={loading} />
 	)
 }
 

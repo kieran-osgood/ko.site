@@ -5,7 +5,10 @@ import { Socials } from 'components/footer'
 
 // Pulls * required SVGs + maps to array of objects: {path: ..., file: ...}
 const reqSvgs = require.context('../images/languages', true, /\.svg$/)
-const svgs = reqSvgs.keys().map(path => ({ path, file: reqSvgs(path) })).reverse()
+const svgs = reqSvgs
+	.keys()
+	.map(path => ({ path, file: reqSvgs(path) }))
+	.reverse()
 
 export const ProfileCard = () => {
 	return (
@@ -18,7 +21,12 @@ export const ProfileCard = () => {
 				`,
 			]}
 		>
-			<div tw='w-32 h-32 absolute overflow-visible' css={css`left: 40%;`}>
+			<div
+				tw='w-32 h-32 absolute overflow-visible'
+				css={css`
+					left: 40%;
+				`}
+			>
 				<Image />
 			</div>
 			<div tw='pt-16'>

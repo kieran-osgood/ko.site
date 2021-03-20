@@ -9,5 +9,5 @@ export const DEFAULT_THEME = 'dark'
 
 export const themes = {
 	base,
-	dark
+	dark,
 }

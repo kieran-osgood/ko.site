@@ -23,7 +23,7 @@ export default function useWindowSize() {
 
 		window.addEventListener('resize', handleResize)
 		return () => window.removeEventListener('resize', handleResize)
-	}, [isClient, getSize]) 
+	}, [isClient, getSize])
 
 	return windowSize
 }

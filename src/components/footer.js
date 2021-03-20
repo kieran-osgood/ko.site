@@ -1,8 +1,8 @@
 import React from 'react'
 import tw, { css, styled } from 'twin.macro'
-import Github from 'assets/socials/github.svg'
-import Twitter from 'assets/socials/twitter.svg'
-import LinkedIn from 'assets/socials/linkedin.svg'
+import Github from '../../assets/socials/github.svg'
+import Twitter from '../../assets/socials/twitter.svg'
+import LinkedIn from '../../assets/socials/linkedin.svg'
 
 const Footer = () => {
 	return (
@@ -21,9 +21,9 @@ const FooterContainer = styled.footer(() => [
 	tw`flex flex-col items-center justify-center relative w-screen bg-tertiary-background`,
 	css`
 		clip-path: ellipse(50% 116% at 50% 128%);
-			height: 133px;
+		height: 133px;
 		@media (min-width: 1024px) {
-		height: 119px;
+			height: 119px;
 		}
 	`,
 ])

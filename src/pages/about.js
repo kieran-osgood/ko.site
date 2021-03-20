@@ -184,7 +184,9 @@ const StackOverflow = ({
 			<a
 				href={link}
 				tw='text-xs text-secondary-text underline block truncate'
-				css={css`max-width: 70vw;`}
+				css={css`
+					max-width: 70vw;
+				`}
 				target='_blank'
 				rel='noreferrer'
 			>
@@ -195,11 +197,11 @@ const StackOverflow = ({
 )
 
 const Badges = ({ badgeCounts }) => (
-		<div tw='flex flex-wrap' aria-hidden='true'>
-			<Badge color='#ab825f' count={badgeCounts.bronze} />
-			<Badge color='#b4b8bc' count={badgeCounts.silver} />
-			<Badge color='#ffcc01' count={badgeCounts.gold} />
-		</div>
+	<div tw='flex flex-wrap' aria-hidden='true'>
+		<Badge color='#ab825f' count={badgeCounts.bronze} />
+		<Badge color='#b4b8bc' count={badgeCounts.silver} />
+		<Badge color='#ffcc01' count={badgeCounts.gold} />
+	</div>
 )
 
 const Badge = ({ color, count }) => (
