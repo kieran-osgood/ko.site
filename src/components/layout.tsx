@@ -1,30 +1,28 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React, { createContext, useState, useEffect } from 'react';
+import Link from 'next/link';
 
-import React, { createContext, useState, useEffect } from 'react'
-import Link from 'next/link'
+import tw, { css, styled } from 'twin.macro';
+import Toggle from 'react-toggle';
 
-import tw, { css, styled } from 'twin.macro'
-import Toggle from 'react-toggle'
+import { DEFAULT_THEME } from '../themes';
+import { applyTheme } from '../themes/utils';
 
-import { DEFAULT_THEME } from '../themes'
-import { applyTheme } from '../themes/utils'
+import Footer from './footer';
+import Navigation from './navigation';
 
-import Footer from './footer'
-import Navigation from './navigation'
+import Sun from '../../assets/sun.svg';
+import Moon from '../../assets/moon.svg';
+import LogoSVG from '../../assets/logo.svg';
+import useLocalStorage from '../hooks/useLocalStorage';
 
-import Sun from '../../assets/sun.svg'
-import Moon from '../../assets/moon.svg'
-import LogoSVG from '../../assets/logo.svg'
-import useLocalStorage from '../hooks/useLocalStorage'
+export const Context = createContext(null);
 
-export const Context = createContext(null)
+type LayoutProps = {
+	children: React.ReactNode;
+	path: string;
+};
 
-const Layout = ({ children, path }) => {
+const Layout = ({ children, path }: LayoutProps) => {
 	// const data = useStaticQuery(graphql`
 	// 	query SiteTitleQuery {
 	// 		site {
@@ -34,11 +32,11 @@ const Layout = ({ children, path }) => {
 	// 		}
 	// 	}
 	// `)
-	const [theme, setTheme] = useLocalStorage('theme', DEFAULT_THEME) // refactor into uselocalstorage
+	const [theme, setTheme] = useLocalStorage('theme', DEFAULT_THEME); // refactor into uselocalstorage
 
 	useEffect(() => {
-		applyTheme(theme)
-	}, [theme])
+		applyTheme(theme);
+	}, [theme]);
 
 	return (
 		<Context.Provider value={path}>
@@ -67,14 +65,14 @@ const Layout = ({ children, path }) => {
 					</div>
 				</Main>
 				{/* TODO */}
-				<Navigation path={path} siteTitle={"TODO"} /> 
+				<Navigation path={path} siteTitle={'TODO'} />
 				<Footer />
 			</Page>
 		</Context.Provider>
-	)
-}
+	);
+};
 
-export default Layout
+export default Layout;
 
 const Page = styled.div(() => [
 	tw`bg-primary-background min-h-screen text-primary-text`,
@@ -83,7 +81,7 @@ const Page = styled.div(() => [
 			${tw`hover:opacity-75`}
 		}
 	`,
-])
+]);
 
 const Main = styled.main(() => [
 	tw`w-full h-full relative block mx-auto`,
@@ -94,7 +92,7 @@ const Main = styled.main(() => [
 			min-height: calc(100vh - 119px);
 		}
 	`,
-])
+]);
 
 const Logo = styled(LogoSVG)`
 	fill: none;
@@ -104,4 +102,4 @@ const Logo = styled(LogoSVG)`
 	path {
 		fill: var(--color-text-primary);
 	}
-`
+`;

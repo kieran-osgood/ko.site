@@ -9,4 +9,4 @@ export default {
 	backgroundPrimary: '#BCCDFA',
 	backgroundSecondary: '#D9E2F9',
 	backgroundTertiary: '#D9E2F9',
-}
+};

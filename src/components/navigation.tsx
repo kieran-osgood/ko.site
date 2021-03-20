@@ -15,7 +15,7 @@ import { Context } from './layout'
 const Navigation = () => (
 	<Header>
 		<NavBar>
-			{pages.map(({ url, Icon }) => (
+			{pages.map(({ url, Icon }: {url: string, Icon: JSX.Element}) => (
 				<NavLink key={url} url={url}>
 					<Icon />
 				</NavLink>

@@ -4,7 +4,6 @@ import { useQuery } from 'react-query'
 import GitHubCalendar from 'react-github-calendar'
 
 import Layout from 'src/components/layout'
-import SEO from 'src/components/seo'
 import { ProfileCard } from 'src/components/profilecard'
 import HighlightedLine from 'src/components/highlightedline'
 import LoadingIcon from 'src/components/loading'
@@ -22,7 +21,7 @@ const AboutPage = ({ path }) => {
 
 	return (
 		<Layout path={path}>
-			<SEO title='About' />
+			{/* <SEO title='About' /> */}
 
 			<HighlightedLine highlightText={`About`} primary />
 

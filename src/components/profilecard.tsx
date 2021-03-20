@@ -7,7 +7,7 @@ import { Socials } from 'src/components/footer'
 const reqSvgs = require.context('../images/languages', true, /\.svg$/)
 const svgs = reqSvgs
 	.keys()
-	.map(path => ({ path, file: reqSvgs(path) }))
+	.map((path: string) => ({ path, file: reqSvgs(path) }))
 	.reverse()
 
 export const ProfileCard = () => {
@@ -54,7 +54,7 @@ export const ProfileCard = () => {
 }
 
 const LanguagesList = () => {
-	const stripPathing = string => string.match(/(?:.\/)+(\w*)+(?:\.svg)/)[1]
+	const stripPathing = (string: string) => string.match(/(?:.\/)+(\w*)+(?:\.svg)/)?.[1] ?? ""
 	return (
 		<div tw='flex flex-row justify-around pt-6 h-20 justify-around flex-wrap'>
 			{/* // ! TODO re-order so that preferred languages are first */}

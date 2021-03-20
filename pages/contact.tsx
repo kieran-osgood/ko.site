@@ -6,7 +6,6 @@ import axios from 'axios'
 import qs from 'qs'
 
 import Layout from 'src/components/layout'
-import SEO from 'src/components/seo'
 import HighlightedLine from 'src/components/highlightedline'
 import Loading from 'src/components/loading'
 
@@ -14,7 +13,7 @@ import WarningIcon from 'assets/warning.svg'
 
 const Contact = ({ path }) => (
 	<Layout path={path}>
-		<SEO title='Contact' />
+		{/* <SEO title='Contact' /> */}
 		<div tw='grid gap-8'>
 			<HighlightedLine highlightText={`Contact`} primary />
 

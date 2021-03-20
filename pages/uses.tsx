@@ -2,14 +2,13 @@ import React from 'react'
 import 'twin.macro'
 
 import Layout from 'src/components/layout'
-import SEO from 'src/components/seo'
 import HighlightedLine from 'src/components/highlightedline'
 
 import PoopIcon from 'assets/navigation/poop.svg'
 
 const Uses = ({ path }) => (
 	<Layout path={path}>
-		<SEO title='Uses' />
+		{/* <SEO title='Uses' /> */}
 		<div tw=''>
 			<div tw='pb-4'>
 				<HighlightedLine highlightText={`/Uses`} secondary />

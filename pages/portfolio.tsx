@@ -7,7 +7,6 @@ import config from '../tailwind.config'
 import useWindowSize from 'hooks/useWindowSize'
 import HighlightedLine from 'src/components/highlightedline'
 import Layout from 'src/components/layout'
-import SEO from 'src/components/seo'
 import { getNested } from 'src/utils'
 
 const Portfolio = ({ path, data }) => {
@@ -16,7 +15,7 @@ const Portfolio = ({ path, data }) => {
 		width < Number(config.theme.screens.sm.replace('px', ''))
 	return (
 		<Layout path={path}>
-			<SEO title='Page two' />
+			{/* <SEO title='Page two' /> */}
 			<HighlightedLine highlightText={`Portfolio`} secondary />
 			<div tw=' max-w-full px-2 pt-2 pb-2 md:flex md:flex-row md:flex-wrap relative'>
 				{isMobile() ? (

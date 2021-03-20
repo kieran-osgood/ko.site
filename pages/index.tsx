@@ -2,13 +2,12 @@ import React from 'react'
 import { css } from 'twin.macro'
 
 import Layout from 'src/components/layout'
-import SEO from 'src/components/seo'
 import ImageSlider from 'src/components/imageslider'
 import HighlightedLine from 'src/components/highlightedline'
 
 const IndexPage = ({ path }) => (
 	<Layout path={path}>
-		<SEO title='Home' />
+		{/* <SEO title='Home' /> */}
 
 		<div tw='sm:text-sm md:text-sm'>
 			{/* <div tw='flex items-center '>
