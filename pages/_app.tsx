@@ -3,9 +3,9 @@ import 'react-toggle/style.css' // for ES6 modules
 import 'src/styles/css/tailwind.css'
 
 import * as React from 'react'
-import App from 'next/app'
+import type { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }:AppProps) {
   return <Component {...pageProps} />
 }
 
