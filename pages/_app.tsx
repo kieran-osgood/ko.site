@@ -1,12 +1,12 @@
-import 'tailwindcss/dist/base.min.css'
-import 'react-toggle/style.css' // for ES6 modules
-import 'src/styles/css/tailwind.css'
+import 'tailwindcss/dist/base.min.css';
+import 'react-toggle/style.css'; // for ES6 modules
+import 'src/styles/css/tailwind.css';
 
-import * as React from 'react'
-import type { AppProps } from 'next/app'
+import * as React from 'react';
+import type { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps }:AppProps) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps }: AppProps) {
+	return <Component {...pageProps} />;
 }
 
 // Only uncomment this method if you have blocking data requirements for
@@ -21,4 +21,4 @@ function MyApp({ Component, pageProps }:AppProps) {
 //   return { ...appProps }
 // }
 
-export default MyApp
+export default MyApp;
