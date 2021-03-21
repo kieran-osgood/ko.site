@@ -16,10 +16,6 @@ input {
 	font-family: Poppins;
 }
 
-:root {
-	font-size: 62.5%;
-}
-
 html {
 	overflow-x: hidden;
 }
