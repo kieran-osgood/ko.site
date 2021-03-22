@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import Layout from 'src/components/layout';
 import Heading from 'src/components/heading';
@@ -6,7 +6,6 @@ import Heading from 'src/components/heading';
 type IndexProps = {
 	path: string;
 };
-
 const IndexPage = ({ path }: IndexProps) => {
 	return (
 		<Layout path={path}>
