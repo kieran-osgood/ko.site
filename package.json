@@ -1,90 +1,17 @@
 {
-  "name": "ko-website",
-  "private": true,
-  "description": "Personal website",
-  "version": "1.1.0",
-  "babelMacros": {
-    "twin": {
-      "preset": "styled-components",
-      "autoCssProp": true,
-      "dataTwProp": true
-    }
-  },
-  "author": "Kieran Osgood",
-  "dependencies": {
-    "@svgr/webpack": "^5.5.0",
-    "axios": "^0.21.1",
-    "babel-plugin-macros": "^2.8.0",
-    "eslint": "^7.22.0",
-    "http-proxy-middleware": "^1.0.4",
-    "netlify-lambda": "^1.6.3",
-    "next": "latest",
-    "postcss-custom-properties": "^11.0.0",
-    "postcss-import": "^12.0.1",
-    "postcss-nested": "^4.2.1",
-    "postcss-preset-env": "^6.7.0",
-    "prettier": "^2.2.1",
-    "prop-types": "^15.7.2",
-    "pure-react-carousel": "^1.26.0",
-    "qs": "^6.9.4",
-    "react": "latest",
-    "react-compare-image": "^3.0.2",
-    "react-dom": "latest",
-    "react-github-calendar": "https://github.com/KieranO547/react-github-calendar.git",
-    "react-helmet": "^5.2.1",
-    "react-hook-form": "^5.7.2",
-    "react-query": "^1.5.8",
-    "react-spinners": "^0.8.3",
-    "react-toggle": "^4.1.1",
-    "react-tooltip": "^4.2.7",
-    "sass": "^1.32.8",
-    "styled-components": "^5.1.1"
-  },
-  "devDependencies": {
-    "@babel/preset-react": "^7.12.13",
-    "@babel/preset-typescript": "^7.13.0",
-    "@types/react": "^17.0.3",
-    "@types/react-toggle": "^4.0.2",
-    "@types/styled-components": "^5.1.9",
-    "@types/tailwindcss": "^2.0.2",
-    "@types/webpack-env": "^1.16.0",
-    "@typescript-eslint/eslint-plugin": "^4.18.0",
-    "@typescript-eslint/parser": "^4.18.0",
-    "autoprefixer": "^10.2.5",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "gatsby-plugin-root-import": "^2.0.5",
-    "postcss": "^8.2.8",
-    "purgecss": "^2.1.0",
-    "tailwindcss": "^2.0.4",
-    "typescript": "^4.2.3",
-    "typescript-plugin-css-modules": "^3.2.0"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
+  "name": "ko.site",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "old-build": "netlify build",
-    "build-prod": "npx tailwind build ./src/css/main.css -o ./assets/css/main.css && npm run purge && npm run minify",
-    "lambda": "netlify-lambda build .netlify/functions",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "old-start": "netlify-lambda build .netlify/functions && netlify dev",
-    "deploy": "netlify deploy",
-    "deploy-prod": "netlify deploy --prod",
-    "minify": "cleancss -o ./assets/css/main.min.css ./assets/css/main.css",
-    "purge": "purgecss --css ./assets/css/main.css --content ./index.html --out ./assets/css/"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "dependencies": {
+    "@astrojs/starlight": "^0.3.0",
+    "astro": "^2.5.0",
+    "sharp": "^0.32.1"
   }
 }
