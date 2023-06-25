@@ -13,6 +13,9 @@ export default defineConfig({
         linkedin: 'https://www.linkedin.com/in/kieranosgood',
         twitter: 'https://twitter.com/kieranbosgood',
       },
+      // editLink: {
+      //   baseUrl: 'https://github.com/kieran-osgood/ko.site/tree/astro/src/content/docs'
+      // },
       // sidebar: [
         // {
         //   label: 'Guides',

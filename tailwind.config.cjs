@@ -5,4 +5,5 @@ module.exports = {
         extend: {},
     },
     plugins: [],
+    // darkMode: [":root[data-theme='light']", "[data-theme='light']"]
 }

@@ -1,38 +1,31 @@
----
-
----
-
 <footer>
-    <div class="grid grid-cols-2">
+    <div class='grid grid-cols-2'>
         <div>
             <div>
-                <h2>
-                    Lets Connect
-                </h2>
-                <button>
-                    Contact Me
-                </button>
+                <h2>Lets Connect</h2>
+                <button> Contact Me</button>
             </div>
-            <div class="socials">
-                <a href="/">Github</a>
-                <a href="/">LinkedIn</a>
-                <a href="/">Twitter</a>
-                <a href="/">Instagram</a>
+            <div class='socials'>
+                <a href='/'>Github</a>
+                <a href='/'>LinkedIn</a>
+                <a href='/'>Twitter</a>
+                <a href='/'>Instagram</a>
             </div>
-        </div>
-        <div>
-            Home
-            About
-            Portfolio
-            Blog
-            Contact
         </div>
 
+        {/* Not sure why col-end-4 works - lets check whether we just use flex */}
+        <div class="grid grid-cols-1 col-end-4 gap-1">
+            {['Home', 'About', 'Portfolio', 'Blog', 'Contact'].map(route => (
+                <a class="!text-black font-bold dark:!text-white" href={`${route.toLowerCase()}`}>
+                    {route}
+                </a>
+            ))}
+        </div>
     </div>
 
     <hr/>
 
-    <div class="post-footer">
-        &copy;{new Date().getFullYear()}, KO.DEV
+    <div class='post-footer'>
+        &copy; {new Date().getFullYear()}, KO.DEV
     </div>
 </footer>

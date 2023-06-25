@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="57649194-16b4-41ac-932c-6d4dd66d3be9" name="Changes" comment="feat(blog-list): setup blog list page">
-      <change afterPath="$PROJECT_DIR$/src/components/footer.astro" afterDir="false" />
+    <list default="true" id="57649194-16b4-41ac-932c-6d4dd66d3be9" name="Changes" comment="chore(ci): explicitly setup node/pnpm">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/astro.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/astro.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/docs/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/docs/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/blog-list.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/blog-list.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.cjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,11 +31,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="astro" />
-                    <option name="lastUsedInstant" value="1687703413" />
+                    <option name="lastUsedInstant" value="1687705469" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1687703412" />
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1687705360" />
                   </RecentBranch>
                 </list>
               </option>
@@ -59,23 +60,23 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;astro&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/kieranosgood/Repositories/ko.blog/src/content/docs&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/kieranosgood/Library/Application Support/JetBrains/Toolbox/apps/WebStorm/ch-0/231.8770.64/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "astro",
+    "last_opened_file_path": "/Users/kieranosgood/Repositories/ko.blog/src/content/docs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "reference.idesettings.emmet.xml",
+    "ts.external.directory.path": "/Users/kieranosgood/Library/Application Support/JetBrains/Toolbox/apps/WebStorm/ch-0/231.8770.64/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/content/docs" />
@@ -130,6 +131,7 @@
       <updated>1687621459788</updated>
       <workItem from="1687621460955" duration="10425000" />
       <workItem from="1687702761296" duration="1150000" />
+      <workItem from="1687713313607" duration="7152000" />
     </task>
     <task id="LOCAL-00001" summary="Progress update setting up blog">
       <created>1687701444563</created>
@@ -145,7 +147,49 @@
       <option name="project" value="LOCAL" />
       <updated>1687703302681</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: setup tailwind and being adding footer component">
+      <created>1687705216138</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687705216138</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: setup tailwind and being adding footer component">
+      <created>1687705237209</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687705237209</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat(vercel): setup deployment previews">
+      <created>1687714039339</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1687714039339</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat(vercel): setup production releases">
+      <created>1687714663527</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1687714663527</updated>
+    </task>
+    <task id="LOCAL-00007" summary="chore: update pnpm lock for ci build">
+      <created>1687715287990</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687715287990</updated>
+    </task>
+    <task id="LOCAL-00008" summary="chore(ci): explicitly setup node/pnpm">
+      <created>1687715432709</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1687715432709</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,9 +198,25 @@
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.mdx" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Progress update setting up blog" />
     <MESSAGE value="feat(blog-list): setup blog list page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(blog-list): setup blog list page" />
+    <MESSAGE value="feat: setup tailwind and being adding footer component" />
+    <MESSAGE value="feat(vercel): setup deployment previews" />
+    <MESSAGE value="feat(vercel): setup production releases" />
+    <MESSAGE value="chore: update pnpm lock for ci build" />
+    <MESSAGE value="chore(ci): explicitly setup node/pnpm" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(ci): explicitly setup node/pnpm" />
   </component>
 </project>
