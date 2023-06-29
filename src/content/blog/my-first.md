@@ -1,13 +1,9 @@
 ---
+layout: ../../layouts/time-read.astro
+# schema
 title: My first blog post
-layout: ../../../layouts/time-read.astro
 description: The first in a line of posts
-hero:
-  tagline: The first in a series...
 ---
-
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
 
 # Senory
 <p> abc = ''</p>

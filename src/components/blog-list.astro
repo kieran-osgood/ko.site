@@ -1,16 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
-import { Card } from '@astrojs/starlight/components';
 
-const posts = await getCollection('docs', ({ id }) => {
-    return ['blog/index.mdx', 'index.mdx'].includes(id) === false;
-});
+const posts = await getCollection('blog');
+//    ^?
+
 ---
 
 {
     posts.map((post) => (
-        <a href={`/${post.slug}`}>
-            <Card title={post.data.title}>{post.data.description}</Card>
+        <a href={`/blog/${post.slug}`}>
+            <p>{post.data.title}</p>
         </a>
     ))
 }
