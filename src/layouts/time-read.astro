@@ -1,0 +1,37 @@
+---
+const {minutesRead, frontmatter} = Astro.props.frontmatter;
+const {headings} = Astro.props;
+---
+
+<p class="font-bold">~{minutesRead}</p>
+
+<p>
+Table of Contents
+</p>
+{headings.map(_ => (
+<a href={`#${_.slug}`} class="!text-red-300 !no-underline" style={`--depth: ${_.depth-1}`} aria-current={_.current && 'true'}>
+    {_.text}
+</a>
+<br>
+))}
+
+<slot/>
+
+<style>
+    :root {
+        --depth: 0;
+    }
+
+    a {
+        --pad-inline: 0.5rem;
+        padding-inline: calc(1rem * var(--depth) + var(--pad-inline)) var(--pad-inline) !important;
+    }
+
+    a[aria-current='true'],
+    a[aria-current='true']:hover,
+    a[aria-current='true']:focus {
+        font-weight: 600 !important;
+        color: var(--sl-color-text-invert);
+        background-color: var(--sl-color-text-accent);
+    }
+</style>

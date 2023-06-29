@@ -1,0 +1,34 @@
+@tailwind base
+@tailwind components;
+@tailwind utilities;
+
+/*https://github.com/withastro/starlight/issues/88*/
+@layer base {
+    /* Dark Theme */
+    :root {
+        --sl-color-white: theme('colors.white');
+        --sl-color-gray-1: theme('colors.gray.200');
+        --sl-color-gray-2: theme('colors.gray.300');
+        --sl-color-gray-3: theme('colors.gray.500');
+        --sl-color-gray-4: theme('colors.gray.600');
+        --sl-color-gray-5: theme('colors.gray.700');
+        --sl-color-gray-6: theme('colors.gray.800');
+        --sl-color-black: theme('colors.gray.950');
+
+        --sl-color-text-accent: theme('colors.green.300');
+    }
+
+    /* Light Theme */
+    :root[data-theme='light'] {
+        --sl-color-white: theme('colors.gray.900');
+        --sl-color-gray-1: theme('colors.gray.800');
+        --sl-color-gray-2: theme('colors.gray.700');
+        --sl-color-gray-3: theme('colors.gray.500');
+        --sl-color-gray-4: theme('colors.gray.400');
+        --sl-color-gray-5: theme('colors.gray.300');
+        --sl-color-gray-6: theme('colors.gray.200');
+        --sl-color-gray-7: theme('colors.gray.100');
+
+        --sl-color-text-accent: theme('colors.green.300');
+    }
+}

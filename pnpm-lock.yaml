@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@astrojs/starlight':
     specifier: ^0.3.0
@@ -10,6 +14,12 @@ dependencies:
   astro:
     specifier: ^2.7.0
     version: 2.7.0(sharp@0.32.1)
+  mdast-util-to-string:
+    specifier: ^3.2.0
+    version: 3.2.0
+  reading-time:
+    specifier: ^1.5.0
+    version: 1.5.0
   sharp:
     specifier: ^0.32.1
     version: 0.32.1
@@ -3298,6 +3308,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: false
+
+  /reading-time@1.5.0:
+    resolution: {integrity: sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==}
     dev: false
 
   /rehype-parse@8.0.4:

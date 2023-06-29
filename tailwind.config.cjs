@@ -5,5 +5,8 @@ module.exports = {
         extend: {},
     },
     plugins: [],
-    // darkMode: [":root[data-theme='light']", "[data-theme='light']"]
+    corePlugins:{
+        preflight: false, // disabling preflight styles
+    },
+    darkMode: ['class', '[data-theme="dark"]'], // support dark mode 🌑
 }
