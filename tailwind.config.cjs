@@ -5,8 +5,4 @@ module.exports = {
         extend: {},
     },
     plugins: [],
-    corePlugins:{
-        preflight: false, // disabling preflight styles
-    },
-    darkMode: ['class', '[data-theme="dark"]'], // support dark mode 🌑
 }
