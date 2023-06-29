@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/time-read.astro
+layout: ../../layouts/estimated-read-time.astro
 # schema
 title: My first blog post
 description: The first in a line of posts
