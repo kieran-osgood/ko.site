@@ -1,31 +1,44 @@
-<footer>
+---
+import LinkButton from '@components/core/link-button.astro';
+---
+
+<footer class="border-t-2">
     <div class='grid grid-cols-2'>
         <div>
             <div>
-                <h2>Lets Connect</h2>
-                <button> Contact Me</button>
+                <h2 class='dark:text-white'>Lets Connect</h2>
+                <LinkButton>Contact Me</LinkButton>
             </div>
             <div class='socials'>
-                <a href='/'>Github</a>
-                <a href='/'>LinkedIn</a>
-                <a href='/'>Twitter</a>
-                <a href='/'>Instagram</a>
+                <a class='dark:text-white' href='/'>Github</a>
+                <a class='dark:text-white' href='/'>LinkedIn</a>
+                <a class='dark:text-white' href='/'>Twitter</a>
+                <a class='dark:text-white' href='/'>Instagram</a>
             </div>
         </div>
 
-        {/* Not sure why col-end-4 works - lets check whether we just use flex */}
-        <div class="grid grid-cols-1 col-end-4 gap-1">
-            {['Home', 'About', 'Portfolio', 'Blog', 'Contact'].map(route => (
-                <a class="text-black dark:text-white font-bold no-underline" href={`${route.toLowerCase()}`}>
-                    {route}
-                </a>
-            ))}
+        {
+            /* Not sure why col-end-4 works - lets check whether we just use flex */
+        }
+        <div class='grid grid-cols-1 col-end-4 gap-1'>
+            {
+                ['Home', 'About', 'Portfolio', 'Blog', 'Contact'].map(
+                    (route) => (
+                        <a
+                            class='text-black dark:text-white font-bold no-underline'
+                            href={`${route.toLowerCase()}`}
+                        >
+                            {route}
+                        </a>
+                    ),
+                )
+            }
         </div>
     </div>
 
-    <hr/>
+    <hr />
 
-    <div class='post-footer'>
+    <div class='dark:text-white'>
         &copy; {new Date().getFullYear()}, KO.DEV
     </div>
 </footer>

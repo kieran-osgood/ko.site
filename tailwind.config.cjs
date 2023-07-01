@@ -12,7 +12,4 @@ module.exports = {
     },
     plugins: [preline],
     darkMode: 'class',
-    // darkMode: 'media',
-
-
 };

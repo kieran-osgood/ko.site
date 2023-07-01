@@ -6,6 +6,10 @@ import Footer from '@components/footer.astro'
 
 <Base>
 	<Header />
-	<slot />
+
+	<div class="flex flex-1 flex-col">
+		<slot />
+	</div>
+
 	<Footer />
 </Base>
