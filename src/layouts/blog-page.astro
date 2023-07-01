@@ -1,6 +1,11 @@
-<!-- 
-	wraps the .md with 
-	- header
-		- toc
-	- footer
--->
+---
+import EstimatedReadTime from '@layouts/estimated-read-time.astro'
+import Page from '@layouts/page.astro'
+import TableOfContents from '@components/table-of-contents.astro'
+const { headings } = Astro.props
+---
+
+<Page>
+	<slot />
+	<TableOfContents headings={headings} />
+</Page>

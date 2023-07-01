@@ -1,7 +1,14 @@
-<h1>Hello World</h1>
-<a href='/blog'> blog</a>
-<button
-	class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
->
-	hello
-</button>
+---
+import Hero from '@components/hero.astro'
+import Header from '@components/header.astro'
+import Page from '@layouts/page.astro'
+import Footer from '@components/footer.astro'
+---
+
+<Page>
+	<Hero />
+	<!-- <About /> -->
+	<!-- <Portfolio /> -->
+	<!-- <Contact /> -->
+	<Footer />
+</Page>
