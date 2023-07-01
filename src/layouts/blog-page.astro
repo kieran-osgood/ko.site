@@ -1,11 +1,17 @@
 ---
-import EstimatedReadTime from '@layouts/estimated-read-time.astro'
-import Page from '@layouts/page.astro'
-import TableOfContents from '@components/table-of-contents.astro'
-const { headings } = Astro.props
+import EstimatedReadTime from '@layouts/estimated-read-time.astro';
+import Page from '@layouts/page.astro';
+import TableOfContents from '@components/table-of-contents.astro';
+const { headings } = Astro.props;
 ---
 
 <Page>
-	<slot />
-	<TableOfContents headings={headings} />
+	<div class='grid grid-cols-6 gap-3'>
+		<div class="col-start-2 col-span-4">
+			<slot />
+		</div>
+		<div>
+			<TableOfContents headings={headings} />
+		</div>
+	</div>
 </Page>
