@@ -1,46 +1,176 @@
 ---
 interface Props {
-	headings: { depth: number; slug: string; text: string }[];
+	headings: {
+		depth: number;
+		slug: string;
+		text: string;
+		current?: boolean;
+	}[];
 }
 const { headings } = Astro.props;
 ---
 
-<div>
-	<h2 class='dark:text-white font-semibold py-2'>Table of Contents</h2>
-
-	{
-		headings.map((_) => (
-			<>
-				<a
-					href={`#${_.slug}`}
-					class='dark:text-[#868c98] no-underline'
-					style={`--depth: ${_.depth - 1}`}
-					aria-current={_.current && 'true'}
-				>
-					{_.text}
-				</a>
-				<br />
-			</>
-		))
-	}
-</div>
+<starlight-toc data-min-h={0} data-max-h={3}>
+	<nav class='sticky top-0 self-start toc'>
+		<h2 class='dark:text-white font-semibold py-2'>Table of Contents</h2>
+		<ul>
+			{
+				headings.map((_) => (
+					<li style={`--depth: ${_.depth - 2}`}>
+						<a
+							href={`#${_.slug}`}
+							class='dark:text-[#868c98] no-underline'
+							aria-current={_.current && 'true'}
+						>
+							{_.text}
+						</a>
+						<br />
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</starlight-toc>
 
 <style>
 	:root {
 		--depth: 0;
 	}
 
-	a {
+	li {
 		--pad-inline: 0.5rem;
 		padding-inline: calc(1rem * var(--depth) + var(--pad-inline))
 			var(--pad-inline) !important;
 	}
-
+/* 
 	a[aria-current='true'],
 	a[aria-current='true']:hover,
 	a[aria-current='true']:focus {
 		font-weight: 600 !important;
-		/* color: var(--sl-color-text-invert); */
-		/* background-color: var(--sl-color-text-accent); */
+		color: hsl(234, 88%, 90%);
+		background-color: hsl(234, 54%, 20%)
+	} */
+
+	.active {
+		background-color: #00ea8d;
+		border-radius: 4px;
+		color: black !important;
+	}
+
+	a[aria-current='true'] {
+		background-color: #00ea8d;
+		border-radius: 4px;
+		color: black !important;
 	}
 </style>
+
+<script>
+	export class StarlightTOC extends HTMLElement {
+		private _current = this.querySelector(
+			'a[aria-current="true"]',
+		) as HTMLAnchorElement | null;
+		private minH = parseInt(this.dataset.minH || '2', 10);
+		private maxH = parseInt(this.dataset.maxH || '3', 10);
+
+		protected set current(link: HTMLAnchorElement) {
+			if (link === this._current) return;
+			if (this._current) this._current.removeAttribute('aria-current');
+			link.setAttribute('aria-current', 'true');
+			this._current = link;
+		}
+
+		constructor({ smallViewport = false } = {}) {
+			super();
+
+			/** All the links in the table of contents. */
+			const links = [...this.querySelectorAll('a')];
+
+			/** Test if an element is a table-of-contents heading. */
+			const isHeading = (el: Element): el is HTMLHeadingElement => {
+				if (el instanceof HTMLHeadingElement) {
+					// Special case for page title h1
+					if ('pageTitle' in el.dataset) return true;
+					// Check the heading level is within the user-configured limits for the ToC
+					const level = el.tagName[1];
+					if (level) {
+						const int = parseInt(level, 10);
+						if (int >= this.minH && int <= this.maxH) return true;
+					}
+				}
+				return false;
+			};
+
+			/** Walk up the DOM to find the nearest heading. */
+			const getElementHeading = (
+				el: Element | null,
+			): HTMLHeadingElement | null => {
+				if (!el) return null;
+				const origin = el;
+				while (el) {
+					if (isHeading(el)) return el;
+					// Assign the previous sibling’s last, most deeply nested child to el.
+					el = el.previousElementSibling;
+					while (el?.lastElementChild) {
+						el = el.lastElementChild;
+					}
+					// Look for headings amongst siblings.
+					const h = getElementHeading(el);
+					if (h) return h;
+				}
+				// Walk back up the parent.
+				return getElementHeading(origin.parentElement);
+			};
+
+			/** Handle intersections and set the current link to the heading for the current intersection. */
+			const setCurrent: IntersectionObserverCallback = (entries) => {
+				for (const { isIntersecting, target } of entries) {
+					if (!isIntersecting) continue;
+					const heading = getElementHeading(target);
+					if (!heading) continue;
+					const link = links.find(
+						(link) =>
+							link.hash === '#' + encodeURIComponent(heading.id),
+					);
+					if (link) {
+						this.current = link;
+						break;
+					}
+				}
+			};
+
+			// Observe elements with an `id` (most likely headings) and their siblings.
+			// Also observe direct children of `.content` to include elements before
+			// the first heading.
+			const toObserve = document.querySelectorAll(
+				// 'main [id], main [id] ~ *, main .content > *',
+				'article > *',
+			);
+			/** Start intersections at nav height + 2rem padding. */
+			const top = (smallViewport ? 104 : 64) + 32;
+			/** End intersections 1.5rem later. */
+			const bottom = top + 24;
+
+			let observer: IntersectionObserver | undefined;
+			function observe() {
+				if (observer) observer.disconnect();
+				const height = document.documentElement.clientHeight;
+				const rootMargin = `-${top}px 0% ${bottom - height}px`;
+				observer = new IntersectionObserver(setCurrent, { rootMargin });
+				toObserve.forEach((h) => observer!.observe(h));
+			}
+			observe();
+
+			const onIdle =
+				window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
+			let timeout: NodeJS.Timeout;
+			window.addEventListener('resize', () => {
+				// Disable intersection observer while window is resizing.
+				if (observer) observer.disconnect();
+				clearTimeout(timeout);
+				timeout = setTimeout(() => onIdle(observe), 200);
+			});
+		}
+	}
+
+	customElements.define('starlight-toc', StarlightTOC);
+</script>
