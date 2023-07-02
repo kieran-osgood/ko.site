@@ -1,0 +1,516 @@
+---
+// import '@pagefind/default-ui/css/ui.css';
+// import { useTranslations } from '../utils/translations';
+import Icon from '@components/core/icon/icon.astro';
+
+interface Props {
+  locale: string | undefined;
+}
+
+// const t = useTranslations(Astro.props.locale);
+const pagefindTranslations = {
+//   placeholder: t('search.label'),
+//   ...Object.fromEntries(
+//     Object.entries(t.pick('pagefind.')).map(([key, value]) => [
+//       key.replace('pagefind.', ''),
+//       value,
+//     ])
+//   ),
+};
+---
+
+<site-search 
+class="flex justify-center w-full"
+data-translations={JSON.stringify({})}>
+  <button data-open-modal disabled>
+    {
+      /* The span is `aria-hidden` because it is not shown on small screens. Instead, the icon label is used for accessibility purposes. */
+    }
+    <Icon name="magnifier" label={'search.label'} color='black' />
+    <span class="hidden md:block text-black" aria-hidden="true">Search</span>
+    <Icon
+      name="forward-slash"
+      class="hidden md:block"
+      label={'search.shortcutLabel'}
+      color='black'
+    />
+  </button>
+
+  <dialog style="padding:0" aria-label={'search.label'}>
+    <div class="dialog-frame flex">
+      {
+        /* TODO: Make the layout of this button flexible to accommodate different word lengths. Currently hard-coded for English: “Cancel” */
+      }
+      <button data-close-modal class="flex md:hidden">
+        search.cancelLabel
+      </button>
+      {
+        import.meta.env.DEV ? (
+          <div style="margin: auto; text-align: center; white-space: pre-line;" dir="ltr">
+            <p>{"search.devWarning"}</p>
+          </div>
+        ) : (
+          <div class="search-container">
+            <div id="starlight__search" />
+          </div>
+        )
+      }
+    </div>
+  </dialog>
+</site-search>
+
+<script>
+  class SiteSearch extends HTMLElement {
+    constructor() {
+      super();
+      const openBtn = this.querySelector<HTMLButtonElement>(
+        'button[data-open-modal]'
+      )!;
+      const closeBtn = this.querySelector<HTMLButtonElement>(
+        'button[data-close-modal]'
+      )!;
+      const dialog = this.querySelector('dialog')!;
+      const dialogFrame = this.querySelector('.dialog-frame')!;
+
+      /** Close the modal if a user clicks outside of the modal. */
+      const onWindowClick = (event: MouseEvent) => {
+        if (
+          document.body.contains(event.target as Node) &&
+          !dialogFrame.contains(event.target as Node)
+        )
+          closeModal();
+      };
+
+      const openModal = (event?: MouseEvent) => {
+        dialog.showModal();
+        this.querySelector('input')?.focus();
+        event?.stopPropagation();
+        window.addEventListener('click', onWindowClick);
+      };
+
+      const closeModal = () => {
+        dialog.close();
+        window.removeEventListener('click', onWindowClick);
+      };
+
+      openBtn.addEventListener('click', openModal);
+      openBtn.disabled = false;
+      closeBtn.addEventListener('click', closeModal);
+
+      // Listen for `/` and `cmd + k` keyboard shortcuts.
+      window.addEventListener('keydown', (e) => {
+        if (e.metaKey === true && e.key === 'k') {
+          dialog.open ? closeModal() : openModal();
+          e.preventDefault();
+        } else if (e.key === '/' && !dialog.open) {
+          openModal();
+          e.preventDefault();
+        }
+      });
+
+      let translations = {};
+      try {
+        translations = JSON.parse(this.dataset.translations || '{}');
+      } catch {}
+
+      window.addEventListener('DOMContentLoaded', () => {
+        if (import.meta.env.DEV) return;
+        const onIdle =
+          window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
+        onIdle(async () => {
+        //   const { PagefindUI } = await import('@pagefind/default-ui');
+        //   new PagefindUI({
+        //     element: '#starlight__search',
+        //     baseUrl: import.meta.env.BASE_URL,
+        //     bundlePath:
+        //       import.meta.env.BASE_URL.replace(/\/$/, '') + '/_pagefind/',
+        //     showImages: false,
+        //     translations,
+        //   });
+        });
+      });
+    }
+  }
+  customElements.define('site-search', SiteSearch);
+</script>
+
+<style>
+  button[data-open-modal] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 0;
+    background-color: transparent;
+    color: var(--sl-color-gray-1);
+    cursor: pointer;
+    height: 2.5rem;
+    font-size: var(--sl-text-xl);
+  }
+
+  @media (min-width: 50rem) {
+    button[data-open-modal] {
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 0.5rem;
+      padding-inline-start: 0.75rem;
+      padding-inline-end: 1rem;
+      background-color: var( --sl-color-gray-1);
+      color: var(--sl-color-gray-2);
+      font-size: var(--sl-text-sm);
+      width: 100%;
+      max-width: 22rem;
+    }
+    button[data-open-modal]:hover {
+      border-color: var(--sl-color-gray-2);
+      color: var(--sl-color-white);
+    }
+
+    button[data-open-modal] > :last-child {
+      margin-inline-start: auto;
+    }
+  }
+
+  dialog {
+    margin: 0;
+    background-color: var(--sl-color-gray-6);
+    border: 1px solid hsl(228, 8%, 77%);
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    box-shadow: var(--sl-shadow-lg);
+  }
+  dialog[open] {
+    display: grid;
+  }
+
+  dialog::backdrop {
+    background-color: var(--sl-color-backdrop-overlay);
+    -webkit-backdrop-filter: blur(0.25rem);
+    backdrop-filter: blur(0.25rem);
+  }
+
+  .dialog-frame {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  button[data-close-modal] {
+    position: absolute;
+    z-index: 1;
+    align-items: center;
+    align-self: flex-end;
+    height: calc(64px * var(--pagefind-ui-scale));
+    padding: 0.25rem;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: var(--sl-color-text-accent);
+  }
+
+  #starlight__search {
+    --pagefind-ui-primary: var(--sl-color-accent-light);
+    --pagefind-ui-text: hsl(222, 11%, 23%);
+    --pagefind-ui-background:  hsl(223, 13%, 10%);
+    --pagefind-ui-border: hsl(228, 8%, 77%);
+    --pagefind-ui-border-width: 1px;
+    --sl-search-cancel-space: 5rem;
+  }
+
+  @media (min-width: 50rem) {
+    #starlight__search {
+      --sl-search-cancel-space: 0px;
+    }
+
+    dialog {
+      margin: 4rem auto auto;
+      border-radius: 0.5rem;
+      width: 90%;
+      max-width: 40rem;
+      height: max-content;
+      min-height: 15rem;
+      max-height: calc(100% - 8rem);
+    }
+  }
+</style>
+
+<style is:global>
+	:root,
+::backdrop {
+  /* Colors (dark mode) */
+  --sl-color-white: hsl(0, 0%, 100%); /* “white” */
+  --sl-color-gray-1: hsl(231, 23%, 94%);
+  --sl-color-gray-2: hsl(228, 8%, 77%);
+  --sl-color-gray-3: hsl(221, 8%, 56%);
+  --sl-color-gray-4: hsl(225, 9%, 36%);
+  --sl-color-gray-5: hsl(222, 11%, 23%);
+  --sl-color-gray-6: hsl(222, 13%, 16%);
+  --sl-color-black: hsl(223, 13%, 10%);
+
+  --sl-hue-orange: 41;
+  --sl-color-orange-low: hsl(var(--sl-hue-orange), 39%, 22%);
+  --sl-color-orange: hsl(var(--sl-hue-orange), 82%, 63%);
+  --sl-color-orange-high: hsl(var(--sl-hue-orange), 82%, 87%);
+  --sl-hue-green: 101;
+  --sl-color-green-low: hsl(var(--sl-hue-green), 39%, 22%);
+  --sl-color-green: hsl(var(--sl-hue-green), 82%, 63%);
+  --sl-color-green-high: hsl(var(--sl-hue-green), 82%, 80%);
+  --sl-hue-blue: 234;
+  --sl-color-blue-low: hsl(var(--sl-hue-blue), 54%, 20%);
+  --sl-color-blue: hsl(var(--sl-hue-blue), 100%, 60%);
+  --sl-color-blue-high: hsl(var(--sl-hue-blue), 100%, 87%);
+  --sl-hue-purple: 281;
+  --sl-color-purple-low: hsl(var(--sl-hue-purple), 39%, 22%);
+  --sl-color-purple: hsl(var(--sl-hue-purple), 82%, 63%);
+  --sl-color-purple-high: hsl(var(--sl-hue-purple), 82%, 89%);
+  --sl-hue-red: 339;
+  --sl-color-red-low: hsl(var(--sl-hue-red), 39%, 22%);
+  --sl-color-red: hsl(var(--sl-hue-red), 82%, 63%);
+  --sl-color-red-high: hsl(var(--sl-hue-red), 82%, 87%);
+
+  --sl-hue-accent: var(--sl-hue-blue);
+  --sl-color-accent-low: hsl(var(--sl-hue-accent), 54%, 20%);
+  --sl-color-accent: hsl(var(--sl-hue-accent), 100%, 60%);
+  --sl-color-accent-high: hsl(var(--sl-hue-accent), 100%, 87%);
+
+  --sl-color-text: var(--sl-color-gray-2);
+  --sl-color-text-accent: var(--sl-color-accent-high);
+  --sl-color-text-invert: var(--sl-color-accent-low);
+  --sl-color-bg: var(--sl-color-black);
+  --sl-color-bg-nav: var(--sl-color-gray-6);
+  --sl-color-bg-sidebar: var(--sl-color-gray-6);
+  --sl-color-bg-inline-code: var(--sl-color-gray-5);
+  --sl-color-hairline-light: var(--sl-color-gray-5);
+  --sl-color-hairline: var(--sl-color-gray-6);
+  --sl-color-hairline-shade: var(--sl-color-black);
+
+  --sl-color-backdrop-overlay: hsla(223, 13%, 10%, 0.66);
+
+  /* Shadows (dark mode) */
+  --sl-shadow-sm: 0px 1px 1px hsla(0, 0%, 0%, 0.12),
+    0px 2px 1px hsla(0, 0%, 0%, 0.24);
+  --sl-shadow-md: 0px 8px 4px hsla(0, 0%, 0%, 0.08),
+    0px 5px 2px hsla(0, 0%, 0%, 0.08), 0px 3px 2px hsla(0, 0%, 0%, 0.12),
+    0px 1px 1px hsla(0, 0%, 0%, 0.15);
+  --sl-shadow-lg: 0px 25px 7px hsla(0, 0%, 0%, 0.03),
+    0px 16px 6px hsla(0, 0%, 0%, 0.1), 0px 9px 5px hsla(223, 13%, 10%, 0.33),
+    0px 4px 4px hsla(0, 0%, 0%, 0.75), 0px 4px 2px hsla(0, 0%, 0%, 0.25);
+
+  /* Text size and line height */
+  --sl-text-xs: 0.8125rem; /* 13px */
+  --sl-text-sm: 0.875rem; /* 14px */
+  --sl-text-base: 1rem; /* 16px */
+  --sl-text-lg: 1.125rem; /* 18px */
+  --sl-text-xl: 1.25rem; /* 20px */
+  --sl-text-2xl: 1.5rem; /* 24px */
+  --sl-text-3xl: 1.8125rem; /* 29px */
+  --sl-text-4xl: 2.1875rem; /* 35px */
+  --sl-text-5xl: 2.625rem; /* 42px */
+  --sl-text-6xl: 4rem; /* 64px */
+
+  --sl-text-body: var(--sl-text-base);
+  --sl-text-body-sm: var(--sl-text-xs);
+  --sl-text-code: var(--sl-text-sm);
+  --sl-text-code-sm: var(--sl-text-xs);
+  --sl-text-h1: var(--sl-text-4xl);
+  --sl-text-h2: var(--sl-text-3xl);
+  --sl-text-h3: var(--sl-text-2xl);
+  --sl-text-h4: var(--sl-text-xl);
+  --sl-text-h5: var(--sl-text-lg);
+
+  --sl-line-height: 1.8;
+  --sl-line-height-headings: 1.2;
+
+  --sl-font-system: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --sl-font-system-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --__sb-font: var(--sl-font, ''), var(--sl-font-system);
+  --__sb-font-mono: var(--sl-font-mono, ''), var(--sl-font-system-mono);
+
+  /** Key layout values */
+  --sl-nav-height: 3.5rem;
+  --sl-nav-pad-x: 1rem;
+  --sl-nav-pad-y: 0.75rem;
+  --sl-title-min-width: 10rem;
+  --sl-mobile-toc-height: 3rem;
+  --sl-sidebar-width: 18.75rem;
+  --sl-sidebar-pad-x: 1rem;
+  --sl-content-width: 45rem;
+  --sl-content-pad-x: 1rem;
+  --sl-menu-button-size: 2rem;
+  --sl-nav-gap: var(--sl-content-pad-x);
+  /* Offset required to show outline inside an element instead of round the outside */
+  --sl-outline-offset-inside: -0.1875rem;
+
+  /* Global z-index values */
+  --sl-z-index-menu: 5;
+  --sl-z-index-navbar: 10;
+  --sl-z-index-skiplink: 20;
+}
+
+:root[data-theme='light'],
+[data-theme='light'] ::backdrop {
+  /* Colours (light mode) */
+  --sl-color-white: hsl(223, 13%, 10%);
+  --sl-color-gray-1: hsl(222, 13%, 16%);
+  --sl-color-gray-2: hsl(222, 11%, 23%);
+  --sl-color-gray-3: hsl(225, 9%, 36%);
+  --sl-color-gray-4: hsl(221, 8%, 56%);
+  --sl-color-gray-5: hsl(228, 8%, 77%);
+  --sl-color-gray-6: hsl(231, 23%, 94%);
+  --sl-color-gray-7: hsl(240, 20%, 97%);
+  --sl-color-black: hsl(0, 0%, 100%);
+
+  --sl-color-orange-high: hsl(var(--sl-hue-orange), 80%, 25%);
+  --sl-color-orange: hsl(var(--sl-hue-orange), 90%, 60%);
+  --sl-color-orange-low: hsl(var(--sl-hue-orange), 90%, 88%);
+  --sl-color-green-high: hsl(var(--sl-hue-green), 80%, 22%);
+  --sl-color-green: hsl(var(--sl-hue-green), 90%, 46%);
+  --sl-color-green-low: hsl(var(--sl-hue-green), 85%, 90%);
+  --sl-color-blue-high: hsl(var(--sl-hue-blue), 80%, 30%);
+  --sl-color-blue: hsl(var(--sl-hue-blue), 90%, 60%);
+  --sl-color-blue-low: hsl(var(--sl-hue-blue), 88%, 90%);
+  --sl-color-purple-high: hsl(var(--sl-hue-purple), 39%, 30%);
+  --sl-color-purple: hsl(var(--sl-hue-purple), 90%, 60%);
+  --sl-color-purple-low: hsl(var(--sl-hue-purple), 80%, 90%);
+  --sl-color-red-high: hsl(var(--sl-hue-red), 80%, 30%);
+  --sl-color-red: hsl(var(--sl-hue-red), 90%, 60%);
+  --sl-color-red-low: hsl(var(--sl-hue-red), 80%, 90%);
+
+  --sl-color-accent-high: hsl(var(--sl-hue-accent), 80%, 30%);
+  --sl-color-accent: hsl(var(--sl-hue-accent), 90%, 60%);
+  --sl-color-accent-low: hsl(var(--sl-hue-accent), 88%, 90%);
+
+  --sl-color-text-accent: var(--sl-color-accent);
+  --sl-color-text-invert: var(--sl-color-black);
+  --sl-color-bg-nav: var(--sl-color-gray-7);
+  --sl-color-bg-sidebar: var(--sl-color-bg);
+  --sl-color-bg-inline-code: var(--sl-color-gray-6);
+  --sl-color-hairline-light: var(--sl-color-gray-6);
+  --sl-color-hairline-shade: var(--sl-color-gray-6);
+
+  --sl-color-backdrop-overlay: hsla(225, 9%, 36%, 0.66);
+
+  /* Shadows (light mode) */
+  --sl-shadow-sm: 0px 1px 1px hsla(0, 0%, 0%, 0.06),
+    0px 2px 1px hsla(0, 0%, 0%, 0.06);
+  --sl-shadow-md: 0px 8px 4px hsla(0, 0%, 0%, 0.03),
+    0px 5px 2px hsla(0, 0%, 0%, 0.03), 0px 3px 2px hsla(0, 0%, 0%, 0.06),
+    0px 1px 1px hsla(0, 0%, 0%, 0.06);
+  --sl-shadow-lg: 0px 25px 7px rgba(0, 0, 0, 0.01),
+    0px 16px 6px hsla(0, 0%, 0%, 0.03), 0px 9px 5px hsla(223, 13%, 10%, 0.08),
+    0px 4px 4px hsla(0, 0%, 0%, 0.16), 0px 4px 2px hsla(0, 0%, 0%, 0.04);
+}
+
+@media (min-width: 50em) {
+  :root {
+    --sl-nav-height: 4rem;
+    --sl-nav-pad-x: 1.5rem;
+    --sl-text-h1: var(--sl-text-5xl);
+    --sl-text-h2: var(--sl-text-4xl);
+    --sl-text-h3: var(--sl-text-3xl);
+    --sl-text-h4: var(--sl-text-2xl);
+  }
+}
+
+@media (min-width: 72rem) {
+  :root {
+    --sl-content-pad-x: 1.5rem;
+    --sl-mobile-toc-height: 0rem;
+  }
+}
+  #starlight__search .pagefind-ui__form::before {
+    --pagefind-ui-text: hsl(222, 13%, 16%);
+    opacity: 1;
+  }
+
+  #starlight__search .pagefind-ui__search-input {
+    color: var(--sl-color-white);
+    font-weight: 400;
+    width: calc(100% - var(--sl-search-cancel-space));
+  }
+
+  #starlight__search input:focus {
+    --pagefind-ui-border: var(--sl-color-accent);
+  }
+
+  #starlight__search .pagefind-ui__search-clear {
+    inset-inline-end: var(--sl-search-cancel-space);
+    width: calc(60px * var(--pagefind-ui-scale));
+    padding: 0;
+    background-color: transparent;
+    overflow: hidden;
+  }
+  #starlight__search .pagefind-ui__search-clear:focus {
+    outline: 1px solid var(--sl-color-accent);
+  }
+  #starlight__search .pagefind-ui__search-clear::before {
+    content: '';
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m13.41 12 6.3-6.29a1 1 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1 1 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 .33 1.64 1 1 0 0 0 1.09-.22l6.29-6.3 6.29 6.3a1 1 0 0 0 1.64-.33 1 1 0 0 0-.22-1.09L13.41 12Z'/%3E%3C/svg%3E")
+      center / 50% no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m13.41 12 6.3-6.29a1 1 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1 1 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 .33 1.64 1 1 0 0 0 1.09-.22l6.29-6.3 6.29 6.3a1 1 0 0 0 1.64-.33 1 1 0 0 0-.22-1.09L13.41 12Z'/%3E%3C/svg%3E")
+      center / 50% no-repeat;
+    background-color: var(--sl-color-text-accent);
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  #starlight__search .pagefind-ui__results > * + * {
+    margin-top: 0.5rem;
+  }
+  #starlight__search .pagefind-ui__result {
+    position: relative;
+    border: 0;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    background-color:  hsl(223, 13%, 10%);
+  }
+
+  #starlight__search .pagefind-ui__result:hover,
+  #starlight__search .pagefind-ui__result:focus-within {
+    outline: 1px solid var(--sl-color-accent-high);
+  }
+
+  #starlight__search .pagefind-ui__result:focus-within {
+    background-color: var(--sl-color-accent-low);
+  }
+
+  #starlight__search .pagefind-ui__result-thumb,
+  #starlight__search .pagefind-ui__result-inner {
+    margin-top: 0;
+  }
+
+  #starlight__search .pagefind-ui__result-link {
+    --pagefind-ui-text: var(--sl-color-white);
+    font-weight: 600;
+  }
+
+  #starlight__search .pagefind-ui__result-link:hover {
+    text-decoration: none;
+  }
+
+  #starlight__search .pagefind-ui__result-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  #starlight__search .pagefind-ui__result-excerpt {
+    font-size: var(--sl-text-body-sm);
+    word-break: break-word;
+  }
+
+  #starlight__search mark {
+    color: var(--sl-color-white);
+    background-color: var(--sl-color-accent-low);
+    font-weight: 500;
+    padding: 0.1em 0.2em;
+  }
+
+  #starlight__search .pagefind-ui__result:focus-within mark {
+    text-decoration: underline;
+  }
+</style>

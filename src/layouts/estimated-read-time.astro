@@ -1,0 +1,11 @@
+---
+interface Props {
+	frontmatter: {
+		minutesRead: number
+	}
+}
+const { minutesRead } = Astro.props.frontmatter
+---
+
+<p>{minutesRead}</p>
+<slot />
