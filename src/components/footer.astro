@@ -3,15 +3,15 @@ import LinkButton from '@components/core/link-button.astro';
 import Socials from '@components/socials.astro';
 ---
 
-<footer class="border-t-2">
-    <div class='grid grid-cols-2'>
+<footer class="flex flex-col self-center pt-12 px-4 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl ">
+    <div class='flex flex-row justify-between w-full'>
         <div>
-            <div>
-                <h2 class='dark:text-white'>Lets Connect</h2>
-                <LinkButton>Contact Me</LinkButton>
+            <div class="pb-10">
+                <h2 class='text-4xl font-bold dark:text-white pb-10'>Lets Connect</h2>
+                <LinkButton>Contact</LinkButton>
             </div>
 
-            <Socials />
+            <Socials withText />
         </div>
 
         {
@@ -33,9 +33,9 @@ import Socials from '@components/socials.astro';
         </div>
     </div>
 
-    <hr />
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 w-full">
 
-    <div class='dark:text-white'>
+    <div class='dark:text-slate-400 font-bold pb-8 w-full'>
         &copy; {new Date().getFullYear()}, KO.DEV
     </div>
 </footer>

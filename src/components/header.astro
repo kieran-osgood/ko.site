@@ -26,6 +26,8 @@ import Socials from '@components/socials.astro';
     <Search />
 
     <div class='flex flex-row items-center gap-4'>
+    <div class='hidden md:flex flex-row items-center gap-4'>
+
         <a class='dark:text-white' href='/'>Home</a>
         <a class='dark:text-white' href='/blog'>Blog</a>
         <a class='dark:text-white' href='/blog'>Portfolio</a>
@@ -34,6 +36,7 @@ import Socials from '@components/socials.astro';
         <p class='dark:text-white'>|</p>
         <Socials />
         <p class='dark:text-white'>|</p>
+        </div>
 
         <ThemePicker />
     </div>
