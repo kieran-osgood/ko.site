@@ -8,23 +8,23 @@ interface Props {
 	}[];
 }
 const { headings } = Astro.props;
+if (headings[0]) headings[0].current = true;
 ---
 
 <starlight-toc data-min-h={0} data-max-h={3}>
-	<nav class='sticky top-0 self-start toc'>
+	<nav class='sticky top-0 self-start toc prose'>
 		<h2 class='dark:text-white font-semibold py-2'>Table of Contents</h2>
-		<ul>
+		<ul class='px-2 m-0'>
 			{
 				headings.map((_) => (
-					<li style={`--depth: ${_.depth - 2}`}>
+					<li style={`--depth: ${_.depth - 1}`} class="m-0">
 						<a
 							href={`#${_.slug}`}
-							class='dark:text-[#868c98] no-underline'
+							class='hover:text-[#00ea8d] dark:text-[#868c98] no-underline block px-2 m-0'
 							aria-current={_.current && 'true'}
 						>
 							{_.text}
 						</a>
-						<br />
 					</li>
 				))
 			}
@@ -38,18 +38,10 @@ const { headings } = Astro.props;
 	}
 
 	li {
-		--pad-inline: 0.5rem;
-		padding-inline: calc(1rem * var(--depth) + var(--pad-inline))
+		--pad-inline: 0rem;
+		padding-inline: calc(0.75rem * var(--depth) + var(--pad-inline))
 			var(--pad-inline) !important;
 	}
-/* 
-	a[aria-current='true'],
-	a[aria-current='true']:hover,
-	a[aria-current='true']:focus {
-		font-weight: 600 !important;
-		color: hsl(234, 88%, 90%);
-		background-color: hsl(234, 54%, 20%)
-	} */
 
 	.active {
 		background-color: #00ea8d;

@@ -7,15 +7,18 @@ const { headings, frontmatter } = Astro.props;
 ---
 
 <Page>
-	<div class='grid grid-cols-6 gap-3'>
-		<div class='col-start-2 col-span-4 pt-8'>
-			<article class='prose dark:prose-invert'>
+	<div class='grid grid-cols-12 gap-3'>
+
+		<div class='col-start-4 col-span-6 pt-8'>
+			<article class='prose prose-gray dark:prose-invert'>
 				<h1>{frontmatter.title}</h1>
 				<EstimatedReadTime frontmatter={frontmatter} />
 				<slot />
 			</article>
 		</div>
 
+		<div class="col-start-10 col-span-2">
 		<TableOfContents headings={headings} />
+		</div>
 	</div>
 </Page>
