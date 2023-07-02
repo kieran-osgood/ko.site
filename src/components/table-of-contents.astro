@@ -5,22 +5,25 @@ interface Props {
 const { headings } = Astro.props;
 ---
 
-<p>Table of Contents</p>
-{
-	headings.map((_) => (
-		<>
-			<a
-				href={`#${_.slug}`}
-				class='!text-red-300 !no-underline'
-				style={`--depth: ${_.depth - 1}`}
-				aria-current={_.current && 'true'}
-			>
-				{_.text}
-			</a>
-			<br />
-		</>
-	))
-}
+<div>
+	<h2 class='dark:text-white font-semibold py-2'>Table of Contents</h2>
+
+	{
+		headings.map((_) => (
+			<>
+				<a
+					href={`#${_.slug}`}
+					class='dark:text-[#868c98] no-underline'
+					style={`--depth: ${_.depth - 1}`}
+					aria-current={_.current && 'true'}
+				>
+					{_.text}
+				</a>
+				<br />
+			</>
+		))
+	}
+</div>
 
 <style>
 	:root {
@@ -37,7 +40,7 @@ const { headings } = Astro.props;
 	a[aria-current='true']:hover,
 	a[aria-current='true']:focus {
 		font-weight: 600 !important;
-		color: var(--sl-color-text-invert);
-		background-color: var(--sl-color-text-accent);
+		/* color: var(--sl-color-text-invert); */
+		/* background-color: var(--sl-color-text-accent); */
 	}
 </style>

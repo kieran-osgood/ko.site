@@ -10,6 +10,10 @@ module.exports = {
     theme: {
         extend: {},
     },
-    plugins: [preline],
+    plugins: [
+        preline,
+        require('@tailwindcss/typography'),
+    ],
     darkMode: 'class',
 };
+
