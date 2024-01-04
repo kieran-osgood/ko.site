@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import {getCollection} from 'astro:content';
 import Card from '@components/core/card.astro';
 
 const posts = await getCollection('blog');
@@ -8,11 +8,11 @@ const posts = await getCollection('blog');
 <div class='w-full md:w-4/6 lg:w-1/2 max-w-lg'>
     {
         posts.map((post) => (
-            <Card
-                title={post.data.title}
-                description={post.data.description}
-                href={`/blog/${post.slug}`}
-            />
+                <Card
+                        title={post.data.title}
+                        description={post.data.description}
+                        href={`/blog/${post.slug}`}
+                />
         ))
     }
 </div>

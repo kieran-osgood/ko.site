@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57649194-16b4-41ac-932c-6d4dd66d3be9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/plugins/remark-reading-time.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layouts/time-read.astro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/astro.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/astro.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/moon.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/moon.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/sun.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sun.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/blog-list.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/blog-list.astro" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/footer.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer.astro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/docs/blog/my-first.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/docs/blog/my-first.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/theme-picker.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/theme-picker.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.astro" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +49,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2RerbaV8jE9Bg8f9Db14XMVF3H6" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -64,23 +64,24 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;astro&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/kieranosgood/Repositories/ko.blog/src/content/docs&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/kieranosgood/Library/Application Support/JetBrains/Toolbox/apps/WebStorm/ch-0/231.8770.64/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "astro",
+    "last_opened_file_path": "/Users/kieranosgood/Repositories/ko.blog/src/content/docs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Users/kieranosgood/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/content/docs" />
@@ -143,6 +144,7 @@
       <workItem from="1688065157042" duration="31000" />
       <workItem from="1688065189672" duration="57000" />
       <workItem from="1688065254427" duration="96000" />
+      <workItem from="1704369822736" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="Progress update setting up blog">
       <created>1687701444563</created>

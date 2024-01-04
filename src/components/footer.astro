@@ -1,17 +1,30 @@
 ---
+import Aurora from '@assets/aurora.astro';
 import LinkButton from '@components/core/link-button.astro';
 import Socials from '@components/socials.astro';
+
+const links = ['Home', 'About', 'Portfolio', 'Blog', 'Contact'];
 ---
 
-<footer class="flex flex-col self-center pt-12 px-4 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl ">
+<footer
+        class='flex flex-col self-center pt-12 px-4 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl relative'
+>
     <div class='flex flex-row justify-between w-full'>
         <div>
-            <div class="pb-10">
-                <h2 class='text-4xl font-bold dark:text-white pb-10'>Lets Connect</h2>
+            <div class='pb-10'>
+                <h2 class='text-4xl font-bold dark:text-white pb-10'>
+                    Lets Connect
+                </h2>
                 <LinkButton>Contact</LinkButton>
             </div>
 
-            <Socials withText />
+            <Socials withText/>
+        </div>
+
+        <div
+                class='absolute w-1/2 left-1/4 top-0 md:top-[-15%] md:left-[38%] lg:top-[-50%]'
+        >
+            <Aurora/>
         </div>
 
         {
@@ -19,21 +32,19 @@ import Socials from '@components/socials.astro';
         }
         <div class='grid grid-cols-1 col-end-4 gap-1'>
             {
-                ['Home', 'About', 'Portfolio', 'Blog', 'Contact'].map(
-                    (route) => (
+                links.map((route) => (
                         <a
-                            class='text-black dark:text-white font-bold no-underline'
-                            href={`${route.toLowerCase()}`}
+                                class='text-black dark:text-white font-bold no-underline'
+                                href={`${route.toLowerCase()}`}
                         >
                             {route}
                         </a>
-                    ),
-                )
+                ))
             }
         </div>
     </div>
 
-    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 w-full">
+    <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 w-full'/>
 
     <div class='dark:text-slate-400 font-bold pb-8 w-full'>
         &copy; {new Date().getFullYear()}, KO.DEV
