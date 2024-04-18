@@ -1,5 +1,5 @@
 ---
-import { Icons } from './icons';
+import { Icons } from "./icons";
 
 interface Props {
   name: keyof typeof Icons;
@@ -9,10 +9,10 @@ interface Props {
   class?: string;
 }
 
-const { name, label, size = '1em', color } = Astro.props;
+const { name, label, size = "1em", color } = Astro.props;
 const a11yAttrs = label
-  ? ({ 'aria-label': label } as const)
-  : ({ 'aria-hidden': 'true' } as const);
+  ? ({ "aria-label": label } as const)
+  : ({ "aria-hidden": "true" } as const);
 ---
 
 <svg
@@ -25,7 +25,7 @@ const a11yAttrs = label
   set:html={Icons[name]}
 />
 
-<style define:vars={{ 'sl-icon-color': color, 'sl-icon-size': size }}>
+<style define:vars={{ "sl-icon-color": color, "sl-icon-size": size }}>
   svg {
     color: var(--sl-icon-color);
     font-size: var(--sl-icon-size, 1em);

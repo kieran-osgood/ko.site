@@ -1,36 +1,36 @@
 ---
-import Icon from '@components/core/icon/icon.astro';
+import Icon from "@components/core/icon/icon.astro";
 interface Props {
-	withText?: boolean;
-	size?: string;
+  withText?: boolean;
+  size?: string;
 }
-const { size = '1rem', withText = false } = Astro.props;
+const { size = "1rem", withText = false } = Astro.props;
 ---
 
-<div class='flex flow-row gap-5 dark:text-[#E8DDDD]'>
-	<a
-		class='flex gap-2 items-center'
-		href='https://twitter.com/kieranbosgood'
-		target='_blank'
-	>
-		<Icon name='twitter' {size} />
-		{withText && <span>Twitter</span>}
-	</a>
+<div class="flex flow-row gap-5 dark:text-[#E8DDDD]">
+  <a
+    class="flex gap-2 items-center"
+    href="https://twitter.com/kieranbosgood"
+    target="_blank"
+  >
+    <Icon name="twitter" {size} />
+    {withText && <span>Twitter</span>}
+  </a>
 
-	<a
-		class='flex gap-2 items-center'
-		href='https://www.linkedin.com/in/kieranosgood/'
-		target='_blank'
-	>
-		<Icon name='linkedin' {size} />
-		{withText && <span>LinkedIn</span>}
-	</a>
-	<a
-		class='flex gap-2 items-center'
-		href='https://github.com/kieran-osgood/'
-		target='_blank'
-	>
-		<Icon name='github' {size} />
-		{withText && <span>Github</span>}
-	</a>
+  <a
+    class="flex gap-2 items-center"
+    href="https://www.linkedin.com/in/kieranosgood/"
+    target="_blank"
+  >
+    <Icon name="linkedin" {size} />
+    {withText && <span>LinkedIn</span>}
+  </a>
+  <a
+    class="flex gap-2 items-center"
+    href="https://github.com/kieran-osgood/"
+    target="_blank"
+  >
+    <Icon name="github" {size} />
+    {withText && <span>Github</span>}
+  </a>
 </div>

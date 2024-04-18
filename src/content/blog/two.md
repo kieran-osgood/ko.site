@@ -1,9 +1,9 @@
 ---
 layout: ../../layouts/blog-page.astro
 # schema
-title: My first blog post
+title: two
 description: The first in a line of posts
-date: "04-01-2024"
+date: "01-04-2028"
 ---
 
 ## Overview

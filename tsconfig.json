@@ -1,12 +1,14 @@
 {
- "extends": "astro/tsconfigs/strictest",
- "compilerOptions": {
-  "verbatimModuleSyntax": true,
-  "baseUrl": ".",
-  "paths": {
-   "@components/*": ["src/components/*", "src/components/**/*"],
-   "@layouts/*": ["src/layouts/*"],
-   "@assets/*": ["src/assets/*"]
+  //  "extends": "astro/tsconfigs/strictest",
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "verbatimModuleSyntax": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@assets/*": ["src/assets/*"]
+    },
+    "plugins": [{ "name": "@astrojs/ts-plugin" }]
   }
- }
 }

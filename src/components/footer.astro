@@ -1,52 +1,52 @@
 ---
-import Aurora from '@assets/aurora.astro';
-import LinkButton from '@components/core/link-button.astro';
-import Socials from '@components/socials.astro';
+// import Aurora from "@assets/aurora.astro";
+import LinkButton from "@components/core/link-button.astro";
+import Socials from "@components/socials.astro";
 
-const links = ['Home', 'About', 'Portfolio', 'Blog', 'Contact'];
+const links: { label: string; href: string }[] = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
 ---
 
 <footer
-        class='flex flex-col self-center pt-12 px-4 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl relative'
+  class="flex flex-col self-center pt-12 px-4 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl relative"
 >
-    <div class='flex flex-row justify-between w-full'>
-        <div>
-            <div class='pb-10'>
-                <h2 class='text-4xl font-bold dark:text-white pb-10'>
-                    Lets Connect
-                </h2>
-                <LinkButton>Contact</LinkButton>
-            </div>
+  <div class="flex flex-row justify-between w-full">
+    <div>
+      <div class="pb-10">
+        <h2 class="text-6xl font-bold dark:text-white pb-10">Lets Connect</h2>
+        <LinkButton href="/contact-us">Contact</LinkButton>
+      </div>
 
-            <Socials withText/>
-        </div>
-
-        <div
-                class='absolute w-1/2 left-1/4 top-0 md:top-[-15%] md:left-[38%] lg:top-[-50%]'
-        >
-            <Aurora/>
-        </div>
-
-        {
-            /* Not sure why col-end-4 works - lets check whether we just use flex */
-        }
-        <div class='grid grid-cols-1 col-end-4 gap-1'>
-            {
-                links.map((route) => (
-                        <a
-                                class='text-black dark:text-white font-bold no-underline'
-                                href={`${route.toLowerCase()}`}
-                        >
-                            {route}
-                        </a>
-                ))
-            }
-        </div>
+      <Socials withText />
     </div>
 
-    <hr class='h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 w-full'/>
+    <!--<div class='absolute w-1/2 left-1/4 top-0 md:top-[-15%] md:left-[38%] lg:top-[-50%]'>-->
+    <!--    <Aurora/>-->
+    <!--</div>-->
 
-    <div class='dark:text-slate-400 font-bold pb-8 w-full'>
-        &copy; {new Date().getFullYear()}, KO.DEV
+    <!-- Not sure why col-end-4 works - lets check whether we just use flex -->
+    <div class="grid grid-cols-1 col-end-4 gap-1">
+      {
+        links.map((route) => (
+          <a
+            class="text-black dark:text-white font-bold no-underline"
+            href={route.href}
+          >
+            {route.label}
+          </a>
+        ))
+      }
     </div>
+  </div>
+
+  <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 w-full" />
+
+  <div class="dark:text-slate-400 font-bold pb-8 w-full">
+    &copy; {new Date().getFullYear()}, KO.DEV
+  </div>
 </footer>

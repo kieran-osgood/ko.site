@@ -5,22 +5,28 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && cp node_modules/preline/dist/preline.js public/preline.js",
+    "check": "astro check && tsc",
+    "build": "astro check && astro build && cp node_modules/preline/dist/preline.js public/preline.js",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prettier:write": "prettier --write .",
+    "prettier:check": "prettier --check ."
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.19.7",
-    "@astrojs/tailwind": "^4.0.0",
-    "astro": "^2.7.0",
+    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/ts-plugin": "^1.6.1",
+    "astro": "^4.6.2",
     "mdast-util-to-string": "^3.2.0",
     "preline": "^1.9.0",
-    "prettier": "^2.8.8",
     "reading-time": "^1.5.0",
     "sharp": "^0.32.1",
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/typography": "^0.5.9",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "typescript": "^5.4.5"
   }
 }

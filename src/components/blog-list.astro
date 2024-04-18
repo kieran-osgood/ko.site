@@ -1,18 +1,19 @@
 ---
-import {getCollection} from 'astro:content';
-import Card from '@components/core/card.astro';
+import BlogCard from "@components/core/blog-card.astro";
+import { type CollectionEntry } from "astro:content";
 
-const posts = await getCollection('blog');
+interface Props {
+  items: CollectionEntry<"blog">[];
+}
 ---
 
-<div class='w-full md:w-4/6 lg:w-1/2 max-w-lg'>
-    {
-        posts.map((post) => (
-                <Card
-                        title={post.data.title}
-                        description={post.data.description}
-                        href={`/blog/${post.slug}`}
-                />
-        ))
-    }
-</div>
+{
+  Astro.props.items.map((post) => (
+    <BlogCard
+      title={post.data.title}
+      description={post.data.description}
+      href={`/blog/${post.slug}`}
+      publishedDate={post.data.date}
+    />
+  ))
+}

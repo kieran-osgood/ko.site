@@ -1,10 +1,10 @@
 ---
 interface Props {
-	frontmatter: {
-		minutesRead: number
-	}
+  frontmatter: {
+    minutesRead: number;
+  };
 }
-const { minutesRead } = Astro.props.frontmatter
+const { minutesRead } = Astro.props.frontmatter;
 ---
 
 <p>{minutesRead}</p>

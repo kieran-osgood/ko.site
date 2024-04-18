@@ -1,23 +1,35 @@
 ---
-import Page from '@layouts/page.astro';
-import TableOfContents from '@components/table-of-contents.astro';
-import EstimatedReadTime from '@layouts/estimated-read-time.astro';
+import Page from "@layouts/page.astro";
+import TableOfContents from "@components/table-of-contents.astro";
+import EstimatedReadTime from "@layouts/estimated-read-time.astro";
+import { type CollectionEntry } from "astro:content";
+
+interface Props {
+  frontmatter: CollectionEntry<"blog">["data"];
+  headings: { depth: number; slug: string; text: string; current?: boolean }[];
+}
 
 const { headings, frontmatter } = Astro.props;
 ---
 
 <Page>
-	<div class='flex flex-col justify-center lg:grid lg:grid-cols-12 lg:gap-5 px-5'>
-		<div class='lg:col-start-4 lg:col-span-6 pt-8'>
-			<article class='prose prose-gray dark:prose-invert'>
-				<h1>{frontmatter.title}</h1>
-				<EstimatedReadTime frontmatter={frontmatter} />
-				<slot />
-			</article>
-		</div>
+  <div
+    class="flex flex-col justify-center lg:grid lg:grid-cols-12 lg:gap-5 px-5"
+  >
+    <div class="lg:col-start-4 lg:col-span-6 pt-8">
+      <article class="prose prose-gray dark:prose-invert">
+        <h1>{frontmatter.title}</h1>
+        <div class="flex items-center flex-row">
+          Published: {frontmatter.date}
+          -&nbsp;
+          <EstimatedReadTime {frontmatter} />
+        </div>
+        <slot />
+      </article>
+    </div>
 
-		<div class='col-start-10 col-span-3 xl:col-span-2 hidden lg:block'>
-			<TableOfContents headings={headings} />
-		</div>
-	</div>
+    <div class="col-start-10 col-span-3 xl:col-span-2 hidden lg:block">
+      <TableOfContents {headings} />
+    </div>
+  </div>
 </Page>
