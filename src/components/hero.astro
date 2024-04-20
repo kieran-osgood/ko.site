@@ -2,10 +2,11 @@
 import LinkButton from "@components/core/link-button.astro";
 import { Image } from "astro:assets";
 import phone from "@assets/hero-phone.png";
+import { pageBounds } from "@styles/page";
 ---
 
 <!-- Hero -->
-<div class="relative overflow-hidden">
+<div class="relative overflow-hidden flex justify-center">
   <!-- Gradients -->
   <div
     aria-hidden="true"
@@ -22,7 +23,7 @@ import phone from "@assets/hero-phone.png";
   </div>
   <!-- End Gradients -->
 
-  <div class="relative z-10 flex row justify-center">
+  <div class={`relative z-10 flex row justify-center ${pageBounds}`}>
     <!-- Left  -->
     <div
       class="flex items-center px-4 sm:px-6 lg:px-8 py-10 lg:py-16 max-w-1/2"
