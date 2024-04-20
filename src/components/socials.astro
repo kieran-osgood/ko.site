@@ -1,36 +1,43 @@
 ---
 import Icon from "@components/core/icon/icon.astro";
+import type { Icons } from "./core/icon/icons";
 interface Props {
   withText?: boolean;
   size?: string;
 }
 const { size = "1rem", withText = false } = Astro.props;
+type Link = {
+  href: string;
+  name: keyof typeof Icons;
+  title: string;
+};
+
+const links = [
+  {
+    href: "https://github.com/kieran-osgood/",
+    name: "github",
+    title: "Github",
+  },
+  {
+    href: "https://www.linkedin.com/in/kieranosgood/",
+    name: "linkedin",
+    title: "LinkedIn",
+  },
+  {
+    href: "https://twitter.com/kieranbosgood",
+    name: "twitter",
+    title: "Twitter",
+  },
+] satisfies Link[];
 ---
 
 <div class="flex flow-row gap-5 dark:text-[#E8DDDD]">
-  <a
-    class="flex gap-2 items-center"
-    href="https://twitter.com/kieranbosgood"
-    target="_blank"
-  >
-    <Icon name="twitter" {size} />
-    {withText && <span>Twitter</span>}
-  </a>
-
-  <a
-    class="flex gap-2 items-center"
-    href="https://www.linkedin.com/in/kieranosgood/"
-    target="_blank"
-  >
-    <Icon name="linkedin" {size} />
-    {withText && <span>LinkedIn</span>}
-  </a>
-  <a
-    class="flex gap-2 items-center"
-    href="https://github.com/kieran-osgood/"
-    target="_blank"
-  >
-    <Icon name="github" {size} />
-    {withText && <span>Github</span>}
-  </a>
+  {
+    links.map(({ href, title, name }) => (
+      <a class="flex gap-2 items-center" {href} target="_blank">
+        <Icon {name} {size} />
+        {withText && <span>{title}</span>}
+      </a>
+    ))
+  }
 </div>
