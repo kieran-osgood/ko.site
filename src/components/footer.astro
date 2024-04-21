@@ -3,13 +3,15 @@
 import LinkButton from "@components/core/link-button.astro";
 import Socials from "@components/socials.astro";
 
-const links: { label: string; href: string }[] = [
+type Link = { label: string; href: string };
+
+const links = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
-];
+] satisfies Link[];
 ---
 
 <footer
@@ -34,7 +36,7 @@ const links: { label: string; href: string }[] = [
       {
         links.map((route) => (
           <a
-            class="text-black dark:text-white font-bold no-underline"
+            class="footer-navigation-links text-black dark:text-white font-bold no-underline"
             href={route.href}
           >
             {route.label}
@@ -50,3 +52,9 @@ const links: { label: string; href: string }[] = [
     &copy; {new Date().getFullYear()}, KO.DEV
   </div>
 </footer>
+
+<script>
+  import { highlightCurrentPage } from "@styles/page";
+
+  highlightCurrentPage(".footer-navigation-links");
+</script>

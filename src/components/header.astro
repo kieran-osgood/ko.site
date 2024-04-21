@@ -25,9 +25,11 @@ import Socials from "@components/socials.astro";
 
   <div class="flex flex-row items-center gap-4">
     <div class="hidden md:flex flex-row items-center gap-4 text-lg">
-      <a class="navbar-links dark:text-white" href="/">Home</a>
-      <a class="navbar-links dark:text-white" href="/blog">Blog</a>
-      <a class="navbar-links dark:text-white" href="/portfolio">Portfolio</a>
+      <a class="header-navigation-links dark:text-white" href="/">Home</a>
+      <a class="header-navigation-links dark:text-white" href="/blog">Blog</a>
+      <a class="header-navigation-links dark:text-white" href="/portfolio"
+        >Portfolio</a
+      >
 
       <!-- include the Search -->
 
@@ -43,16 +45,7 @@ import Socials from "@components/socials.astro";
 </div>
 
 <script>
-  const anchors = document.querySelectorAll<HTMLAnchorElement>(".navbar-links");
+  import { highlightCurrentPage } from "@styles/page";
 
-  for (const _ of anchors) {
-    if (_.pathname === "/" && window.location.pathname !== "/") {
-      continue;
-    }
-
-    if (window.location.pathname.startsWith(_.pathname)) {
-      _.classList.add("text-blue-400", "dark:!text-blue-400"); // important used to override default text color
-      break; // we only want to attach highlight to first node
-    }
-  }
+  highlightCurrentPage(".header-navigation-links");
 </script>
