@@ -4,7 +4,7 @@ import Page from "@layouts/page.astro";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.date - a.data.date,
+  (a, b) => b.data.date.getMilliseconds() - a.data.date.getMilliseconds(),
 );
 ---
 

@@ -5,7 +5,7 @@ import EstimatedReadTime from "@layouts/estimated-read-time.astro";
 import { type CollectionEntry } from "astro:content";
 
 interface Props {
-  frontmatter: CollectionEntry<"blog">["data"];
+  frontmatter: CollectionEntry<"blog">["data"] & { minutesRead: number };
   headings: { depth: number; slug: string; text: string; current?: boolean }[];
 }
 

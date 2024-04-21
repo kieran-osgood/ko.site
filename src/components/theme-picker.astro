@@ -66,10 +66,14 @@ import Icon from "@components/core/icon/icon.astro";
       document.head.appendChild($resetStyles);
       return $resetStyles;
     },
-    setAppearance(theme: string, saveInStore = true, dispatchEvent = true) {
+    setAppearance(
+      theme: string | null,
+      saveInStore = true,
+      dispatchEvent: Element | boolean | undefined = true,
+    ) {
       const $resetStylesEl = this._resetStylesOnLoad();
 
-      if (saveInStore) {
+      if (saveInStore && theme) {
         localStorage.setItem("hs_theme", theme);
       }
 
@@ -117,17 +121,17 @@ import Icon from "@components/core/icon/icon.astro";
 
   window
     .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (e) => {
+    .addEventListener("change", () => {
       if (HSThemeAppearance.getOriginalAppearance() === "auto") {
         HSThemeAppearance.setAppearance("auto", false);
       }
     });
 
   window.addEventListener("load", () => {
-    const $clickableThemes = document.querySelectorAll(
+    const $clickableThemes = document.querySelectorAll<HTMLAnchorElement>(
       "[data-hs-theme-click-value]",
     );
-    const $switchableThemes = document.querySelectorAll(
+    const $switchableThemes = document.querySelectorAll<HTMLAnchorElement>(
       "[data-hs-theme-switch]",
     );
 
@@ -143,15 +147,23 @@ import Icon from "@components/core/icon/icon.astro";
 
     $switchableThemes.forEach(($item) => {
       $item.addEventListener("change", (e) => {
-        HSThemeAppearance.setAppearance(e.target?.checked ? "dark" : "default");
+        if (e.target && "checked" in e.target) {
+          HSThemeAppearance.setAppearance(
+            e.target.checked ? "dark" : "default",
+          );
+        }
       });
 
-      $item.checked = HSThemeAppearance.getAppearance() === "dark";
+      if ("checked" in $item) {
+        $item.checked = HSThemeAppearance.getAppearance() === "dark";
+      }
     });
 
     window.addEventListener("on-hs-appearance-change", (e) => {
       $switchableThemes.forEach(($item) => {
-        $item.checked = e.detail === "dark";
+        if ("checked" in $item && "detail" in e) {
+          $item.checked = e.detail === "dark";
+        }
       });
     });
   });

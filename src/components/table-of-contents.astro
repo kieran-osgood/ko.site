@@ -156,6 +156,7 @@ if (first) first.current = true;
       observe();
 
       const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
+      // @ts-ignore
       let timeout: NodeJS.Timeout;
       window.addEventListener("resize", () => {
         // Disable intersection observer while window is resizing.

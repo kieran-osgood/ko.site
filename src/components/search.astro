@@ -113,10 +113,10 @@ interface Props {
         }
       });
 
-      let translations = {};
-      try {
-        translations = JSON.parse(this.dataset.translations || "{}");
-      } catch {}
+      // let translations = {};
+      // try {
+      //   translations = JSON.parse(this.dataset.translations || "{}");
+      // } catch {}
 
       window.addEventListener("DOMContentLoaded", () => {
         if (import.meta.env.DEV) return;
