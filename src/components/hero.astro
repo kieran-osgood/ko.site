@@ -3,10 +3,12 @@ import LinkButton from "@components/core/link-button.astro";
 import { Image } from "astro:assets";
 import phone from "@assets/hero-phone.png";
 import { pageBounds } from "@styles/page";
+
+import Text from "@components/core/text";
 ---
 
 <!-- Hero -->
-<div class="relative overflow-hidden flex justify-center">
+<div class="relative flex justify-center">
   <!-- Gradients -->
   <div
     aria-hidden="true"
@@ -37,11 +39,11 @@ import { pageBounds } from "@styles/page";
 
         <!-- Title -->
         <div class="max-w-2xl">
-          <h1
-            class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-8xl dark:text-gray-200"
+          <Text.H1
+            className="font-semibold text-gray-800 text-4xl md:text-5xl lg:text-8xl dark:text-gray-200"
           >
             Time for that KO app.
-          </h1>
+          </Text.H1>
         </div>
         <!-- End Title -->
 

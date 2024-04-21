@@ -3,6 +3,7 @@ import Page from "@layouts/page.astro";
 import TableOfContents from "@components/table-of-contents.astro";
 import EstimatedReadTime from "@layouts/estimated-read-time.astro";
 import { type CollectionEntry } from "astro:content";
+import Text from "@components/core/text";
 
 interface Props {
   frontmatter: CollectionEntry<"blog">["data"] & { minutesRead: number };
@@ -18,7 +19,8 @@ const { headings, frontmatter } = Astro.props;
   >
     <div class="lg:col-start-4 lg:col-span-6 pt-8">
       <article class="prose prose-gray dark:prose-invert">
-        <h1>{frontmatter.title}</h1>
+        <Text.H1>{frontmatter.title}</Text.H1>
+
         <div class="flex items-center flex-row">
           Published: {frontmatter.date}
           -&nbsp;

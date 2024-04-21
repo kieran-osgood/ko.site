@@ -2,6 +2,7 @@
 // import Aurora from "@assets/aurora.astro";
 import LinkButton from "@components/core/link-button.astro";
 import Socials from "@components/socials.astro";
+import Text from "@components/core/text";
 
 type Link = { label: string; href: string };
 
@@ -20,11 +21,7 @@ const links = [
   <div class="flex flex-row justify-between w-full">
     <div>
       <div class="pb-6 md:pb-10">
-        <h2
-          class="text-3xl md:text-6xl font-bold dark:text-white pb-6 md:pb-10"
-        >
-          Lets Connect
-        </h2>
+        <Text.H2>Lets Connect</Text.H2>
         <LinkButton href="/contact-us">Contact</LinkButton>
       </div>
 

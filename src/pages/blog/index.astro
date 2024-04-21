@@ -1,6 +1,7 @@
 ---
 import BlogList from "@components/blog-list.astro";
 import Page from "@layouts/page.astro";
+import Text from "@components/core/text";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog")).sort(
@@ -10,7 +11,7 @@ const posts = (await getCollection("blog")).sort(
 
 <Page>
   <div class="flex flex-col items-center flex-1">
-    <h1 class="text-4xl dark:text-white">Blog Posts</h1>
+    <Text.H1>Blog Posts</Text.H1>
     <p class="dark:text-white">
       These are some ramblings on topics like Typescript, React Native, Node and
       Consultancy.

@@ -1,4 +1,6 @@
 ---
+import Text from "@components/core/text";
+
 interface Props {
   headings: {
     depth: number;
@@ -17,7 +19,7 @@ if (first) first.current = true;
 
 <starlight-toc data-min-h={0} data-max-h={3}>
   <nav class="sticky top-0 self-start toc prose">
-    <h2 class="dark:text-white font-semibold py-2">Table of Contents</h2>
+    <Text.H2>Table of Contents</Text.H2>
     <ul class="px-2 m-0">
       {
         headings.map((_) => (
