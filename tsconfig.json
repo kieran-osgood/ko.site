@@ -1,5 +1,5 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
     "verbatimModuleSyntax": true,
     "baseUrl": ".",
@@ -9,11 +9,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@assets/*": ["src/assets/*"]
     },
-    "plugins": [
-      {
-        "name": "@astrojs/ts-plugin"
-      }
-    ],
+    "plugins": [{ "name": "@astrojs/ts-plugin" }],
     "jsx": "react-jsx",
     "jsxImportSource": "react"
   }
