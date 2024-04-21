@@ -1,23 +1,23 @@
 ---
-// import '@pagefind/default-ui/css/ui.css';
-// import { useTranslations } from '../utils/translations';
+import "@pagefind/default-ui/css/ui.css";
+import { useTranslations } from "../utils/translations";
 import Icon from "@components/core/icon/icon.astro";
 
 interface Props {
-  // locale: string | undefined;
+  locale: string | undefined;
 }
 
-// const t = useTranslations(Astro.props.locale);
+const t = useTranslations(Astro.props.locale);
 
-// const pagefindTranslations = {
-//   placeholder: t('search.label'),
-//   ...Object.fromEntries(
-//     Object.entries(t.pick('pagefind.')).map(([key, value]) => [
-//       key.replace('pagefind.', ''),
-//       value,
-//     ])
-//   ),
-// };
+const pagefindTranslations = {
+  placeholder: t("search.label"),
+  ...Object.fromEntries(
+    Object.entries(t.pick("pagefind.")).map(([key, value]) => [
+      key.replace("pagefind.", ""),
+      value,
+    ]),
+  ),
+};
 ---
 
 <site-search
@@ -113,25 +113,25 @@ interface Props {
         }
       });
 
-      // let translations = {};
-      // try {
-      //   translations = JSON.parse(this.dataset.translations || "{}");
-      // } catch {}
+      let translations = {};
+      try {
+        translations = JSON.parse(this.dataset.translations || "{}");
+      } catch {}
 
       window.addEventListener("DOMContentLoaded", () => {
         if (import.meta.env.DEV) return;
         const onIdle =
           window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
         onIdle(async () => {
-          //   const { PagefindUI } = await import('@pagefind/default-ui');
-          //   new PagefindUI({
-          //     element: '#starlight__search',
-          //     baseUrl: import.meta.env.BASE_URL,
-          //     bundlePath:
-          //       import.meta.env.BASE_URL.replace(/\/$/, '') + '/_pagefind/',
-          //     showImages: false,
-          //     translations,
-          //   });
+          const { PagefindUI } = await import("@pagefind/default-ui");
+          new PagefindUI({
+            element: "#starlight__search",
+            baseUrl: import.meta.env.BASE_URL,
+            bundlePath:
+              import.meta.env.BASE_URL.replace(/\/$/, "") + "/_pagefind/",
+            showImages: false,
+            translations,
+          });
         });
       });
     }

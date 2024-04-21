@@ -3,21 +3,22 @@ import tailwind from "@astrojs/tailwind";
 import { remarkReadingTime } from "./plugins/remark-reading-time.mjs";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
+import pagefind from "astro-pagefind";
 
 import vercel from "@astrojs/vercel/serverless";
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), mdx(), react()],
-  // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
+  // https://astro.build/config
+  integrations: [tailwind(), mdx(), react(), pagefind()],
   image: {
     service: {
-      entrypoint: "astro/assets/services/sharp"
-    }
+      // Process images with sharp: https://docs.astro.build/en/guides/assets/#using-sharp
+      entrypoint: "astro/assets/services/sharp",
+    },
   },
   markdown: {
-    remarkPlugins: [remarkReadingTime]
+    remarkPlugins: [remarkReadingTime],
   },
   output: "server",
-  adapter: vercel()
+  adapter: vercel(),
 });
