@@ -43,22 +43,22 @@ import Search from "astro-pagefind/components/Search";
 
   <!-- </div> -->
 
-  <div class="flex flex-row items-center gap-4">
-    <div class="hidden md:flex flex-row items-center gap-4 text-lg">
-      <a class="header-navigation-links dark:text-white" href="/">Home</a>
-      <a class="header-navigation-links dark:text-white" href="/blog">Blog</a>
-      <a class="header-navigation-links dark:text-white" href="/portfolio">
-        Portfolio
-      </a>
-
-      <!-- include the Search -->
-
-      <p class="dark:text-white">|</p>
-
-      <Socials size="1.3rem" />
-
-      <p class="dark:text-white">|</p>
+  <div class="hidden md:flex flex-row items-center gap-8 text-lg">
+    <div class="flex flex-row items-center gap-4 dark:text-white font-bold">
+      <a class="header-navigation-links" href="/">Home</a>
+      <a class="header-navigation-links" href="/blog">Blog</a>
+      <a class="header-navigation-links" href="/portfolio">Portfolio</a>
     </div>
+
+    <!-- include the Search -->
+
+    <p class="text-gray-500">|</p>
+
+    <div class="flex flow-row gap-5 dark:text-[#E8DDDD]">
+      <Socials size="1.3rem" />
+    </div>
+
+    <p class="text-gray-500">|</p>
 
     <ThemePicker />
   </div>
