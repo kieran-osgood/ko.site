@@ -2,10 +2,10 @@
 
 pkgs.mkShell {
     buildInputs = with pkgs; [
-        nodejs_21
-        git,
-        yarn,
-        nvim,
+        nodejs_20
+        git
+        neovim
+        bun
     ];
 }
 
