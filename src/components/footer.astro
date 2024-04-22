@@ -1,5 +1,5 @@
 ---
-// import Aurora from "@assets/aurora.astro";
+import Aurora from "@assets/aurora.astro";
 import LinkButton from "@components/core/link-button.astro";
 import Socials from "@components/socials.astro";
 import Text from "@components/core/text";
@@ -24,13 +24,16 @@ const links = [
         <Text.H2>Lets Connect</Text.H2>
         <LinkButton href="/contact-us">Contact</LinkButton>
       </div>
-
-      <Socials withText />
+      <div class="flex flow-row gap-5 dark:text-[#E8DDDD]">
+        <Socials withText />
+      </div>
     </div>
 
-    <!--<div class='absolute w-1/2 left-1/4 top-0 md:top-[-15%] md:left-[38%] lg:top-[-50%]'>-->
-    <!--    <Aurora/>-->
-    <!--</div>-->
+    <div
+      class="absolute w-1/2 left-1/4 top-0 md:top-[-15%] md:left-[38%] lg:top-[-50%] z-[-1]"
+    >
+      <Aurora />
+    </div>
 
     <!-- Not sure why col-end-4 works - lets check whether we just use flex -->
     <div class="hidden sm:grid grid-cols-1 col-end-4 gap-1">
