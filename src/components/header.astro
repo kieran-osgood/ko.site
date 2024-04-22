@@ -2,16 +2,28 @@
 // import Search from "@components/search.astro";
 import ThemePicker from "@components/theme-picker.astro";
 import Socials from "@components/socials.astro";
+// import { Image } from "astro:assets";
 import Search from "astro-pagefind/components/Search";
+// import logo from "@assets/logo.svg";
+// import Logo from "@assets/logo.svg";
 ---
 
-<div class="flex row items-center justify-between h-10 gap-2 p-4 py-8 z-10">
-  <a href="/" style="width:228px; height:34px;" class="flex justify-center">
+<div
+  class="flex row items-center justify-between gap-2 z-50 p-8 pb-0 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl self-center"
+>
+  <a href="/" class="h-full w-full md:px-4">
+    <!-- TODO why the eff doesn't this work - tailwind conditional styles dont apply -->
+    <!-- <img -->
+    <!--   src={logo.src} -->
+    <!--   alt="Logo for KO Dev" -->
+    <!--   class="w-3/4 h-full text-black dark:text-white" -->
+    <!-- /> -->
+
     <svg
       viewBox="0 0 228 58"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      class="fill-black dark:fill-white"
+      class="fill-black dark:fill-white self-center h-[29px] w-[114px] md:h-[43.5px] md:w-[171px]"
     >
       <path
         d="M11.76 39.76L11.368 31.136L31.92 9.8H40.096L23.016 27.944L18.984 32.368L11.76 39.76ZM5.264 49V9.8H12.544V49H5.264ZM32.592 49L17.584 31.136L22.4 25.816L41.104 49H32.592ZM107.967 49V9.8H125.103C129.359 9.8 133.092 10.6213 136.303 12.264C139.514 13.9067 142.015 16.184 143.807 19.096C145.599 22.008 146.495 25.4427 146.495 29.4C146.495 33.32 145.599 36.7547 143.807 39.704C142.015 42.616 139.514 44.8933 136.303 46.536C133.092 48.1787 129.359 49 125.103 49H107.967ZM115.247 42.84H124.767C127.716 42.84 130.255 42.28 132.383 41.16C134.548 40.04 136.21 38.472 137.367 36.456C138.562 34.44 139.159 32.088 139.159 29.4C139.159 26.6747 138.562 24.3227 137.367 22.344C136.21 20.328 134.548 18.76 132.383 17.64C130.255 16.52 127.716 15.96 124.767 15.96H115.247V42.84ZM160.953 26.096H180.441V32.088H160.953V26.096ZM161.513 42.896H183.633V49H154.233V9.8H182.849V15.904H161.513V42.896ZM202.794 49L185.657 9.8H193.554L208.842 45.248H204.306L219.762 9.8H227.042L209.962 49H202.794Z"
@@ -24,7 +36,12 @@ import Search from "astro-pagefind/components/Search";
 
   <!-- <Search /> -->
 
-  <Search id="search" className="pagefind-ui" />
+  <!-- TODO: Add media query for Search to shrink it-->
+  <!-- <div class="flex w-full py-8"> -->
+
+  <Search id="search" className="hidden md:block pagefind-ui" />
+
+  <!-- </div> -->
 
   <div class="flex flex-row items-center gap-4">
     <div class="hidden md:flex flex-row items-center gap-4 text-lg">
