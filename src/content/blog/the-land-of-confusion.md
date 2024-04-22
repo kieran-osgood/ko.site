@@ -1,9 +1,9 @@
 ---
 layout: ../../layouts/blog-page.astro
 # schema
-title: two
+title: The land of confusion
 description: The first in a line of posts
-date: "01-04-2028"
+date: "04-01-2024"
 ---
 
 ## Overview
