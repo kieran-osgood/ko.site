@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import Text from "@components/core/text";
+import BlogCard from "@components/core/blog-card.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.getMilliseconds() - a.data.date.getMilliseconds(),
+);
+---
+
+<div class={`pt-8 px-4`}>
+  <Text.H2> Check out a recent blog post </Text.H2>
+  <div class="flex flex-row gap-4">
+    {
+      posts.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          href={`/blog/${post.slug}`}
+          publishedDate={post.data.date}
+        />
+      ))
+    }
+  </div>
+</div>
