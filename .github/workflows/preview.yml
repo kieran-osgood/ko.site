@@ -15,7 +15,7 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - name: Install Vercel CLI
-        run: pnpm add --global vercel@latest
+        run: bun i --global vercel@latest
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build Project Artifacts
