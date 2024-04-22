@@ -10,22 +10,19 @@ jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v22
         with:
-          node-version: 19
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
+          nix_path: nixpkgs=channel:nixos-unstable
+
       - name: Install Vercel CLI
-        run: pnpm add --global vercel@latest
+        run: nix-shell --command "bun i --global vercel@latest"
+
       - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        run: nix-shell --command "vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}"
+
       - name: Build Project Artifacts
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: nix-shell --command "vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}"
+
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: nix-shell --command "vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}"
