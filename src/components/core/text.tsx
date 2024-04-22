@@ -15,9 +15,9 @@ type HeadingProps = ExtractTextProps<HTMLHeadingElement>;
 const H1 = (props: HeadingProps) => (
   <h1
     {...props}
-    className={joinClx("text-xl md:text-4xl font-bold dark:text-white")(
-      props.className,
-    )}
+    className={joinClx(
+      "text-4xl md:text-5xl lg:text-8xl font-bold dark:text-white",
+    )(props.className)}
   >
     {props.children}
   </h1>
@@ -27,7 +27,7 @@ const H2 = (props: HeadingProps) => (
   <h2
     {...props}
     className={joinClx(
-      "text-3xl md:text-6xl font-bold dark:text-white pb-6 md:pb-10",
+      "text-3xl md:text-4xl font-bold dark:text-white pb-6 md:pb-10",
     )(props.className)}
   >
     {props.children}
@@ -37,9 +37,9 @@ const H2 = (props: HeadingProps) => (
 const H3 = (props: HeadingProps) => (
   <h3
     {...props}
-    className={joinClx("text-lg font-bold text-gray-800 dark:text-white")(
-      props.className,
-    )}
+    className={joinClx(
+      "text-2xl md:text-3xl font-bold text-gray-800 dark:text-white",
+    )(props.className)}
   >
     {props.children}
   </h3>
