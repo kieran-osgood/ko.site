@@ -31,13 +31,15 @@ const links = [
 ] satisfies Link[];
 ---
 
-<div class="flex flow-row gap-5 dark:text-[#E8DDDD]">
-  {
-    links.map(({ href, title, name }) => (
-      <a class="flex gap-2 items-center" {href} target="_blank">
-        <Icon {name} {size} />
-        {withText && <span>{title}</span>}
-      </a>
-    ))
-  }
-</div>
+{
+  links.map(({ href, title, name }) => (
+    <a
+      class="flex gap-2 items-center dark:text-[#E8DDDD]"
+      {href}
+      target="_blank"
+    >
+      <Icon {name} {size} />
+      {withText && <span>{title}</span>}
+    </a>
+  ))
+}
