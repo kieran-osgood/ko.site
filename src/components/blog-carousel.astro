@@ -11,18 +11,23 @@ const posts = (await getCollection("blog")).sort(
 // class="hide-for-me "
 ---
 
-<div class={`${pageBounds} pt-8 px-4`}>
+<div class={`${pageBounds} pt-8 px-4 z-10`}>
   <Text.H2>Check out my blog</Text.H2>
 
   <div
-    class={`flex flex-col md:flex-row gap-4 
+    class={`gap-4 grid 
+grid-cols-1 
+md:grid-cols-2 
+lg:grid-cols-3  
+
 [&>*:nth-child(-n+2)]:block
-md:[&>*:nth-child(-n+3)]:block
+md:[&>*:nth-child(-n+2)]:block
+lg:[&>*:nth-child(-n+3)]:block
 `}
   >
     {
       posts.map((post) => (
-        <div class="hidden h-full">
+        <div class="hidden">
           <BlogCard
             title={post.data.title}
             description={post.data.description}
