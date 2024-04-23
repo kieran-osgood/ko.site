@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "prettier:write": "prettier --write .",
-    "prettier:check": "prettier --check ."
+    "prettier:check": "prettier --check .",
+    "preinstall": "npx only-allow bun"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
