@@ -1,7 +1,8 @@
 ---
 import LinkButton from "@components/core/link-button.astro";
 import { Image } from "astro:assets";
-import phone from "@assets/hero-phone.png";
+import phoneFrame from "@assets/phone-frame.png";
+import reactLogo from "@assets/react-logo.svg";
 import { pageBounds } from "@styles/page";
 
 import Text from "@components/core/text";
@@ -15,13 +16,21 @@ import Text from "@components/core/text";
     class="flex absolute -top-96 left-1/2 transform -translate-x-1/2"
   >
     <div
-      class="bg-gradient-to-r from-violet-300/50 to-purple-100 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] dark:from-violet-900/50 dark:to-purple-900"
+      class="bg-gradient-to-r from-primary to-purple-100 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] dark:from-violet-900/50 dark:to-purple-900"
     >
     </div>
     <div
-      class="bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem] dark:from-indigo-900/70 dark:via-indigo-900/70 dark:to-blue-900/70"
+      class="bg-gradient-to-tl from-primary via-blue-100 to-primary blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem] dark:from-indigo-900/70 dark:via-indigo-900/70 dark:to-blue-900/70"
     >
     </div>
+    <!-- <div -->
+    <!--   class="bg-gradient-to-r from-violet-300/50 to-purple-100 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] dark:from-violet-900/50 dark:to-purple-900" -->
+    <!-- > -->
+    <!-- </div> -->
+    <!-- <div -->
+    <!--   class="bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem] dark:from-indigo-900/70 dark:via-indigo-900/70 dark:to-blue-900/70" -->
+    <!-- > -->
+    <!-- </div> -->
   </div>
   <!-- End Gradients -->
 
@@ -91,11 +100,16 @@ import Text from "@components/core/text";
 
     <!-- Right -->
     <div class="px-4 sm:px-6 lg:px-8 py-10 lg:py-16 max-w-1/2 hidden sm:flex">
-      <div class="flex justify-center max-w-2xl text-center mx-auto">
+      <div class="flex justify-center max-w-2xl text-center mx-auto relative">
         <Image
-          src={phone}
+          src={phoneFrame}
           alt="React native running on an iPhone"
-          class="max-w-[70%]"
+          class="max-w-[55%]"
+        />
+        <Image
+          src={reactLogo}
+          alt="React native running on an iPhone"
+          class="max-w-[35%] absolute self-center animate-[spin_3s_linear_infinite]"
         />
       </div>
     </div>
