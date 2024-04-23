@@ -16,7 +16,7 @@ const links = [
 ---
 
 <footer
-  class="flex flex-col self-center pt-12 px-4 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl relative"
+  class="flex flex-col self-center mt-20 px-4 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl relative"
 >
   <div class="flex flex-row justify-between w-full">
     <div>
@@ -30,7 +30,11 @@ const links = [
     </div>
 
     <div
-      class="absolute w-1/2 left-1/4 top-0 md:top-[-15%] md:left-[38%] lg:top-[-50%] z-[-1]"
+      class={`hidden sm:block absolute w-1/2 left-1/4 
+sm:top-[-35%] sm:left-[35%] 
+md:top-[-15%] md:left-[30%] 
+lg:top-[-75%] 
+z-[0] overflow-clip`}
     >
       <Aurora />
     </div>
