@@ -38,7 +38,7 @@ const H3 = (props: HeadingProps) => (
   <h3
     {...props}
     className={joinClx(
-      "text-2xl md:text-3xl font-bold text-gray-800 dark:text-white",
+      "text-xl md:text-2xl font-bold text-gray-800 dark:text-white",
     )(props.className)}
   >
     {props.children}
