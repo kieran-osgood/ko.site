@@ -1,5 +1,5 @@
 ---
-import Aurora from "@assets/aurora.astro";
+import Aurora from "@assets/aurora.svg";
 import LinkButton from "@components/core/link-button.astro";
 import Socials from "@components/socials.astro";
 import Text from "@components/core/text";
@@ -36,7 +36,7 @@ md:top-[-15%] md:left-[30%]
 lg:top-[-75%] 
 z-[0] overflow-clip`}
     >
-      <Aurora />
+      <img src={Aurora.src} alt="Aurora Borealis" />
     </div>
 
     <!-- Not sure why col-end-4 works - lets check whether we just use flex -->
