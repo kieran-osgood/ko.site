@@ -25,7 +25,6 @@
     "astro": "^4.6.2",
     "astro-pagefind": "^1.5.0",
     "mdast-util-to-string": "^3.2.0",
-    "preline": "^1.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reading-time": "^1.5.0",

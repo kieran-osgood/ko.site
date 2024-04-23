@@ -4,14 +4,10 @@ import Sun from "@assets/sun.astro";
 import Icon from "@components/core/icon/icon.astro";
 ---
 
-<div
-  class="hs-dropdown z-50"
-  data-hs-dropdown-placement="bottom-right"
-  data-hs-dropdown-offset="30"
->
-  <a
-    class="hs-dropdown-toggle hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500 p-3 sm:p-0"
-    href="javascript:;"
+<div class="relative inline-block text-left">
+  <button
+    id="dropdown-button"
+    class="inline-flex justify-center w-full text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500 items-center hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500 p-3 sm:p-0"
   >
     <Moon />
     <Sun />
@@ -22,149 +18,154 @@ import Icon from "@components/core/icon/icon.astro";
       &nbsp;
       <Icon name="down-caret" />
     </div>
-  </a>
+  </button>
 
   <div
-    id="selectThemeDropdown"
-    class="hs-dropdown-menu hs-dropdown-open:opacity-100 mt-2 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mb-2 origin-bottom-left bg-white shadow-md rounded-lg p-2 space-y-1 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
+    id="dropdown-menu"
+    class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
   >
-    <a
-      class="hs-auto-mode-active:bg-gray-100 flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-      href="javascript:;"
-      data-hs-theme-click-value="auto"
+    <div
+      class="py-2 p-2"
+      role="menu"
+      aria-orientation="vertical"
+      aria-labelledby="dropdown-button"
     >
-      Auto (system default)
-    </a>
-    <a
-      class="hs-dark-mode-active:bg-gray-700 flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-      href="javascript:;"
-      data-hs-theme-click-value="dark"
-    >
-      Default (Dark mode)
-    </a>
-    <a
-      class="hs-default-mode-active:bg-gray-100 flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-      href="javascript:;"
-      data-hs-theme-click-value="default"
-    >
-      Light
-    </a>
+      <a
+        class="menuitem flex block rounded-md px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer"
+        role="menuitem"
+        data-value="light"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          id="light"
+          width="18px"
+          class="mr-2"
+          ><path
+            d="M19 9.199h-.98c-.553 0-1 .359-1 .801 0 .441.447.799 1 .799H19c.552 0 1-.357 1-.799 0-.441-.449-.801-1-.801zM10 4.5A5.483 5.483 0 0 0 4.5 10c0 3.051 2.449 5.5 5.5 5.5 3.05 0 5.5-2.449 5.5-5.5S13.049 4.5 10 4.5zm0 9.5c-2.211 0-4-1.791-4-4 0-2.211 1.789-4 4-4a4 4 0 0 1 0 8zm-7-4c0-.441-.449-.801-1-.801H1c-.553 0-1 .359-1 .801 0 .441.447.799 1 .799h1c.551 0 1-.358 1-.799zm7-7c.441 0 .799-.447.799-1V1c0-.553-.358-1-.799-1-.442 0-.801.447-.801 1v1c0 .553.359 1 .801 1zm0 14c-.442 0-.801.447-.801 1v1c0 .553.359 1 .801 1 .441 0 .799-.447.799-1v-1c0-.553-.358-1-.799-1zm7.365-13.234c.391-.391.454-.961.142-1.273s-.883-.248-1.272.143l-.7.699c-.391.391-.454.961-.142 1.273s.883.248 1.273-.143l.699-.699zM3.334 15.533l-.7.701c-.391.391-.454.959-.142 1.271s.883.25 1.272-.141l.7-.699c.391-.391.454-.961.142-1.274s-.883-.247-1.272.142zm.431-12.898c-.39-.391-.961-.455-1.273-.143s-.248.883.141 1.274l.7.699c.391.391.96.455 1.272.143s.249-.883-.141-1.273l-.699-.7zm11.769 14.031l.7.699c.391.391.96.453 1.272.143.312-.312.249-.883-.142-1.273l-.699-.699c-.391-.391-.961-.455-1.274-.143s-.248.882.143 1.273z"
+          ></path></svg
+        > Light
+      </a>
+
+      <a
+        class="menuitem flex rounded-md px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer"
+        role="menuitem"
+        data-value="dark"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          id="moon"
+          width="18px"
+          class="mr-2"
+          ><path
+            d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"
+          ></path></svg
+        >
+        Dark
+      </a>
+
+      <a
+        class="menuitem flex rounded-md px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer"
+        role="menuitem"
+        data-value="auto"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16px"
+          class="mr-2"
+          viewBox="0 0 32 32"
+          id="desktop"
+          ><path
+            d="M30 2H2a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h9.998c-.004 1.446-.062 3.324-.61 4h-.404A.992.992 0 0 0 10 29c0 .552.44 1 .984 1h10.03A.992.992 0 0 0 22 29c0-.552-.44-1-.984-1h-.404c-.55-.676-.606-2.554-.61-4H30a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM14 24l-.002.004L14 24zm4.002.004L18 24h.002v.004zM30 20H2V4h28v16z"
+          ></path></svg
+        > System
+      </a>
+    </div>
   </div>
 </div>
 
 <script>
-  const HSThemeAppearance = {
-    init() {
-      const defaultTheme = "dark";
-      let theme = localStorage.getItem("hs_theme") || defaultTheme;
+  const dropdownButton = document.getElementById("dropdown-button");
+  const dropdownMenu = document.getElementById("dropdown-menu");
+  let isDropdownOpen = false; // Set to true to open the dropdown by default, false to close it by default
 
-      if (document.querySelector("html")?.classList.contains("dark")) return;
-      this.setAppearance(theme);
-    },
-    _resetStylesOnLoad() {
-      const $resetStyles = document.createElement("style");
-      $resetStyles.innerText = `*{transition: unset !important;}`;
-      $resetStyles.setAttribute("data-hs-appearance-onload-styles", "");
-      document.head.appendChild($resetStyles);
-      return $resetStyles;
-    },
-    setAppearance(
-      theme: string | null,
-      saveInStore = true,
-      dispatchEvent: Element | boolean | undefined = true,
+  // Function to toggle the dropdown
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu?.classList.remove("hidden");
+    } else {
+      dropdownMenu?.classList.add("hidden");
+    }
+  }
+
+  // Initialize the dropdown state
+  toggleDropdown();
+
+  // Toggle the dropdown when the button is clicked
+  dropdownButton?.addEventListener("click", toggleDropdown);
+
+  function closeDropdown() {
+    dropdownMenu?.classList.add("hidden");
+    isDropdownOpen = false;
+  }
+
+  // Close the dropdown when clicking outside of it
+  window.addEventListener("click", (event) => {
+    if (
+      event.target &&
+      !dropdownButton?.contains(event.target as Node) &&
+      !dropdownMenu?.contains(event.target as Node)
     ) {
-      const $resetStylesEl = this._resetStylesOnLoad();
+      closeDropdown();
+    }
+  });
 
-      if (saveInStore && theme) {
-        localStorage.setItem("hs_theme", theme);
-      }
+  const dropdownMenuButtons = document.querySelectorAll(".menuitem");
 
-      if (theme === "auto") {
-        theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "default";
-      }
+  function onThemeClick(event: Event) {
+    if (
+      event.target &&
+      "dataset" in event.target &&
+      typeof event.target.dataset === "object" &&
+      event.target.dataset !== null &&
+      "value" in event.target.dataset
+    ) {
+      const value = String(event.target.dataset.value);
+      save(value);
+    }
+  }
 
-      document.querySelector("html")?.classList.remove("dark");
-      document.querySelector("html")?.classList.remove("default");
-      document.querySelector("html")?.classList.remove("auto");
+  function save(value: string) {
+    localStorage.setItem("hs_theme", value);
+    editHtml(value);
+    closeDropdown();
+  }
 
-      document
-        .querySelector("html")
-        ?.classList.add(this.getOriginalAppearance());
+  const darkMedia = window.matchMedia("(prefers-color-scheme: dark)");
+  function editHtml(value: string) {
+    if (
+      value === "dark" ||
+      (localStorage.hs_theme === "auto" && darkMedia.matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }
 
-      setTimeout(() => {
-        $resetStylesEl.remove();
-      });
+  dropdownMenuButtons.forEach((el) =>
+    el.addEventListener("click", onThemeClick),
+  );
 
-      if (dispatchEvent) {
-        window.dispatchEvent(
-          new CustomEvent("on-hs-appearance-change", { detail: theme }),
-        );
-      }
-    },
-    getAppearance() {
-      let theme = this.getOriginalAppearance();
-      if (theme === "auto") {
-        theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "default";
-      }
-      return theme;
-    },
-    getOriginalAppearance() {
-      const defaultTheme = "dark";
-      return localStorage.getItem("hs_theme") || defaultTheme;
-    },
-  };
-  HSThemeAppearance.init();
+  save(localStorage.hs_theme);
 
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", () => {
-      if (HSThemeAppearance.getOriginalAppearance() === "auto") {
-        HSThemeAppearance.setAppearance("auto", false);
-      }
-    });
-
-  window.addEventListener("load", () => {
-    const $clickableThemes = document.querySelectorAll<HTMLAnchorElement>(
-      "[data-hs-theme-click-value]",
-    );
-    const $switchableThemes = document.querySelectorAll<HTMLAnchorElement>(
-      "[data-hs-theme-switch]",
-    );
-
-    $clickableThemes.forEach(($item) => {
-      $item.addEventListener("click", () =>
-        HSThemeAppearance.setAppearance(
-          $item.getAttribute("data-hs-theme-click-value"),
-          true,
-          $item,
-        ),
-      );
-    });
-
-    $switchableThemes.forEach(($item) => {
-      $item.addEventListener("change", (e) => {
-        if (e.target && "checked" in e.target) {
-          HSThemeAppearance.setAppearance(
-            e.target.checked ? "dark" : "default",
-          );
-        }
-      });
-
-      if ("checked" in $item) {
-        $item.checked = HSThemeAppearance.getAppearance() === "dark";
-      }
-    });
-
-    window.addEventListener("on-hs-appearance-change", (e) => {
-      $switchableThemes.forEach(($item) => {
-        if ("checked" in $item && "detail" in e) {
-          $item.checked = e.detail === "dark";
-        }
-      });
-    });
+  darkMedia.addEventListener("change", (event) => {
+    if (event.target && "matches" in event?.target && event.target.matches) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   });
 </script>
