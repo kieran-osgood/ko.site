@@ -1,5 +1,12 @@
+---
+interface Props {
+  responsive?: boolean;
+}
+const { responsive = true } = Astro.props;
+---
+
 <svg
-  class="hs-dark-mode-active:block hidden w-4 h-4"
+  class:list={["w-4 h-4", responsive ? "dark:block hidden" : "block"]}
   xmlns="http://www.w3.org/2000/svg"
   width="16"
   height="16"

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Text from "@components/core/text";
-import BlogCard from "@components/core/blog-card.astro";
+import BlogCard from "@components/blog/blog-card.astro";
 import { pageBounds } from "@styles/page";
 
 const posts = (await getCollection("blog")).sort(
