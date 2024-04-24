@@ -3,14 +3,14 @@ export const pageBounds =
 
 export const highlightCurrentPage = (selectors: string) => {
   const anchors = document.querySelectorAll<HTMLAnchorElement>(selectors);
+
   for (const _ of anchors) {
     if (_.pathname === "/" && window.location.pathname !== "/") {
       continue;
     }
 
     if (window.location.pathname.startsWith(_.pathname)) {
-      // _.classList.add("text-[#71C9BD]", "dark:!text-[#71C9BD]"); // important used to override default text color
-      _.classList.add("text-primary", "dark:!text-primary"); // important used to override default text color
+      _.classList.add("text-primary", "dark:text-primary"); // important used to override default text color
       break; // we only want to attach highlight to first node
     }
   }

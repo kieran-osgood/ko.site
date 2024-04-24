@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/blog-page.astro
+layout: ../../layouts/mdx-to-html.astro
 # schema
 title: Disturbed are coming for you
 description: The first in a line of posts

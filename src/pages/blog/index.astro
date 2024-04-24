@@ -1,6 +1,6 @@
 ---
-import BlogList from "@components/blog-list.astro";
-import Page from "@layouts/page.astro";
+import BlogList from "@components/blog/blog-list.astro";
+import Screen from "@layouts/screen.astro";
 import Text from "@components/core/text";
 import { getCollection } from "astro:content";
 
@@ -9,7 +9,7 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<Page>
+<Screen>
   <div class="flex flex-col items-center flex-1">
     <Text.H1>Blog Posts</Text.H1>
     <p class="dark:text-white">
@@ -23,4 +23,4 @@ const posts = (await getCollection("blog")).sort(
       <BlogList items={posts} />
     </div>
   </div>
-</Page>
+</Screen>
