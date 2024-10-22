@@ -3,23 +3,38 @@ interface Props {
   href: string;
   variant?: "primary" | "secondary" | "tertiary";
 }
-const primaryFont = "text-white";
-const secondaryFont = "text-blue-600 hover:bg-blue-700";
 
-const primaryBg = "bg-blue-600 hover:bg-blue-700";
-const secondaryBg = "bg-white hover:bg-white";
+const styles: Record<"primary" | "secondary", { font: string; bg: string }> = {
+  primary: {
+    font: "text-white",
+    bg: "bg-blue-600 hover:bg-blue-700",
+  },
+  secondary: {
+    font: "text-blue-600 hover:bg-blue-700",
+    bg: "bg-white hover:bg-white",
+  },
+};
 
 const { href, variant = "primary" } = Astro.props;
-const s =
-  variant === "primary"
-    ? `${primaryBg} ${primaryFont}`
-    : variant === "secondary"
-      ? `${secondaryBg} ${secondaryFont}`
-      : `${secondaryFont}`;
+
+const getVariantStyles = (): string[] => {
+  if (variant === "primary") {
+    return [styles.primary.bg, styles.primary.font];
+  }
+
+  if (variant === "secondary") {
+    return [styles.secondary.bg, styles.secondary.font];
+  }
+  return [styles.secondary.font];
+};
 ---
 
+<!-- <a --><!--   class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-gray-800 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:text-white dark:hover:bg-gray-800 dark:hover:border-gray-900 dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800" --><!--   href="#" --><!-- > --><!--   Preline Figma --><!-- </a> -->
 <a
-  class={`inline-flex justify-center items-center gap-x-1 md: gap-x-3 text-center border border-transparent text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800 hover:cursor-pointer ${s}`}
+  class:list={[
+    "inline-flex justify-center items-center gap-x-1 md: gap-x-3 text-center border border-transparent text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800 hover:cursor-pointer",
+    ...getVariantStyles(),
+  ]}
   {href}
 >
   <slot />
