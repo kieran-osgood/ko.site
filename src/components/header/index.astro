@@ -1,24 +1,13 @@
 ---
-// import Search from "@components/search.astro";
 import ThemePicker from "@components/header/theme-picker.astro";
 import Socials from "@components/core/socials.astro";
-// import { Image } from "astro:assets";
 import Search from "astro-pagefind/components/Search";
-// import logo from "@assets/logo.svg";
-// import Logo from "@assets/logo.svg";
 ---
 
 <div
-  class="flex row items-center justify-between gap-2 z-50 p-8 pb-0 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl self-center"
+  class="flex row items-center justify-between gap-2 z-50 p-4 md:px-6 lg:px-8 pb-0 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl self-center"
 >
-  <a href="/" class="h-full w-full md:px-4" aria-label="Home">
-    <!-- TODO why the eff doesn't this work - tailwind conditional styles dont apply -->
-    <!-- <img -->
-    <!--   src={logo.src} -->
-    <!--   alt="Logo for KO Dev" -->
-    <!--   class="w-3/4 h-full text-black dark:text-white" -->
-    <!-- /> -->
-
+  <a href="/" class="h-full w-full" aria-label="Home">
     <svg
       viewBox="0 0 228 58"
       fill="none"
@@ -54,15 +43,17 @@ import Search from "astro-pagefind/components/Search";
 
     <!-- include the Search -->
 
-    <p class="hidden md:flex text-gray-500">|</p>
+    <p class="hidden md:flex text-gray-300">|</p>
 
     <div class="hidden md:flex flow-row gap-5 dark:text-[#E8DDDD]">
       <Socials size="1.3rem" />
     </div>
 
-    <p class="hidden md:flex text-gray-500">|</p>
+    <p class="hidden md:flex text-gray-300">|</p>
 
-    <ThemePicker />
+    <div class="text-gray-300">
+      <ThemePicker />
+    </div>
   </div>
 </div>
 
