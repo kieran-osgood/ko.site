@@ -8,17 +8,17 @@ import Icon from "@components/core/icon/icon.astro";
 <div class="relative inline-block text-left">
   <button
     id="dropdown-button"
-    class="inline-flex justify-center w-full text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500 items-center hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500 p-3 sm:p-0"
+    class="inline-flex justify-center w-full text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500 items-center hover:text-blue-600 font-medium dark:text-gray-300 dark:hover:text-gray-500 p-3 sm:p-0"
   >
-    <Moon />
-    <Sun />
-
     <div class="hidden sm:flex items-center">
       &nbsp; &nbsp;
       <span class="dark:hidden block">Light</span>
       <span class="dark:block hidden">Dark</span>
       &nbsp;
-      <Icon name="down-caret" />
+      <Moon />
+      <Sun />
+      &nbsp;
+      <Icon name="down-caret" size="1.5em" />
     </div>
   </button>
 
