@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "check": "astro check && tsc",
-    "build": "astro check && astro build && cp node_modules/preline/dist/preline.js public/preline.js",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "prettier:write": "prettier --write .",
