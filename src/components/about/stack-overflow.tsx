@@ -24,7 +24,7 @@ type StackOverflowProps = {
   items: Array<StackOverflowStats>;
 };
 export default function StackOverflow(props: StackOverflowProps) {
-  if (!props.items[0]) return null;
+  if (!props.items?.[0]) return null;
 
   const [{ reputation, badge_counts, link }] = props.items;
 

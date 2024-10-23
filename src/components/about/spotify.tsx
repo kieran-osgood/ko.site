@@ -1,22 +1,11 @@
-import { SpotifyApi } from "@spotify/web-api-ts-sdk";
-import { useEffect } from "react";
+import type { z } from "astro/zod";
+import type { TrackSchema } from "src/pages/api/spotify";
 
-const clientId = "";
-const clientSecret = "";
+type SpotifyProps = {
+  track: z.infer<typeof TrackSchema>;
+};
 
-type SpotifyProps = {};
 export default function Spotify(props: SpotifyProps) {
-  useEffect(() => {
-    (async () => {
-      const sdk = SpotifyApi.withUserAuthorization(
-        clientId,
-        "https://localhost:4321/about",
-        ["user-read-recently-played"],
-      );
-      const a = await sdk.player.getCurrentlyPlayingTrack();
-    })();
-  }, []);
-
   if (!props.track) return null;
 
   const {

@@ -2,20 +2,23 @@
 import Screen from "@layouts/screen.astro";
 import AboutComp from "@components/about/index.astro";
 import Text from "@components/core/text";
-// import Spotify from "@components/about/spotify.tsx";
+import Spotify from "@components/about/spotify.tsx";
 import CommitActivity from "@components/about/commit-activity.tsx";
 import StackOverflow from "@components/about/stack-overflow.tsx";
+import { GET, TrackSchema } from "./api/spotify.ts";
 import { pageBounds } from "@styles/page";
 
 const SHOPIFY_CHECKOUT_URL =
   "https://www.shopify.com/uk/partners/blog/mobile-checkout-sdks-for-ios-and-android";
 
-const _stackoverflow = await (
-  await fetch(
-    "https://api.stackexchange.com/2.2/users/5428936?site=stackoverflow",
-  )
-).json();
-const stackoverflow = _stackoverflow.items;
+const _stackoverflow = await fetch(
+  "https://api.stackexchange.com/2.2/users/5428936?site=stackoverflow",
+  // TODO: cache this to avoid hitting rate limits
+  { cache: "force-cache" },
+);
+
+const spotifyRawData = await (await GET(Astro)).json();
+const track = TrackSchema.safeParse(spotifyRawData);
 ---
 
 <Screen>
@@ -30,6 +33,19 @@ const stackoverflow = _stackoverflow.items;
           Senior Engineer at Shopify, working on the
           <a href={SHOPIFY_CHECKOUT_URL} class="underline">Checkout SDK</a>.
         </p>
+        In the past I've worked on apps such as{" "}
+        <a
+          href="https://www.bbr.com/app?srsltid=AfmBOoqJraPTQIA8c-RbUYI_FFtpttwy8cL3tG6-DGa_MO_i7zD1hbLj"
+          class="href"
+        >
+          {"BB&R"}
+        </a>
+        <a href="https://www.aviva.co.uk/wealth/">Aviva Wealth</a>
+        {" "}and{" "}
+        <a href="https://www.aviva.co.uk/services/more-from-aviva/myaviva-app/">
+          MyAviva
+        </a>
+        <!-- TODO: Add links -->
         <br />
         <p>If you spot me at a conference please say hi!</p>
       </div>
@@ -38,9 +54,13 @@ const stackoverflow = _stackoverflow.items;
       <div class="w-1/2">
         <!-- <div>profile and socials</div> -->
         <!-- spotify isnt working at the moment due to issues with client vs server auth -->
-        <!-- <Spotify client:only="react" /> -->
+        {track.success && <Spotify client:only="react" track={track.data} />}
 
-        <StackOverflow items={stackoverflow} />
+        {
+          _stackoverflow.ok && (
+            <StackOverflow items={await _stackoverflow.json()} />
+          )
+        }
         <CommitActivity client:only="react" />
       </div>
     </div>
