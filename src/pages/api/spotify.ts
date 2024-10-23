@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { z } from "astro/zod";
+import { ZodSchema, z } from "astro/zod";
 
 const RECENTLY_PLAYED_ENDPOINT =
   "https://api.spotify.com/v1/me/player/recently-played";
@@ -32,7 +32,9 @@ const authOptions = new URLSearchParams({
     Instead we just request new access_token when we need the spotify data
     as we don't want to store the tokens client side (allows users to view my data)
  */
-export const GET: APIRoute = async (): Promise<Response> => {
+const GET: APIRoute & {
+  Schema: typeof TrackSchema;
+} = async (): Promise<Response> => {
   // TODO: cache this to avoid hitting rate limits
   const tokenResponse = await fetch(REFRESH_ENDPOINT, {
     method: "POST",
@@ -72,3 +74,7 @@ export const GET: APIRoute = async (): Promise<Response> => {
 
   return new Response(JSON.stringify(recentlyPlayed.data.items?.[0]?.track));
 };
+
+GET.Schema = TrackSchema;
+
+export { GET };

@@ -5,20 +5,19 @@ import Text from "@components/core/text";
 import Spotify from "@components/about/spotify.tsx";
 import CommitActivity from "@components/about/commit-activity.tsx";
 import StackOverflow from "@components/about/stack-overflow.tsx";
-import { GET, TrackSchema } from "./api/spotify.ts";
+import { GET as GET_SPOTIFY } from "./api/spotify.ts";
+import { GET as GET_STACK_OVERFLOW } from "./api/stackoverflow";
 import { pageBounds } from "@styles/page";
 
 const SHOPIFY_CHECKOUT_URL =
   "https://www.shopify.com/uk/partners/blog/mobile-checkout-sdks-for-ios-and-android";
 
-const _stackoverflow = await fetch(
-  "https://api.stackexchange.com/2.2/users/5428936?site=stackoverflow",
-  // TODO: cache this to avoid hitting rate limits
-  { cache: "force-cache" },
-);
-
-const spotifyRawData = await (await GET(Astro)).json();
-const track = TrackSchema.safeParse(spotifyRawData);
+const stackoverflowRawData = await (await GET_STACK_OVERFLOW(Astro)).json();
+const stackoverflow = GET_STACK_OVERFLOW.Schema.safeParse(stackoverflowRawData);
+//TODO: check for non 2xx (e.g. 429) and dont json if so
+//TODO: check for non 2xx (e.g. 429) and dont json if so
+const spotifyRawData = await (await GET_SPOTIFY(Astro)).json();
+const track = GET_SPOTIFY.Schema.safeParse(spotifyRawData);
 ---
 
 <Screen>
@@ -57,8 +56,8 @@ const track = TrackSchema.safeParse(spotifyRawData);
         {track.success && <Spotify client:only="react" track={track.data} />}
 
         {
-          _stackoverflow.ok && (
-            <StackOverflow items={await _stackoverflow.json()} />
+          stackoverflow.success && (
+            <StackOverflow items={stackoverflow.data.items} />
           )
         }
         <CommitActivity client:only="react" />
