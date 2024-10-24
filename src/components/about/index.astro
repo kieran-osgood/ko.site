@@ -1,0 +1,33 @@
+---
+import Text from "@components/core/text";
+import { pageBounds } from "@styles/page.ts";
+import { Image } from "astro:assets";
+import galaxy from "@assets/galaxy.svg";
+---
+
+<div class={`flex flex-col justify-center gap-4 py-4 ${pageBounds}`}>
+  <Text.H2>Full Stack Specialist</Text.H2>
+
+  <div class="w-full">
+    <!-- TODO: look into CSS only parallax effect - Youtuber had this -->
+    <div
+      class="relative w-full rounded-2xl bg-[#3744D7] p-8 py-12 lg:py-16 flex flex-row overflow-hidden"
+    >
+      <ul class="text-white text-sm sm:text-lg md:text-xl lg:text-3xl z-10">
+        <li>React Native</li>
+        <li>Full-Stack developer</li>
+        <li>AWS Solutions Architect</li>
+      </ul>
+
+      <Image
+        src={galaxy}
+        alt="Galaxy layers with the astral bodies being logos of software frameworks or languages"
+        class={`absolute bg-contain 
+   h-[120%]    top-[-10%]    right-[-35%] 
+md:h-[170%] md:top-[-30%] md:right-[-25%]
+lg:h-[180%] 
+`}
+      />
+    </div>
+  </div>
+</div>

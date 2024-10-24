@@ -1,0 +1,19 @@
+---
+import BlogCard from "@components/blog/blog-card.astro";
+import { type CollectionEntry } from "astro:content";
+
+interface Props {
+  items: CollectionEntry<"blog">[];
+}
+---
+
+{
+  Astro.props.items.map((post) => (
+    <BlogCard
+      title={post.data.title}
+      description={post.data.description}
+      href={`/blog/${post.slug}`}
+      publishedDate={post.data.date}
+    />
+  ))
+}

@@ -1,0 +1,147 @@
+---
+import Moon from "@components/core/icon/moon.astro";
+import Sun from "@components/core/icon/sun.astro";
+import System from "@components/core/icon/system.astro";
+import Icon from "@components/core/icon/icon.astro";
+---
+
+<div class="relative inline-block text-left">
+  <button
+    id="dropdown-button"
+    class="inline-flex justify-center w-full text-sm font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500 items-center hover:text-blue-600 font-medium dark:text-gray-300 dark:hover:text-gray-500 p-3 sm:p-0"
+  >
+    <div class="hidden sm:flex items-center">
+      &nbsp; &nbsp;
+      <span class="dark:hidden block">Light</span>
+      <span class="dark:block hidden">Dark</span>
+      &nbsp;
+      <Moon />
+      <Sun />
+      &nbsp;
+      <Icon name="down-caret" size="1.5em" />
+    </div>
+  </button>
+
+  <div
+    id="dropdown-menu"
+    class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden"
+  >
+    <div
+      class="py-2 p-2"
+      role="menu"
+      aria-orientation="vertical"
+      aria-labelledby="dropdown-button"
+    >
+      <a
+        class="menuitem flex block rounded-md px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer"
+        role="menuitem"
+        data-value="light"
+      >
+        <Sun responsive={false} />
+        &nbsp; Light
+      </a>
+
+      <a
+        class="menuitem flex rounded-md px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer"
+        role="menuitem"
+        data-value="dark"
+      >
+        <Moon responsive={false} />
+        &nbsp; Dark
+      </a>
+
+      <a
+        class="menuitem flex rounded-md px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer"
+        role="menuitem"
+        data-value="auto"
+      >
+        <System /> System
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const dropdownButton = document.getElementById("dropdown-button");
+  const dropdownMenu = document.getElementById("dropdown-menu");
+  let isDropdownOpen = false; // Set to true to open the dropdown by default, false to close it by default
+
+  // Function to toggle the dropdown
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu?.classList.remove("hidden");
+    } else {
+      dropdownMenu?.classList.add("hidden");
+    }
+  }
+
+  // Initialize the dropdown state
+  toggleDropdown();
+
+  // Toggle the dropdown when the button is clicked
+  dropdownButton?.addEventListener("click", toggleDropdown);
+
+  function closeDropdown() {
+    dropdownMenu?.classList.add("hidden");
+    isDropdownOpen = false;
+  }
+
+  // Close the dropdown when clicking outside of it
+  window.addEventListener("click", (event) => {
+    if (
+      event.target &&
+      !dropdownButton?.contains(event.target as Node) &&
+      !dropdownMenu?.contains(event.target as Node)
+    ) {
+      closeDropdown();
+    }
+  });
+
+  const dropdownMenuButtons = document.querySelectorAll(".menuitem");
+
+  function onThemeClick(event: Event) {
+    if (
+      event.target &&
+      "dataset" in event.target &&
+      typeof event.target.dataset === "object" &&
+      event.target.dataset !== null &&
+      "value" in event.target.dataset
+    ) {
+      const value = String(event.target.dataset.value);
+      save(value);
+    }
+  }
+
+  function save(value: string) {
+    localStorage.setItem("hs_theme", value);
+    editHtml(value);
+    closeDropdown();
+  }
+
+  const darkMedia = window.matchMedia("(prefers-color-scheme: dark)");
+  function editHtml(value: string) {
+    if (
+      value === "dark" ||
+      (localStorage.hs_theme === "auto" && darkMedia.matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }
+
+  dropdownMenuButtons.forEach((el) =>
+    el.addEventListener("click", onThemeClick),
+  );
+
+  save(localStorage.hs_theme);
+
+  darkMedia.addEventListener("change", (event) => {
+    if (event.target && "matches" in event?.target && event.target.matches) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  });
+</script>

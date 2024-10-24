@@ -1,0 +1,46 @@
+---
+import Icon from "@components/core/icon/icon.astro";
+import type { Icons } from "./icon/icons";
+interface Props {
+  withText?: boolean;
+  size?: string;
+}
+const { size = "1rem", withText = false } = Astro.props;
+type Link = {
+  href: string;
+  name: keyof typeof Icons;
+  title: string;
+};
+
+const links = [
+  {
+    href: "https://github.com/kieran-osgood/",
+    name: "github",
+    title: "Github",
+  },
+  {
+    href: "https://www.linkedin.com/in/kieranosgood/",
+    name: "linkedin",
+    title: "LinkedIn",
+  },
+  {
+    href: "https://twitter.com/kieranbosgood",
+    name: "twitter",
+    title: "Twitter",
+  },
+] satisfies Link[];
+---
+
+{
+  links.map(({ href, title, name }) => (
+    <a
+      class="flex gap-2 items-center dark:text-[#E8DDDD]"
+      {href}
+      target="_blank"
+      aria-label={title}
+    >
+      <Icon {name} {size} />
+      {withText && <span>{title}</span>}
+    </a>
+  ))
+}

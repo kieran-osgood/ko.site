@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Text from "@components/core/text";
+import BlogCard from "@components/blog/blog-card.astro";
+import { pageBounds } from "@styles/page";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.getMilliseconds() - a.data.date.getMilliseconds(),
+);
+---
+
+<div class={`${pageBounds} pt-8 z-10`}>
+  <Text.H2>Latest blog posts</Text.H2>
+
+  <div
+    class={`gap-4 grid 
+grid-cols-1 
+md:grid-cols-2 
+lg:grid-cols-3  
+
+[&>*:nth-child(-n+2)]:block
+md:[&>*:nth-child(-n+2)]:block
+lg:[&>*:nth-child(-n+3)]:block
+`}
+  >
+    {
+      posts.map((post) => (
+        <div class="hidden">
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            href={`/blog/${post.slug}`}
+            publishedDate={post.data.date}
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>

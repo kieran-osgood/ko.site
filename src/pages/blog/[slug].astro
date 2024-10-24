@@ -1,0 +1,43 @@
+---
+import Screen from "@layouts/screen.astro";
+import TableOfContents from "@components/blog/table-of-contents.astro";
+import EstimatedReadTime from "@components/blog/estimated-read-time.astro";
+import Text from "@components/core/text";
+
+import { getCollection } from "astro:content";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings, remarkPluginFrontmatter } = await post.render();
+---
+
+<Screen>
+  <div
+    class="flex flex-col justify-center lg:grid lg:grid-cols-12 lg:gap-5 px-5"
+  >
+    <div class="lg:col-start-4 lg:col-span-6 pt-8">
+      <article class="prose prose-gray dark:prose-invert">
+        <Text.H1>{post.data.title}</Text.H1>
+        <b>📆:</b> {post.data.date.toLocaleDateString()}
+        <EstimatedReadTime minutesRead={remarkPluginFrontmatter.minutesRead} />
+
+        <Content />
+      </article>
+    </div>
+
+    <div class="col-start-10 col-span-3 xl:col-span-2 hidden lg:block">
+      <TableOfContents {headings} />
+    </div>
+  </div>
+</Screen>
+

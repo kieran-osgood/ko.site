@@ -1,0 +1,49 @@
+---
+interface Props {
+  href: string;
+  variant?: "primary" | "secondary" | "tertiary";
+}
+
+const styles: Record<"primary" | "secondary", { font: string; bg: string }> = {
+  primary: {
+    font: "text-white",
+    bg: "bg-blue-600 hover:bg-blue-700",
+  },
+  secondary: {
+    font: "text-blue-600 hover:bg-blue-700",
+    bg: "bg-white hover:bg-white",
+  },
+};
+
+const { href, variant = "primary" } = Astro.props;
+
+const getVariantStyles = (): string[] => {
+  if (variant === "primary") {
+    return [styles.primary.bg, styles.primary.font];
+  }
+
+  if (variant === "secondary") {
+    return [styles.secondary.bg, styles.secondary.font];
+  }
+  return [styles.secondary.font];
+};
+---
+
+<!-- <a --><!--   class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-gray-800 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:text-white dark:hover:bg-gray-800 dark:hover:border-gray-900 dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800" --><!--   href="#" --><!-- > --><!--   Preline Figma --><!-- </a> -->
+<a
+  class:list={[
+    "inline-flex justify-center items-center gap-x-1 md: gap-x-3 text-center border border-transparent text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800 hover:cursor-pointer",
+    ...getVariantStyles(),
+  ]}
+  {href}
+>
+  <slot />
+
+  <svg class="w-3 h-3" width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path
+      d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"></path>
+  </svg>
+</a>

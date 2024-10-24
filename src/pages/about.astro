@@ -1,0 +1,72 @@
+---
+import Screen from "@layouts/screen.astro";
+import AboutComp from "@components/about/index.astro";
+import Text from "@components/core/text";
+import CommitActivity from "@components/about/commit-activity.tsx";
+
+import Spotify from "@components/about/spotify.tsx";
+import { GET as GET_SPOTIFY } from "./api/spotify.ts";
+
+import StackOverflow from "@components/about/stack-overflow.tsx";
+import { GET as GET_STACK_OVERFLOW } from "./api/stackoverflow";
+
+import { pageBounds } from "@styles/page";
+
+const SHOPIFY_CHECKOUT_URL =
+  "https://www.shopify.com/uk/partners/blog/mobile-checkout-sdks-for-ios-and-android";
+
+const stackoverflowRawData = await (await GET_STACK_OVERFLOW(Astro)).json();
+const stackoverflow = GET_STACK_OVERFLOW.Schema.safeParse(stackoverflowRawData);
+//TODO: check for non 2xx (e.g. 429) and dont json if so
+//TODO: check for non 2xx (e.g. 429) and dont json if so
+const spotifyRawData = await (await GET_SPOTIFY(Astro)).json();
+const track = GET_SPOTIFY.Schema.safeParse(spotifyRawData);
+---
+
+<Screen>
+  <div class:list={[pageBounds, "pt-10"]}>
+    <Text.H1>About Me</Text.H1>
+
+    <div class="flex pt-8 gap-8 dark:text-white text-lg">
+      <!-- left col -->
+      <div class="w-1/2">
+        <p>I'm Kieran Osgood, London, UK.</p>
+        <p>
+          Senior Engineer at Shopify, working on the
+          <a href={SHOPIFY_CHECKOUT_URL} class="underline">Checkout SDK</a>.
+        </p>
+        In the past I've worked on apps such as{" "}
+        <a
+          href="https://www.bbr.com/app?srsltid=AfmBOoqJraPTQIA8c-RbUYI_FFtpttwy8cL3tG6-DGa_MO_i7zD1hbLj"
+          class="href"
+        >
+          {"BB&R"}
+        </a>
+        <a href="https://www.aviva.co.uk/wealth/">Aviva Wealth</a>
+        {" "}and{" "}
+        <a href="https://www.aviva.co.uk/services/more-from-aviva/myaviva-app/">
+          MyAviva
+        </a>
+        <!-- TODO: Add links -->
+        <br />
+        <p>If you spot me at a conference please say hi!</p>
+      </div>
+
+      <!-- right col -->
+      <div class="w-1/2">
+        <!-- <div>profile and socials</div> -->
+        <!-- spotify isnt working at the moment due to issues with client vs server auth -->
+        {track.success && <Spotify client:only="react" track={track.data} />}
+
+        {
+          stackoverflow.success && (
+            <StackOverflow items={stackoverflow.data.items} />
+          )
+        }
+        <CommitActivity client:only="react" />
+      </div>
+    </div>
+  </div>
+
+  <AboutComp />
+</Screen>

@@ -1,0 +1,68 @@
+---
+import Aurora from "@assets/aurora.svg";
+import LinkButton from "@components/core/link-button.astro";
+import Socials from "@components/core/socials.astro";
+import Text from "@components/core/text";
+
+type Link = { label: string; href: string };
+
+const links = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  // { label: "Portfolio", href: "/portfolio" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+] satisfies Link[];
+---
+
+<footer
+  class="flex flex-col self-center mt-20 w-full sm:max-w-xl md:max-w-3xl lg:max-w-7xl relative"
+>
+  <div class="flex flex-row justify-between w-full">
+    <div>
+      <div class="pb-6 md:pb-10">
+        <Text.H2>Lets Connect</Text.H2>
+        <LinkButton href="/contact">Contact</LinkButton>
+      </div>
+      <div class="flex flow-row gap-5 dark:text-[#E8DDDD]">
+        <Socials withText />
+      </div>
+    </div>
+
+    <div
+      class={`hidden sm:block absolute w-1/2 left-1/4 
+sm:top-[-35%] sm:left-[35%] 
+md:top-[-15%] md:left-[30%] 
+lg:top-[-75%] 
+z-[0] overflow-clip`}
+    >
+      <img src={Aurora.src} alt="Aurora Borealis" />
+    </div>
+
+    <!-- Not sure why col-end-4 works - lets check whether we just use flex -->
+    <div class="hidden sm:grid grid-cols-1 col-end-4 gap-1">
+      {
+        links.map((route) => (
+          <a
+            class="footer-navigation-links text-black dark:text-white font-bold no-underline"
+            href={route.href}
+          >
+            {route.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700 w-full" />
+
+  <div class="dark:text-slate-400 font-bold pb-8 w-full">
+    &copy; {new Date().getFullYear()}, KO.DEV
+  </div>
+</footer>
+
+<script>
+  import { highlightCurrentPage } from "@styles/page";
+
+  highlightCurrentPage(".footer-navigation-links");
+</script>

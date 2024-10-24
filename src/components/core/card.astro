@@ -1,0 +1,50 @@
+---
+import Text from "./text";
+
+interface Props {
+  href: string;
+  title: string;
+  subtitle?: string;
+  description: string;
+}
+
+const { href, title, subtitle, description } = Astro.props;
+---
+
+<!-- TODO: rgb(2, 18, 56) -->
+<div
+  class="flex flex-col w-full bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-[rgb(4, 39, 121)] dark:border-gray-700 dark:shadow-slate-700/[.7]"
+>
+  <Text.H3 className="text-lg font-bold text-gray-800 dark:text-white">
+    {title}
+  </Text.H3>
+
+  <p
+    class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500"
+  >
+    {subtitle}
+  </p>
+  <p class="mt-2 text-gray-800 dark:text-gray-400">
+    {description}
+  </p>
+  <a
+    class="mt-3 inline-flex items-center gap-2 mt-5 text-sm font-medium text-primary hover:text-blue-700"
+    {href}
+  >
+    Read More
+    <svg
+      class="w-2.5 h-auto"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"></path>
+    </svg>
+  </a>
+</div>
