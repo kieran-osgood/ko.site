@@ -32,7 +32,7 @@ type RecentlyPlayed = z.infer<typeof RecentlyPlayed>;
 type SuccessOrError<T> = [null, error: Response] | [result: T, null];
 
 async function fetchToken(): Promise<SuccessOrError<Tokens>> {
-  const tokenResponse = await fetch(REFRESH_ENDPOINT, {
+  const response = await fetch(REFRESH_ENDPOINT, {
     method: "POST",
     body: authOptions.toString(),
     headers: {
@@ -41,22 +41,22 @@ async function fetchToken(): Promise<SuccessOrError<Tokens>> {
     },
   });
 
-  if (tokenResponse.ok === false) {
-    console.error(`[${fetchToken.name}][FetchFail] !ok: `, tokenResponse);
-    return [null, new Response(null, { status: tokenResponse.status })];
+  if (response.ok === false) {
+    console.error(`[${fetchToken.name}][FetchFail] !ok: `, response);
+    return [null, new Response(null, { status: response.status })];
   }
 
-  const result = Tokens.safeParse(await tokenResponse.json());
+  const tokens = Tokens.safeParse(await response.json());
 
-  if (result.success === false) {
+  if (tokens.success === false) {
     console.error(
       `[${fetchToken.name}][SchemaFail] !success: `,
-      result.error.format(),
+      tokens.error.format(),
     );
     return [null, new Response(null, { status: 401 })];
   }
 
-  return [result.data, null];
+  return [tokens.data, null];
 }
 
 async function fetchRecentlyPlayed(
@@ -65,35 +65,27 @@ async function fetchRecentlyPlayed(
   const url = new URL(RECENTLY_PLAYED_ENDPOINT);
   url.searchParams.set("limit", "1");
 
-  const recentlyPlayedResponse = await fetch(url, {
+  const response = await fetch(url, {
     method: "get",
     headers: { Authorization: `Bearer ${tokens.access_token}` },
   });
 
-  if (recentlyPlayedResponse.ok === false) {
-    console.error(
-      `[${fetchRecentlyPlayed.name}][FetchFail] !ok: `,
-      recentlyPlayedResponse,
-    );
-    return [
-      null,
-      new Response(null, { status: recentlyPlayedResponse.status }),
-    ];
+  if (response.ok === false) {
+    console.error(`[${fetchRecentlyPlayed.name}][FetchFail] !ok: `, response);
+    return [null, new Response(null, { status: response.status })];
   }
 
-  const recentlyPlayedResult = RecentlyPlayed.safeParse(
-    await recentlyPlayedResponse.json(),
-  );
+  const recentlyPlayed = RecentlyPlayed.safeParse(await response.json());
 
-  if (recentlyPlayedResult.success === false) {
+  if (recentlyPlayed.success === false) {
     console.error(
       `[${fetchRecentlyPlayed.name}][SchemaFail] !success: `,
-      recentlyPlayedResult.error.format(),
+      recentlyPlayed.error.format(),
     );
     return [null, new Response(null, { status: 403 })];
   }
 
-  return [recentlyPlayedResult.data, null];
+  return [recentlyPlayed.data, null];
 }
 
 type GET = APIRoute & { Schema: typeof Track };

@@ -14,20 +14,20 @@ export type StackOverflow = z.infer<typeof StackOverflow>;
 const GET: APIRoute & {
   Schema: typeof StackOverflow;
 } = async (): Promise<Response> => {
-  const stackOverflowResponse = await fetch(ROUTE, { cache: "force-cache" });
+  const response = await fetch(ROUTE, { cache: "force-cache" });
 
-  if (!stackOverflowResponse.ok) {
-    console.error("[GET] stackoverflow failed: ", stackOverflowResponse);
-    return new Response(null, { status: stackOverflowResponse.status });
+  if (!response.ok) {
+    console.error("[GET] stackoverflow failed: ", response);
+    return new Response(null, { status: response.status });
   }
 
-  const result = StackOverflow.safeParse(await stackOverflowResponse.json());
+  const stackoverflow = StackOverflow.safeParse(await response.json());
 
-  if (!result.success) {
-    console.error("[GET] stackoverflow data changed: ", result.error);
+  if (!stackoverflow.success) {
+    console.error("[GET] stackoverflow data changed: ", stackoverflow.error);
     return new Response(null, { status: 400 });
   }
-  return new Response(JSON.stringify(result.data));
+  return new Response(JSON.stringify(stackoverflow.data));
 };
 
 GET.Schema = StackOverflow;
