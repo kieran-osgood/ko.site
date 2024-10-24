@@ -2,11 +2,14 @@
 import Screen from "@layouts/screen.astro";
 import AboutComp from "@components/about/index.astro";
 import Text from "@components/core/text";
-import Spotify from "@components/about/spotify.tsx";
 import CommitActivity from "@components/about/commit-activity.tsx";
-import StackOverflow from "@components/about/stack-overflow.tsx";
+
+import Spotify from "@components/about/spotify.tsx";
 import { GET as GET_SPOTIFY } from "./api/spotify.ts";
+
+import StackOverflow from "@components/about/stack-overflow.tsx";
 import { GET as GET_STACK_OVERFLOW } from "./api/stackoverflow";
+
 import { pageBounds } from "@styles/page";
 
 const SHOPIFY_CHECKOUT_URL =

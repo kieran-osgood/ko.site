@@ -22,12 +22,12 @@ const GET: APIRoute & {
     return new Response(null, { status: stackOverflowResponse.status });
   }
 
-  const result = StackOverflow.safeParse(stackOverflowResponse);
+  const result = StackOverflow.safeParse(await stackOverflowResponse.json());
+
   if (!result.success) {
     console.error("[GET] stackoverflow data changed: ", result.error);
     return new Response(null, { status: 400 });
   }
-
   return new Response(JSON.stringify(result.data));
 };
 

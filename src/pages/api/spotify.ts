@@ -14,11 +14,11 @@ export const TrackSchema = z.object({
 
 export type Track = z.infer<typeof TrackSchema>;
 
-const TokenSchema = z.object({
+export const TokenSchema = z.object({
   access_token: z.z.string(),
 });
 
-const RecentlyPlayedSchema = z.object({
+export const RecentlyPlayedSchema = z.object({
   items: z.array(z.object({ track: TrackSchema })),
 });
 
