@@ -48,7 +48,7 @@ const GET: APIRoute & {
     .then((response) => TokenSchema.safeParse(response));
 
   if (!tokenResponse.success) {
-    console.error("Retrieve token failed: ", tokenResponse);
+    console.error("Retrieve token failed: ", tokenResponse.error.format());
     return new Response(null, { status: 401 });
   }
   const url = new URL(RECENTLY_PLAYED_ENDPOINT);
@@ -67,7 +67,7 @@ const GET: APIRoute & {
   if (!recentlyPlayed.success) {
     console.error(
       "Recently played has changed shape: ",
-      recentlyPlayed.error.toString(),
+      recentlyPlayed.error.format(),
     );
     return new Response(null, { status: 403 });
   }
