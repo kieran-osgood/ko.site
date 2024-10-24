@@ -24,7 +24,7 @@ export const RecentlyPlayedSchema = z.object({
 
 const authOptions = new URLSearchParams({
   grant_type: "refresh_token",
-  refresh_token: import.meta.env.REFRESH_TOKEN,
+  refresh_token: import.meta.env.SPOTIFY_WEB_API_REFRESH_TOKEN,
 });
 
 /** 
@@ -48,7 +48,7 @@ const GET: APIRoute & {
     .then((response) => TokenSchema.safeParse(response));
 
   if (!tokenResponse.success) {
-    console.warn("Retrieve token failed: ", tokenResponse);
+    console.error("Retrieve token failed: ", tokenResponse);
     return new Response(null, { status: 401 });
   }
   const url = new URL(RECENTLY_PLAYED_ENDPOINT);
@@ -65,7 +65,7 @@ const GET: APIRoute & {
     .then((response) => RecentlyPlayedSchema.safeParse(response));
 
   if (!recentlyPlayed.success) {
-    console.warn(
+    console.error(
       "Recently played has changed shape: ",
       recentlyPlayed.error.toString(),
     );
