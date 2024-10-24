@@ -14,7 +14,6 @@ export type StackOverflow = z.infer<typeof StackOverflow>;
 const GET: APIRoute & {
   Schema: typeof StackOverflow;
 } = async (): Promise<Response> => {
-  // TODO: cache this to avoid hitting rate limits
   const stackOverflowResponse = await fetch(ROUTE, { cache: "force-cache" });
 
   if (!stackOverflowResponse.ok) {

@@ -1,8 +1,8 @@
 import type { z } from "astro/zod";
-import type { TrackSchema } from "src/pages/api/spotify";
+import type { Track } from "src/pages/api/spotify";
 
 type SpotifyProps = {
-  track: z.infer<typeof TrackSchema>;
+  track: z.infer<typeof Track>;
 };
 
 export default function Spotify(props: SpotifyProps) {

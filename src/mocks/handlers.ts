@@ -1,6 +1,6 @@
 import type { z } from "astro/zod";
 import { http, HttpResponse } from "msw";
-import type { TokenSchema, RecentlyPlayedSchema } from "src/pages/api/spotify";
+import type { Tokens, RecentlyPlayed } from "src/pages/api/spotify";
 import type { StackOverflow } from "src/pages/api/stackoverflow";
 
 export const handlers = [
@@ -34,14 +34,14 @@ export const handlers = [
   }),
 
   http.post("https://accounts.spotify.com/api/token", () => {
-    const result: z.infer<typeof TokenSchema> = {
+    const result: z.infer<typeof Tokens> = {
       access_token: "token",
     };
     return HttpResponse.json(result);
   }),
 
   http.get("https://api.spotify.com/v1/me/player/recently-played", () => {
-    const result: z.infer<typeof RecentlyPlayedSchema> = {
+    const result: z.infer<typeof RecentlyPlayed> = {
       items: [
         {
           track: {
