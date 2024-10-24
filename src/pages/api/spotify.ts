@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { ZodSchema, z } from "astro/zod";
+import { z } from "astro/zod";
 
 const RECENTLY_PLAYED_ENDPOINT =
   "https://api.spotify.com/v1/me/player/recently-played";
