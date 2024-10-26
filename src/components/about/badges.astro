@@ -1,0 +1,16 @@
+---
+import type { StackOverflowStats } from "src/pages/api/stackoverflow";
+import Badge from "./badge.astro";
+
+interface Props {
+  badgeCounts: StackOverflowStats["badge_counts"];
+}
+
+const { badgeCounts } = Astro.props;
+---
+
+<div class="flex flex-wrap" aria-hidden="true">
+  <Badge color="#ab825f" count={badgeCounts.bronze} />
+  <Badge color="#b4b8bc" count={badgeCounts.silver} />
+  <Badge color="#ffcc01" count={badgeCounts.gold} />
+</div>

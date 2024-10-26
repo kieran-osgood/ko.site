@@ -1,16 +1,16 @@
 ---
 import Screen from "@layouts/screen.astro";
-import AboutComp from "@components/about/index.astro";
 import Text from "@components/core/text";
 import CommitActivity from "@components/about/commit-activity.tsx";
 
 import Spotify from "@components/about/spotify.astro";
 import { GET as GET_SPOTIFY } from "./api/spotify.ts";
 
-import StackOverflow from "@components/about/stack-overflow.tsx";
+import StackOverflow from "@components/about/stack-overflow.astro";
 import { GET as GET_STACK_OVERFLOW } from "./api/stackoverflow";
 
 import { pageBounds } from "@styles/page";
+import SkillGalaxy from "@components/about/skill-galaxy.astro";
 
 const SHOPIFY_CHECKOUT_URL =
   "https://www.shopify.com/uk/partners/blog/mobile-checkout-sdks-for-ios-and-android";
@@ -54,13 +54,11 @@ const track = GET_SPOTIFY.Schema.safeParse(spotifyRawData);
 
       <!-- right col -->
       <div class="col-end-4 col-span-2">
-        <!-- <div>profile and socials</div> -->
-        <!-- spotify isnt working at the moment due to issues with client vs server auth -->
+        <div class="grid grid-rows-1 gap-4 grid-span-3"></div>
         {track.success && <Spotify track={track.data} />}
-
         {
-          stackoverflow.success && (
-            <StackOverflow items={stackoverflow.data.items} />
+          stackoverflow.success && stackoverflow.data.items[0] && (
+            <StackOverflow stats={stackoverflow.data.items[0]} />
           )
         }
         <CommitActivity client:only="react" />
@@ -68,5 +66,5 @@ const track = GET_SPOTIFY.Schema.safeParse(spotifyRawData);
     </div>
   </div>
 
-  <AboutComp />
+  <SkillGalaxy />
 </Screen>

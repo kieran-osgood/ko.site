@@ -1,6 +1,7 @@
 ---
 import type { z } from "astro/zod";
 import type { Track } from "src/pages/api/spotify";
+import Text from "@components/core/text";
 import spotifyLogo from "@assets/spotify.svg";
 import { Image } from "astro:assets";
 import Card from "@components/core/card.astro";
@@ -17,9 +18,9 @@ const { name, artists, external_urls } = track;
     <Card class="bg-[#1F1F1F]">
       <div class="flex justify-between">
         <div class="text-primary-text">
-          <h2 class="font-bold text-4xl">
+          <Text.H2 className="font-bold text-4xl">
             Whats On <br /> Repeat
-          </h2>
+          </Text.H2>
 
           <Image
             src={spotifyLogo}
@@ -32,8 +33,8 @@ const { name, artists, external_urls } = track;
 
       <div class="max-w-xl flex flex-col items-end justify-between">
         <div class="flex flex-col items-end">
-          <p class="font-bold text-sm ">{name}</p>
-          <p class="text-sm">{`- ${artists[0]?.name}`}</p>
+          <Text.Text className="font-bold text-sm ">{name}</Text.Text>
+          <Text.Text className="text-sm">{`- ${artists[0]?.name}`}</Text.Text>
         </div>
         <a
           href={external_urls.spotify}
