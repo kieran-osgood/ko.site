@@ -46,17 +46,17 @@ async function fetchToken(): Promise<SuccessOrError<Tokens>> {
     return [null, new Response(null, { status: response.status })];
   }
 
-  const tokens = Tokens.safeParse(await response.json());
+  const result = Tokens.safeParse(await response.json());
 
-  if (tokens.success === false) {
+  if (result.success === false) {
     console.error(
       `[${fetchToken.name}][SchemaFail] !success: `,
-      tokens.error.format(),
+      result.error.format(),
     );
     return [null, new Response(null, { status: 401 })];
   }
 
-  return [tokens.data, null];
+  return [result.data, null];
 }
 
 async function fetchRecentlyPlayed(
