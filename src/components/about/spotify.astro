@@ -1,0 +1,49 @@
+---
+import type { z } from "astro/zod";
+import type { Track } from "src/pages/api/spotify";
+import spotifyLogo from "@assets/spotify.svg";
+import { Image } from "astro:assets";
+import Card from "@components/core/card.astro";
+
+interface Props {
+  track: z.infer<typeof Track>;
+}
+const { track } = Astro.props;
+const { name, artists, external_urls } = track;
+---
+
+{
+  track && (
+    <Card class="bg-[#1F1F1F]">
+      <div class="flex justify-between">
+        <div class="text-primary-text">
+          <h2 class="font-bold text-4xl">
+            Whats On <br /> Repeat
+          </h2>
+
+          <Image
+            src={spotifyLogo}
+            alt="Spotify Logo"
+            class="pt-8"
+            loading={"eager"}
+          />
+        </div>
+      </div>
+
+      <div class="max-w-xl flex flex-col items-end justify-between">
+        <div class="flex flex-col items-end">
+          <p class="font-bold text-sm ">{name}</p>
+          <p class="text-sm">{`- ${artists[0]?.name}`}</p>
+        </div>
+        <a
+          href={external_urls.spotify}
+          class="text-xs text-secondary-text underline relative block truncate"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Listen with me!
+        </a>
+      </div>
+    </Card>
+  )
+}

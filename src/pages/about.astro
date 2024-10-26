@@ -4,7 +4,7 @@ import AboutComp from "@components/about/index.astro";
 import Text from "@components/core/text";
 import CommitActivity from "@components/about/commit-activity.tsx";
 
-import Spotify from "@components/about/spotify.tsx";
+import Spotify from "@components/about/spotify.astro";
 import { GET as GET_SPOTIFY } from "./api/spotify.ts";
 
 import StackOverflow from "@components/about/stack-overflow.tsx";
@@ -14,10 +14,13 @@ import { pageBounds } from "@styles/page";
 
 const SHOPIFY_CHECKOUT_URL =
   "https://www.shopify.com/uk/partners/blog/mobile-checkout-sdks-for-ios-and-android";
+const BBR_APP_URL =
+  "https://www.bbr.com/app?srsltid=AfmBOoqJraPTQIA8c-RbUYI_FFtpttwy8cL3tG6-DGa_MO_i7zD1hbLj";
+const MYAVIVA_APP_URL =
+  "https://www.aviva.co.uk/services/more-from-aviva/myaviva-app/";
 
 const stackoverflowRawData = await (await GET_STACK_OVERFLOW(Astro)).json();
 const stackoverflow = GET_STACK_OVERFLOW.Schema.safeParse(stackoverflowRawData);
-//TODO: check for non 2xx (e.g. 429) and dont json if so
 //TODO: check for non 2xx (e.g. 429) and dont json if so
 const spotifyRawData = await (await GET_SPOTIFY(Astro)).json();
 const track = GET_SPOTIFY.Schema.safeParse(spotifyRawData);
@@ -27,36 +30,33 @@ const track = GET_SPOTIFY.Schema.safeParse(spotifyRawData);
   <div class:list={[pageBounds, "pt-10"]}>
     <Text.H1>About Me</Text.H1>
 
-    <div class="flex pt-8 gap-8 dark:text-white text-lg">
+    <div class="grid grid-cols-1 md:grid-cols-3 pt-8 gap-8 text-lg">
       <!-- left col -->
-      <div class="w-1/2">
-        <p>I'm Kieran Osgood, London, UK.</p>
-        <p>
+      <div class="col-start-1 col-span-1">
+        <Text.Text>I'm Kieran Osgood, London, UK.</Text.Text>
+
+        <Text.Text>
           Senior Engineer at Shopify, working on the
-          <a href={SHOPIFY_CHECKOUT_URL} class="underline">Checkout SDK</a>.
-        </p>
-        In the past I've worked on apps such as{" "}
-        <a
-          href="https://www.bbr.com/app?srsltid=AfmBOoqJraPTQIA8c-RbUYI_FFtpttwy8cL3tG6-DGa_MO_i7zD1hbLj"
-          class="href"
-        >
-          {"BB&R"}
-        </a>
-        <a href="https://www.aviva.co.uk/wealth/">Aviva Wealth</a>
-        {" "}and{" "}
-        <a href="https://www.aviva.co.uk/services/more-from-aviva/myaviva-app/">
-          MyAviva
-        </a>
-        <!-- TODO: Add links -->
-        <br />
-        <p>If you spot me at a conference please say hi!</p>
+          <a href={SHOPIFY_CHECKOUT_URL} class="underline">Checkout SDK</a>. In
+          the past I've worked on apps such as{" "}
+          <a href={BBR_APP_URL} class="href">
+            {"BB&R"}
+          </a>
+          <a href="https://www.aviva.co.uk/wealth/">Aviva Wealth</a>
+          {" "}and{" "}
+          <a href={MYAVIVA_APP_URL}> MyAviva </a>
+          <!-- TODO: Add links -->
+          <br />
+        </Text.Text>
+
+        <Text.Text> If you spot me at a conference please say hi! </Text.Text>
       </div>
 
       <!-- right col -->
-      <div class="w-1/2">
+      <div class="col-end-4 col-span-2">
         <!-- <div>profile and socials</div> -->
         <!-- spotify isnt working at the moment due to issues with client vs server auth -->
-        {track.success && <Spotify client:only="react" track={track.data} />}
+        {track.success && <Spotify track={track.data} />}
 
         {
           stackoverflow.success && (
