@@ -5,31 +5,31 @@ import type { StackOverflow } from "src/pages/api/stackoverflow";
 
 export const handlers = [
   http.get("https://api.stackexchange.com/2.2/users/*", () => {
-    const result: z.infer<typeof StackOverflow> = {
+    const result = {
       items: [
         {
           badge_counts: { bronze: 69, silver: 420, gold: 547 },
-          account_id: 7095009,
-          is_employee: false,
-          last_modified_date: 1673043300,
-          last_access_date: 1728734459,
-          reputation_change_year: 40,
-          reputation_change_quarter: 0,
-          reputation_change_month: 0,
-          reputation_change_week: 0,
-          reputation_change_day: 0,
+          // account_id: 7095009,
+          // is_employee: false,
+          // last_modified_date: 1673043300,
+          // last_access_date: 1728734459,
+          // reputation_change_year: 40,
+          // reputation_change_quarter: 0,
+          // reputation_change_month: 0,
+          // reputation_change_week: 0,
+          // reputation_change_day: 0,
           reputation: 968,
-          creation_date: 1444416602,
-          user_type: "registered",
-          user_id: 5428936,
-          location: "Littlehampton, UK",
-          website_url: "",
+          // creation_date: 1444416602,
+          // user_type: "registered",
+          // user_id: 5428936,
+          // location: "Littlehampton, UK",
+          // website_url: "",
           link: "https://stackoverflow.com/users/5428936/kieran-osgood",
-          profile_image: "https://i.sstatic.net/FjChe.png?s=256",
-          display_name: "Kieran Osgood",
+          // profile_image: "https://i.sstatic.net/FjChe.png?s=256",
+          // display_name: "Kieran Osgood",
         },
       ],
-    };
+    } satisfies z.infer<typeof StackOverflow>;
     return HttpResponse.json(result);
   }),
 

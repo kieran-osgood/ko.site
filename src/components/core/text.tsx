@@ -54,7 +54,7 @@ const H3 = (props: HeadingProps) => (
   </h3>
 );
 
-function Text(props: TextProps) {
+function Text(_props: TextProps) {
   if (import.meta.env.DEV) {
     throw new Error("This is not a component - did you mean `<Text.Text />`");
   }
