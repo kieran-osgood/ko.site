@@ -1,0 +1,58 @@
+---
+import LinkButton from "@components/core/link-button.astro";
+import { Image } from "astro:assets";
+import phoneFrame from "@assets/phone-frame.png";
+import reactLogo from "@assets/react-logo.svg";
+import { pageBounds } from "@styles/page";
+
+import Text from "@components/core/text";
+---
+
+<div class={`relative z-10 flex row justify-center ${pageBounds}`}>
+  <!-- Left  -->
+  <div class="flex items-center py-10 lg:py-16 max-w-1/2">
+    <div class="max-w-2xl mx-auto">
+      <p
+        class="inline-block text-sm font-medium bg-clip-text bg-gradient-to-l from-blue-600 to-violet-500 text-transparent dark:from-blue-400 dark:to-violet-400"
+      >
+        APPS DONE RIGHT
+      </p>
+
+      <!-- Title -->
+      <div class="max-w-2xl">
+        <Text.H1>Time for that KO app.</Text.H1>
+      </div>
+      <!-- End Title -->
+
+      <div class="mt-4 md:mt-8 max-w-3xl">
+        <p class="text-lg text-gray-600 dark:text-white">
+          Software engineer with a passion for crafting difficult solutions.
+          <!-- TODO: add other info -->
+        </p>
+      </div>
+
+      <div class="mt-4 md:mt-8 grid gap-3 w-full sm:inline-flex">
+        <LinkButton href="/contact">Contact</LinkButton>
+        <LinkButton href="/blog" variant="secondary">Blog</LinkButton>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right -->
+  <div class="px-4 sm:px-6 lg:px-8 py-10 lg:py-16 max-w-1/2 hidden sm:flex">
+    <div class="flex justify-center max-w-2xl text-center mx-auto relative">
+      <Image
+        src={phoneFrame}
+        alt="React native running on an iPhone"
+        class="max-w-[55%]"
+        loading={"eager"}
+      />
+      <Image
+        src={reactLogo}
+        alt="React native running on an iPhone"
+        class="max-w-[35%] absolute self-center animate-[spin_3s_linear_infinite]"
+        loading={"eager"}
+      />
+    </div>
+  </div>
+</div>

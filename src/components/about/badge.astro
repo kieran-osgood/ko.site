@@ -1,0 +1,12 @@
+---
+interface Props {
+  color: string;
+  count: number;
+}
+const { color, count } = Astro.props;
+---
+
+<div class="px-1 ml-auto" style={{ color: color }}>
+  <span>●</span>
+  <span class="pl-1">{count}</span>
+</div>

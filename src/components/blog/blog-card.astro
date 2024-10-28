@@ -1,0 +1,46 @@
+---
+import Text from "@components/core/text";
+import { Image } from "astro:assets";
+import rightArrow from "@assets/right-arrow.svg";
+
+interface Props {
+  href: string;
+  title: string;
+  subtitle?: string;
+  description: string;
+  publishedDate: Date;
+}
+
+const { href, title, subtitle, description, publishedDate } = Astro.props;
+---
+
+<div
+  class="grid w-full h-full bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:border-gray-700 dark:shadow-slate-700/[.7]"
+>
+  <Text.H3 isLightBg>{title}</Text.H3>
+
+  <Text.Text className="mt-1 text-xs font-medium uppercase" isLightBg>
+    {subtitle}
+  </Text.Text>
+
+  <Text.Text isLightBg>
+    Published: {publishedDate.toDateString()}
+  </Text.Text>
+
+  <Text.Text className="mt-3" isLightBg>
+    {description}
+  </Text.Text>
+
+  <a
+    class="inline-flex items-center gap-2 mt-5 text-sm text-primary hover:text-blue-700 font-bold"
+    {href}
+  >
+    Read More
+    <Image
+      src={rightArrow}
+      alt=""
+      class="w-2.5 text-primary fill-blue-500"
+      loading="eager"
+    />
+  </a>
+</div>

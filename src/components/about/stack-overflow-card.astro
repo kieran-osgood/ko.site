@@ -1,0 +1,35 @@
+---
+import Card from "@components/core/card.astro";
+import type { StackOverflowStats } from "src/pages/api/stackoverflow";
+import Badges from "./badges.astro";
+
+interface Props {
+  stats: StackOverflowStats;
+}
+
+const { stats } = Astro.props;
+---
+
+<Card class="grid grid-cols-1 md:grid-cols-2 pt-8 gap-8">
+  <div class="flex justify-between pt-8">
+    <div class="text-primary-text">
+      <h2 class="text-xs text-secondary-text">Stack Overflow</h2>
+
+      <p class="font-bold text-sm pt-8">
+        Reputation
+        <span class="text-sm font-normal">&nbsp;-&nbsp;{stats.reputation}</span>
+      </p>
+    </div>
+    <Badges badgeCounts={stats.badge_counts} />
+  </div>
+  <div class="pt-8 pb-4">
+    <a
+      href={stats.link}
+      class="text-xs text-secondary-text underline block truncate"
+      target="_blank"
+      rel="noreferrer"
+    >
+      {stats.link}
+    </a>
+  </div>
+</Card>

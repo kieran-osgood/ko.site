@@ -1,0 +1,15 @@
+---
+import HtmlBase from "@layouts/html-base.astro";
+import Header from "@components/header/index.astro";
+import Footer from "@components/core/footer.astro";
+---
+
+<HtmlBase>
+  <Header />
+
+  <div class="flex flex-1 flex-col z-10">
+    <slot />
+  </div>
+
+  <Footer />
+</HtmlBase>

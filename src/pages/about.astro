@@ -1,0 +1,73 @@
+---
+import Screen from "@layouts/screen.astro";
+import Text from "@components/core/text";
+import CommitActivity from "@components/about/commit-activity.tsx";
+
+import Spotify from "@components/about/spotify-card.astro";
+import { GET as GET_SPOTIFY } from "./api/spotify.ts";
+
+import StackOverflow from "@components/about/stack-overflow-card.astro";
+import { GET as GET_STACK_OVERFLOW } from "./api/stackoverflow";
+
+import { pageBounds } from "@styles/page";
+import SkillGalaxy from "@components/about/skill-galaxy.astro";
+import Card from "@components/core/card.astro";
+
+const SHOPIFY_CHECKOUT_URL =
+  "https://www.shopify.com/uk/partners/blog/mobile-checkout-sdks-for-ios-and-android";
+const BBR_APP_URL =
+  "https://www.bbr.com/app?srsltid=AfmBOoqJraPTQIA8c-RbUYI_FFtpttwy8cL3tG6-DGa_MO_i7zD1hbLj";
+const MYAVIVA_APP_URL =
+  "https://www.aviva.co.uk/services/more-from-aviva/myaviva-app/";
+
+//TODO: check for non 2xx (e.g. 429) and dont json if so
+const stackoverflowRawData = await (await GET_STACK_OVERFLOW(Astro)).json();
+const stackoverflow = GET_STACK_OVERFLOW.Schema.safeParse(stackoverflowRawData);
+const spotifyRawData = await (await GET_SPOTIFY(Astro)).json();
+const track = GET_SPOTIFY.Schema.safeParse(spotifyRawData);
+---
+
+<Screen>
+  <div class:list={[pageBounds, "pt-10"]}>
+    <Text.H1>About Me</Text.H1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 pt-8 gap-8 text-lg">
+      <!-- left col -->
+      <div class="col-start-1 col-span-1">
+        <Text.Text>I'm Kieran Osgood, London, UK.</Text.Text>
+
+        <Text.Text>
+          Senior Engineer at Shopify, working on the
+          <a href={SHOPIFY_CHECKOUT_URL} class="underline">Checkout SDK</a>.
+        </Text.Text>
+
+        <Text.Text>
+          In the past I've worked on apps such as{" "}
+          <a href={BBR_APP_URL} class="href">
+            {"BB&R"}
+          </a>
+          <a href="https://www.aviva.co.uk/wealth/">Aviva Wealth</a>
+          {" and "}
+          <a href={MYAVIVA_APP_URL}>MyAviva</a>
+        </Text.Text>
+
+        <Text.Text>If you spot me at a conference please say hi!</Text.Text>
+      </div>
+
+      <!-- right col -->
+      <div class="grid grid-rows-1 gap-4 grid-span-3 col-end-4 col-span-2">
+        {track.success && <Spotify track={track.data} />}
+        {
+          stackoverflow.success && stackoverflow.data.items[0] && (
+            <StackOverflow stats={stackoverflow.data.items[0]} />
+          )
+        }
+        <Card class="overflow-auto">
+          <CommitActivity client:only="react" />
+        </Card>
+      </div>
+    </div>
+  </div>
+
+  <SkillGalaxy />
+</Screen>
