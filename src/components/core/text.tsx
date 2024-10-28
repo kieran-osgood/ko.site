@@ -3,20 +3,29 @@ type ExtractTextProps<T> = React.DetailedHTMLProps<React.HTMLAttributes<T>, T>;
 const joinClx = (baseClass: string) => (overrideClass?: string) =>
   overrideClass ? `${baseClass} ${overrideClass}` : baseClass;
 
-type TextProps = ExtractTextProps<HTMLParagraphElement>;
+type ResponsiveText = {
+  isLightBg?: boolean;
+};
+const getDarkModeText = (isLightBg: ResponsiveText["isLightBg"] = false) => {
+  return !isLightBg ? "dark:text-white" : "";
+};
+type TextProps = ExtractTextProps<HTMLParagraphElement> & ResponsiveText;
 const _Text = (props: TextProps) => (
-  <p {...props} className={joinClx("dark:text-white")(props.className)}>
+  <p
+    {...props}
+    className={joinClx(getDarkModeText(props.isLightBg))(props.className)}
+  >
     {props.children}
   </p>
 );
 
-type HeadingProps = ExtractTextProps<HTMLHeadingElement>;
+type HeadingProps = ExtractTextProps<HTMLHeadingElement> & ResponsiveText;
 
 const H1 = (props: HeadingProps) => (
   <h1
     {...props}
     className={joinClx(
-      "text-4xl md:text-5xl lg:text-8xl font-bold dark:text-white",
+      `text-4xl md:text-5xl lg:text-8xl font-bold ${getDarkModeText(props.isLightBg)}`,
     )(props.className)}
   >
     {props.children}
@@ -27,7 +36,7 @@ const H2 = (props: HeadingProps) => (
   <h2
     {...props}
     className={joinClx(
-      "text-3xl md:text-4xl font-bold dark:text-white pb-6 md:pb-10",
+      `text-3xl md:text-4xl font-bold ${getDarkModeText(props.isLightBg)} pb-6 md:pb-10`,
     )(props.className)}
   >
     {props.children}
@@ -38,14 +47,14 @@ const H3 = (props: HeadingProps) => (
   <h3
     {...props}
     className={joinClx(
-      "text-xl md:text-2xl font-bold text-gray-800 dark:text-white",
+      `text-xl md:text-2xl font-bold text-gray-800 ${getDarkModeText(props.isLightBg)}`,
     )(props.className)}
   >
     {props.children}
   </h3>
 );
 
-function Text() {
+function Text(props: TextProps) {
   if (import.meta.env.DEV) {
     throw new Error("This is not a component - did you mean `<Text.Text />`");
   }

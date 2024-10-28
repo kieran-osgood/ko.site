@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/mdx-to-html.astro
 # schema
-title: A journeymans tale
-description: The first in a line of posts
+title: React Native versus Native. The beauty of Swift Kotlin and Typescript.
+description: A deep dive into the inherent complexities of a wrapper system and the super powers in development speed that this provides you.
 date: "01-04-2028"
 ---
 

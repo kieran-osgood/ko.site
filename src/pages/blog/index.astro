@@ -3,6 +3,7 @@ import BlogList from "@components/blog/blog-list.astro";
 import Screen from "@layouts/screen.astro";
 import Text from "@components/core/text";
 import { getCollection } from "astro:content";
+import { pageBounds } from "@styles/page";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.date.getMilliseconds() - a.data.date.getMilliseconds(),
@@ -10,16 +11,10 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <Screen>
-  <div class="flex flex-col items-center flex-1">
-    <Text.H1>Blog Posts</Text.H1>
-    <p class="dark:text-white">
-      These are some ramblings on topics like Typescript, React Native, Node and
-      Consultancy.
-    </p>
+  <div class:list={[pageBounds, "flex flex-col items-center flex-1"]}>
+    <Text.H1>Blog</Text.H1>
 
-    <div
-      class="flex flex-col items-center pt-4 px-4 w-full sm:w-3/4 md:w-1/2 gap-2"
-    >
+    <div class="flex flex-col items-center pt-8 w-full sm:w-3/4 md:w-1/2 gap-2">
       <BlogList items={posts} />
     </div>
   </div>

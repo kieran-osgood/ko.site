@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/mdx-to-html.astro
 # schema
-title: The land of confusion
-description: The first in a line of posts
+title: Large scale enterprise application development, not just code architecture.
+description: Discussing the challenges that arise when working on a project with over 70 React native developers all working to get their own changes in place.
 date: "04-01-2024"
 ---
 

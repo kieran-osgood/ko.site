@@ -1,14 +1,6 @@
----
-console.info(
-  "DEBUGPRINT[3]: card.astro:9: Astro.props.class=",
-  Astro.props.class,
-);
----
-
-<!-- TODO: rgb(2, 18, 56) -->
 <div
   class:list={[
-    "flex flex-col w-full bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-[rgb(4, 39, 121)] dark:border-gray-700 dark:shadow-slate-700/[.7] grid grid-cols-1 md:grid-cols-2 pt-8 gap-8 dark:text-black text-lg",
+    "bg-white dark:bg-[rgb(4, 39, 121)] border shadow-sm rounded-xl p-4 dark:border-gray-700 dark:shadow-slate-700/[.7]",
     Astro.props.class,
   ]}
 >

@@ -106,6 +106,7 @@ const GET: GET = async () => {
     return recentlyPlayedError;
   }
 
+  console.log("track", JSON.stringify(recentlyPlayed));
   return new Response(JSON.stringify(recentlyPlayed.items?.[0]?.track));
 };
 

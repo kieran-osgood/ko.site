@@ -1,5 +1,7 @@
 ---
 import Text from "@components/core/text";
+import { Image } from "astro:assets";
+import rightArrow from "@assets/right-arrow.svg";
 
 interface Props {
   href: string;
@@ -12,40 +14,27 @@ const { href, title, subtitle, description, publishedDate } = Astro.props;
 ---
 
 <div
-  class="grid w-full h-full bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-[#3744D7] dark:border-gray-700 dark:shadow-slate-700/[.7]"
+  class="grid w-full h-full bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:border-gray-700 dark:shadow-slate-700/[.7]"
 >
-  <Text.H3>{title}</Text.H3>
-  <p
-    class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500"
-  >
-    {subtitle}
-  </p>
-  <p class="text-gray-800 dark:text-gray-300">
-    Published: {publishedDate.toDateString()}
-  </p>
+  <Text.H3 isLightBg>{title}</Text.H3>
 
-  <i class="mt-3 text-gray-800 dark:text-white">
+  <Text.Text className="mt-1 text-xs font-medium uppercase" isLightBg>
+    {subtitle}
+  </Text.Text>
+
+  <Text.Text isLightBg>
+    Published: {publishedDate.toDateString()}
+  </Text.Text>
+
+  <Text.Text className="mt-3" isLightBg>
     {description}
-  </i>
+  </Text.Text>
 
   <a
-    class="mt-3 inline-flex items-center gap-2 mt-5 text-sm font-medium text-primary hover:text-blue-700 text-bold"
+    class="inline-flex items-center gap-2 mt-5 text-sm text-primary hover:text-blue-700 font-bold"
     {href}
   >
     Read More
-    <svg
-      class="w-2.5 h-auto"
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"></path>
-    </svg>
+    <Image src={rightArrow} alt="" class="w-2.5 text-primary fill-blue-500" />
   </a>
 </div>

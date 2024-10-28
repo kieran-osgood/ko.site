@@ -1,8 +1,7 @@
 ---
 layout: ../../layouts/mdx-to-html.astro
-# schema
-title: Disturbed are coming for you
-description: The first in a line of posts
+title: The beginnings of a software engineer from Worthing
+description: Tale of my journey from school to becoming a software engineer working as a Senior Engineer at Shopify.
 date: "04-01-2024"
 ---
 
