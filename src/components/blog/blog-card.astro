@@ -10,6 +10,7 @@ interface Props {
   description: string;
   publishedDate: Date;
 }
+
 const { href, title, subtitle, description, publishedDate } = Astro.props;
 ---
 
@@ -35,6 +36,11 @@ const { href, title, subtitle, description, publishedDate } = Astro.props;
     {href}
   >
     Read More
-    <Image src={rightArrow} alt="" class="w-2.5 text-primary fill-blue-500" />
+    <Image
+      src={rightArrow}
+      alt=""
+      class="w-2.5 text-primary fill-blue-500"
+      loading="eager"
+    />
   </a>
 </div>
